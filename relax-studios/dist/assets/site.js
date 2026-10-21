@@ -22,8 +22,10 @@
     if ('ResizeObserver' in window) { observer = new ResizeObserver(entries => { for (const entry of entries) { const frame = entry.target.querySelector('iframe'); if (frame) frame.style.transform = `scale(${entry.contentRect.width / 1300})`; } }); document.querySelectorAll('.model-frame').forEach(el => observer.observe(el)); }
   }
   document.querySelectorAll('[data-niche]').forEach(button => button.addEventListener('click', () => { document.querySelectorAll('[data-niche]').forEach(b => { b.classList.toggle('active', b === button); b.setAttribute('aria-pressed', String(b === button)); }); renderModels(button.dataset.niche); }));
-  renderModels('advocacia');
+  if ($('model-list')) renderModels('advocacia');
+  $('year').textContent = new Date().getFullYear();
   const form = $('brief-form');
+  if (!form) return;
   if (cfg.emailActive === true && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cfg.email || '')) {
     $('contact-email').href = 'mailto:' + cfg.email; $('contact-email').removeAttribute('aria-disabled');
     $('email-state').textContent = 'Escreva para o estúdio ou prepare seu briefing no formulário.';
