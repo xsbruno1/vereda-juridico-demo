@@ -1,0 +1,63 @@
+(function(root){
+ 'use strict';
+ const norm=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n/100);
+ const sectors=['petshop','pizzaria','salao'];
+ const seed={
+ petshop:[
+ {sku:'PET-01',nome:'Nutrição para cães adultos',categoria:'Alimentação',preco_centavos:12990,ativo:true,estoque:12,detalhe:'Embalagem 3 kg · item demonstrativo',especie:'Cães',duracao_min:0},
+ {sku:'PET-02',nome:'Nutrição para gatos adultos',categoria:'Alimentação',preco_centavos:8990,ativo:true,estoque:8,detalhe:'Embalagem 1,5 kg · item demonstrativo',especie:'Gatos',duracao_min:0},
+ {sku:'PET-03',nome:'Areia vegetal',categoria:'Higiene',preco_centavos:5490,ativo:true,estoque:20,detalhe:'Pacote 2 kg · item demonstrativo',especie:'Gatos',duracao_min:0},
+ {sku:'PET-04',nome:'Brinquedo de enriquecimento',categoria:'Acessórios',preco_centavos:3990,ativo:true,estoque:6,detalhe:'Tamanho M · item demonstrativo',especie:'Cães',duracao_min:0},
+ {sku:'PET-05',nome:'Escova para pelagem',categoria:'Higiene',preco_centavos:3290,ativo:true,estoque:15,detalhe:'Uso conforme orientação · item demonstrativo',especie:'Todos',duracao_min:0},
+ {sku:'PET-06',nome:'Caminha de tecido',categoria:'Acessórios',preco_centavos:15990,ativo:true,estoque:0,detalhe:'Tamanho P · sem estoque na demonstração',especie:'Todos',duracao_min:0}],
+ pizzaria:[
+ {sku:'PIZ-01',nome:'Margherita',categoria:'Clássicas',preco_centavos:5990,ativo:true,estoque:50,detalhe:'Tomate, muçarela e manjericão · contém leite e trigo',especie:'',duracao_min:0},
+ {sku:'PIZ-02',nome:'Calabresa',categoria:'Clássicas',preco_centavos:6490,ativo:true,estoque:50,detalhe:'Calabresa e cebola · contém trigo',especie:'',duracao_min:0},
+ {sku:'PIZ-03',nome:'Cogumelos',categoria:'Especiais',preco_centavos:7290,ativo:true,estoque:50,detalhe:'Cogumelos e muçarela · contém leite e trigo',especie:'',duracao_min:0},
+ {sku:'PIZ-04',nome:'Quatro queijos',categoria:'Especiais',preco_centavos:7590,ativo:true,estoque:50,detalhe:'Seleção de queijos · contém leite e trigo',especie:'',duracao_min:0}],
+ salao:[
+ {sku:'SAL-01',nome:'Corte e finalização',categoria:'Corte',preco_centavos:14000,ativo:true,estoque:1,detalhe:'Consulta de estilo e finalização · valor demonstrativo',especie:'',duracao_min:60},
+ {sku:'SAL-02',nome:'Escova',categoria:'Finalização',preco_centavos:8500,ativo:true,estoque:1,detalhe:'Valor e duração ajustados na avaliação',especie:'',duracao_min:45},
+ {sku:'SAL-03',nome:'Coloração',categoria:'Cor',preco_centavos:28000,ativo:true,estoque:1,detalhe:'Avaliação prévia e teste conforme indicação profissional',especie:'',duracao_min:120},
+ {sku:'SAL-04',nome:'Tratamento capilar',categoria:'Cuidado',preco_centavos:12000,ativo:true,estoque:1,detalhe:'Protocolo definido após avaliação',especie:'',duracao_min:60}]
+ };
+ function validate(items,sector){
+  if(!sectors.includes(sector)||!Array.isArray(items)||items.length<1||items.length>1000)throw Error('Importe entre 1 e 1.000 itens para um setor válido.');
+  const seen=new Set();return items.map((r,i)=>{
+   const sku=String(r.sku??'').trim(),nome=String(r.nome??'').trim(),categoria=String(r.categoria??'').trim(),price=Number(r.preco_centavos),stock=Number(r.estoque??0),minutes=Number(r.duracao_min??0);
+   if(!/^[A-Za-z0-9_-]{1,40}$/.test(sku)||seen.has(sku))throw Error(`Linha ${i+1}: código inválido ou duplicado.`);seen.add(sku);
+   if(!nome||nome.length>100||!categoria||categoria.length>50)throw Error(`Linha ${i+1}: informe nome (até 100 caracteres) e categoria (até 50).`);
+   if(!Number.isSafeInteger(price)||price<0||price>100000000||!Number.isInteger(stock)||stock<0||stock>100000)throw Error(`Linha ${i+1}: preço em centavos e estoque devem ser inteiros válidos.`);
+   if(sector==='salao'&&(!Number.isInteger(minutes)||minutes<15||minutes>480||minutes%15))throw Error(`Linha ${i+1}: duração deve ser de 15 a 480 minutos, em blocos de 15.`);
+   if(![true,false,'true','false',1,0,'1','0'].includes(r.ativo))throw Error(`Linha ${i+1}: ativo deve ser true ou false.`);
+   return {sku,nome,categoria,preco_centavos:price,ativo:[true,'true',1,'1'].includes(r.ativo),estoque:stock,detalhe:String(r.detalhe??'').replace(/[\u0000-\u001f]/g,' ').slice(0,220),especie:String(r.especie??'').slice(0,40),duracao_min:minutes};
+  });
+ }
+ function parseCSV(text){
+  if(typeof text!=='string'||text.length>250000)throw Error('Arquivo muito grande. Use até 250 KB.');
+  const lines=[];let row=[],cell='',quoted=false;const first=text.replace(/^\uFEFF/,'');const delimiter=first.split(/\r?\n/)[0].includes(';')?';':',';
+  for(let i=0;i<first.length;i++){const c=first[i];if(c==='"'){if(quoted&&first[i+1]==='"'){cell+='"';i++;}else if(quoted||cell==='')quoted=!quoted;else throw Error('Aspas inválidas no CSV.');}else if(c===delimiter&&!quoted){row.push(cell);cell='';}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&first[i+1]==='\n')i++;row.push(cell);if(row.some(x=>x!==''))lines.push(row);row=[];cell='';}else cell+=c;}
+  if(quoted)throw Error('CSV com aspas não fechadas.');row.push(cell);if(row.some(x=>x!==''))lines.push(row);
+  const headers=lines.shift()?.map(x=>x.trim());if(!headers||new Set(headers).size!==headers.length||!['sku','nome','categoria','preco_centavos','ativo'].every(x=>headers.includes(x)))throw Error('CSV precisa de sku, nome, categoria, preco_centavos e ativo.');
+  return lines.map((r,i)=>{if(r.length!==headers.length)throw Error(`Linha ${i+2}: número de colunas diferente do cabeçalho.`);return Object.fromEntries(headers.map((h,j)=>[h,r[j]]));});
+ }
+ function cartTotal(catalog,cart,fee=0){
+  if(!Number.isInteger(fee)||fee<0||fee>100000)throw Error('Taxa inválida.');let subtotal=0;const lines=[];
+  for(const [sku,qty]of Object.entries(cart)){const p=catalog.find(x=>x.sku===sku);if(!p||!p.ativo||!Number.isInteger(qty)||qty<1||qty>99||qty>p.estoque)throw Error('Revise os itens e o estoque do carrinho.');subtotal+=p.preco_centavos*qty;lines.push({sku,nome:p.nome,quantidade:qty,unitario_centavos:p.preco_centavos});}
+  return {lines,subtotal_centavos:subtotal,taxa_centavos:lines.length?fee:0,total_centavos:subtotal+(lines.length?fee:0)};
+ }
+ function pizzaTotal(catalog,o){
+  const sizes={individual:0.6,media:0.8,grande:1};if(!Object.hasOwn(sizes,o.size)||!['inteira','metades'].includes(o.mode)||!['sem','recheada'].includes(o.edge)||!['retirada','entrega'].includes(o.delivery)||!['sem','agua','refrigerante'].includes(o.drink))throw Error('Escolha as opções do pedido.');
+  const a=catalog.find(p=>p.sku===o.a&&p.ativo&&p.estoque>0),b=o.mode==='metades'?catalog.find(p=>p.sku===o.b&&p.ativo&&p.estoque>0):a;
+  if(!a||!b||(o.mode==='metades'&&a.sku===b.sku))throw Error('Escolha dois sabores diferentes e disponíveis para meio a meio.');
+  const base=Math.round(Math.max(a.preco_centavos,b.preco_centavos)*sizes[o.size]),edge=o.edge==='recheada'?1000:0,drink={sem:0,agua:500,refrigerante:1200}[o.drink],fee=o.delivery==='entrega'?800:0;
+  return {base_centavos:base,borda_centavos:edge,bebida_centavos:drink,taxa_centavos:fee,total_centavos:base+edge+drink+fee,sabores:o.mode==='metades'?[a.nome,b.nome]:[a.nome],regra:'Maior valor entre os sabores, multiplicado pelo tamanho. Regra desta demonstração.'};
+ }
+ function overlaps(a,b){return a.profissional===b.profissional&&a.data===b.data&&a.inicio_min<b.inicio_min+b.duracao_min&&b.inicio_min<a.inicio_min+a.duracao_min;}
+ function slots(date,minutes,professional,bookings){const out=[];for(let t=540;t+minutes<=1080;t+=30){const item={data:date,inicio_min:t,duracao_min:minutes,profissional:professional};if(!bookings.some(b=>b.status!=='Cancelado'&&overlaps(item,b)))out.push(t);}return out;}
+ function load(sector){try{return validate(JSON.parse(root.localStorage.getItem('vereda-catalog-'+sector))??seed[sector],sector);}catch{return structuredClone(seed[sector]);}}
+ function save(sector,items){const checked=validate(items,sector);root.localStorage.setItem('vereda-catalog-'+sector,JSON.stringify(checked));return checked;}
+ function download(name,value,type='application/json'){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([typeof value==='string'?value:JSON.stringify(value,null,2)],{type}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+ const api={seed,sectors,norm,money,validate,parseCSV,cartTotal,pizzaTotal,overlaps,slots,load,save,download};root.VeredaCommerce=api;if(typeof module!=='undefined')module.exports=api;
+})(typeof window!=='undefined'?window:globalThis);

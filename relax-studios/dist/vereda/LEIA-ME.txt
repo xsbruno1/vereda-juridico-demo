@@ -85,7 +85,7 @@ A página distingue observação da estrutura oficial e interpretação Vereda.
 Perfis de cliente e adaptações são propostas de projeto, não resultados
 medidos de conversão nem ranking dos fornecedores. Não há associação
 comercial ou endosso dessas organizações aos modelos demonstrativos.
-Consulta das fontes: 18/10/2026. O conteúdo dos sites pode mudar.
+Consulta das fontes: 20/10/2026. O conteúdo dos sites pode mudar.
 A análise da LaserAway usa páginas oficiais de serviço e FAQs, pois sua
 homepage retornou HTTP 403. A Thérapie Clinic foi observada na versão dos EUA.
 Não foram reproduzidos marcas, textos, credenciais, imagens ou instalações
@@ -96,5 +96,4 @@ PUBLICIDADE E MARCAS
 Todas as marcas da coleção são conceitos fictícios de demonstração.
 Não representam escritórios ou clínicas existentes. Fotos de espaços, equipes e resultados devem ser fornecidas pelo cliente e verificadas. Antes de uso comercial,
 verifique disponibilidade da marca e autorização para conteúdo e imagens.
-
 

@@ -3,7 +3,7 @@
   const S = window.VeredaStudio;
   if (!S) return;
   const path = location.pathname.split('/').filter(Boolean), file = path.pop()?.replace('.html', ''), niche = path.pop();
-  const model = S.models.find(([n, slug]) => n === niche && slug === file);
+  const model = S.models.find(([n, slug]) => (n === niche || niche === 'saude') && slug === file);
   if (!model) return;
   const override = window.VEREDA_CLIENT_CONFIG || S.read('vereda-profile-' + file, {});
   if (override && typeof override === 'object') {
@@ -25,7 +25,7 @@
   }
   const tools = document.createElement('section');
   tools.className = 'vereda-client-tools'; tools.setAttribute('aria-label', 'Ferramentas de demonstração');
-  tools.innerHTML = `<div><strong>VEREDA / ${S.esc(model[2])}</strong><span>Personalização e gestão · demonstração local</span></div><nav><a href="../personalizar.html?modelo=${file}">Personalizar este modelo ↗</a><a href="../crm.html?nicho=${niche}">Abrir CRM ↗</a><a href="../campanhas.html?nicho=${niche}&modelo=${file}">Preparar campanha ↗</a></nav><div class="vereda-social-links"></div>`;
+  tools.innerHTML = `<div><strong>VEREDA / ${S.esc(model[2])}</strong><span>Personalização e gestão · demonstração local</span></div><nav><a href="../personalizar.html?modelo=${file}">Personalizar este modelo ↗</a><a href="../crm.html?nicho=${model[0]}">Abrir CRM ↗</a><a href="../campanhas.html?nicho=${model[0]}&modelo=${file}">Preparar campanha ↗</a></nav><div class="vereda-social-links"></div>`;
   document.body.append(tools);
   const socials = tools.querySelector('.vereda-social-links');
   for (const [key, label] of [['instagram', 'Instagram'], ['linkedin', 'LinkedIn'], ['facebook', 'Facebook'], ['booking', 'Agenda externa']]) {
@@ -43,7 +43,7 @@
     choice.querySelector('[data-deny]').addEventListener('click', () => { attribution = null; choice.querySelector('[role=status]').textContent = 'A campanha não será associada ao contato.'; choice.querySelectorAll('button').forEach(b => b.disabled = true); });
   }
   document.addEventListener('vereda:demo-inquiry', event => {
-    const data = event.detail || {}, key = 'vereda-demo-v1-' + niche;
+    const data = event.detail || {}, key = 'vereda-demo-v1-' + model[0];
     const state = S.read(key, { contacts: [], appointments: [] });
     if (!Array.isArray(state.contacts) || !Array.isArray(state.appointments)) return;
     const supplied = S.clean(data.name, 80);

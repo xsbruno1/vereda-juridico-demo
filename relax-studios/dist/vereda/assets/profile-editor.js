@@ -9,7 +9,7 @@
   function preview() {
     const [niche, slug, name] = current(), url = `${niche}/${slug}.html`;
     $('client-preview').src = url; $('open-preview').href = url; $('preview-name').textContent = name + ' / Prévia local';
-    $('crm-link').href = 'crm.html?nicho=' + niche; $('campaign-link').href = 'campanhas.html?nicho=' + niche + '&modelo=' + slug;
+    $('crm-link').href = ['petshop','pizzaria','salao'].includes(niche) ? 'operacao.html?setor=' + niche : 'crm.html?nicho=' + niche; $('campaign-link').href = 'campanhas.html?nicho=' + niche + '&modelo=' + slug;
   }
   function load() {
     const model = select.value, p = S.read('vereda-profile-' + model, {});

@@ -10,7 +10,8 @@
   const models = [
     ['advocacia', 'atlas', 'Atlas'], ['advocacia', 'prisma', 'Prisma'], ['advocacia', 'acordo', 'Acordo'],
     ['estetica', 'aurora', 'Aurora'], ['estetica', 'essentia', 'Essentia'], ['estetica', 'viva', 'Viva'],
-    ['saude', 'elo', 'Elo'], ['saude', 'sorriso', 'Forma'], ['saude', 'integra', 'Íntegra']
+    ['medicina', 'elo', 'Elo'], ['odontologia', 'sorriso', 'Forma'], ['medicina', 'integra', 'Íntegra'],
+    ['petshop', 'companhia', 'Companhia'], ['pizzaria', 'forno', 'Forno'], ['salao', 'ritual', 'Ritual']
   ];
   const clean = (value, max = 120) => String(value ?? '').replace(/[\u0000-\u001f\u007f]/g, '').trim().slice(0, max);
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -39,7 +40,7 @@
     if (!headline || !description) throw new Error('Preencha título e texto do anúncio.');
     return {
       version: 1, id: clean(input.id, 100) || root.crypto?.randomUUID?.() || 'draft-' + Date.now(),
-      niche: ['advocacia', 'estetica', 'saude'].includes(input.niche) ? input.niche : 'advocacia',
+      niche: ['advocacia', 'estetica', 'saude', 'medicina', 'odontologia', 'petshop', 'pizzaria', 'salao'].includes(input.niche) ? input.niche : 'advocacia',
       platform: input.platform, name, landing: url.href, tag, headline, description,
       daily: Math.round(daily * 100) / 100, days, plannedTotal: Math.round(daily * days * 100) / 100,
       status: input.status === 'revisao' ? 'revisao' : 'rascunho', createdAt: input.createdAt || new Date().toISOString(),

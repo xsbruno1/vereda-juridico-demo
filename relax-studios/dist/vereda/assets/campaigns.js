@@ -2,8 +2,8 @@
   'use strict';
   const S = window.VeredaStudio, form = document.getElementById('campaign-form'), $ = id => document.getElementById(id), money = value => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
   $('platform').innerHTML = Object.entries(S.platforms).map(([key, p]) => `<option value="${key}">${S.esc(p.name)}</option>`).join('');
-  const params = new URLSearchParams(location.search), requested = params.get('nicho');
-  if (['advocacia', 'estetica', 'saude'].includes(requested)) $('niche').value = requested;
+  const params = new URLSearchParams(location.search), requested = params.get('nicho') === 'saude' ? 'medicina' : params.get('nicho');
+  if (['advocacia','estetica','saude','medicina','odontologia','petshop','pizzaria','salao'].includes(requested)) $('niche').value = requested;
   const model = S.models.find(m => m[1] === params.get('modelo'));
   if (model) $('niche').value = model[0];
   let drafts = [], current = null;
@@ -26,7 +26,7 @@
   function load() {
     const stored = S.read(key(), []); drafts = [];
     if (Array.isArray(stored)) for (const d of stored.slice(0, 100)) { try { drafts.push(S.campaign(d, ['localhost', '127.0.0.1'].includes(location.hostname))); } catch {} }
-    $('crm-link').href = 'crm.html?nicho=' + $('niche').value;
+    $('crm-link').href = ['petshop','pizzaria','salao'].includes($('niche').value) ? 'operacao.html?setor=' + $('niche').value : 'crm.html?nicho=' + $('niche').value;
     const selected = model && model[0] === $('niche').value ? model : S.models.find(m => m[0] === $('niche').value);
     $('profile-link').href = 'personalizar.html?modelo=' + selected[1];
     render(); preview();
