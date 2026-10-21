@@ -1,0 +1,25 @@
+services:
+  - type: web
+    runtime: static
+    name: relax-studios
+    branch: relax-studios
+    rootDir: relax-studios
+    buildCommand: "true"
+    staticPublishPath: dist
+    autoDeploy: false
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=()
+      - path: /*
+        name: Content-Security-Policy
+        value: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
+      - path: /vereda/*
+        name: X-Robots-Tag
+        value: noindex, nofollow

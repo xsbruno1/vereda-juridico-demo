@@ -1,0 +1,375 @@
+[
+  {
+    "plataforma": "Doctoralia / Docplanner",
+    "nichos": [
+      "medicina",
+      "odontologia",
+      "estetica_medica"
+    ],
+    "modo": "API oficial restrita e homologada",
+    "escopo": "Sincroniza horários, reservas, cancelamentos e alterações de agenda entre software e Doctoralia; disponibiliza notificações push/pull.",
+    "requisitos": "Fornecedor de software médico; acesso sandbox, testes de aceitação e autorização de cada clínica; credenciais OAuth2 mantidas no servidor.",
+    "custo": "Contratação comercial e condições de acesso devem ser confirmadas com Doctoralia; desenvolvimento e operação têm custo.",
+    "limite": "Documentação pública não significa acesso liberado. Não é uma API para importar qualquer perfil, avaliações ou pacientes de terceiros.",
+    "fonte": "https://integrations.docplanner.com/guide/integration-process.html",
+    "fontes": [
+      "https://integrations.docplanner.com/guide/",
+      "https://integrations.docplanner.com/guide/callbacks/push-vs-pull.html"
+    ],
+    "status": "Confirmado em documentação oficial; acesso comercial pendente",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Doctoralia no site e redes sociais",
+    "nichos": [
+      "medicina",
+      "odontologia",
+      "estetica_medica"
+    ],
+    "modo": "Link ou widget oficial",
+    "escopo": "Visitante abre agendamento na Doctoralia a partir do site ou perfil social.",
+    "requisitos": "Perfil Doctoralia com função de agendamento habilitada e código/link obtido na conta.",
+    "custo": "Conforme contratação Doctoralia; implantação do link/widget é simples.",
+    "limite": "Um botão/widget não insere automaticamente o paciente no CRM Vereda. Sincronização requer integração própria ou PMS parceiro.",
+    "fonte": "https://help.docplanner.com/11/doc/aumente-sua-visibilidade-configure-os-links-e-widgets-de-agendamento-online-da-docplanner",
+    "status": "Confirmado em central oficial",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Doctoralia + Feegow",
+    "nichos": [
+      "medicina",
+      "odontologia",
+      "estetica_medica"
+    ],
+    "modo": "Integração nativa contratada",
+    "escopo": "Agenda e serviços compartilhados com marketplace; grade é administrada no Feegow; preços de procedimentos integrados refletem na Doctoralia.",
+    "requisitos": "Contratos/configuração com fornecedores; suporte para novos profissionais, convênios e mapeamento.",
+    "custo": "Soluções comerciais recorrentes, sob proposta.",
+    "limite": "Bloqueio automático de feriados e agenda de equipamentos não refletem na agenda online; usar fluxo correto de remarcação. Não prometer equivalência total.",
+    "fonte": "https://ajuda.feegow.com/support/solutions/articles/67000749754-integrac%C3%A3o-doctoralia-e-feegow",
+    "fontes": [
+      "https://pro.doctoralia.com.br/produto/agenda/integracao-para-clinicas"
+    ],
+    "status": "Confirmado; limitações documentadas",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Feegow API → CRM próprio",
+    "nichos": [
+      "medicina",
+      "odontologia",
+      "estetica_medica"
+    ],
+    "modo": "API oficial com token",
+    "escopo": "Consulta pacientes, profissionais e agenda; endpoints permitem criar agendamento, consultar status e operar rotinas administrativas.",
+    "requisitos": "Usuário master da licença libera token; chamadas autenticadas por x-access-token no backend.",
+    "custo": "Licença Feegow e condições de API a validar; implementação cobrada à parte.",
+    "limite": "Integrar somente dados administrativos necessários; validar disponibilidade, duplicatas e permissões. Não presumir conector pronto Vereda.",
+    "fonte": "https://docs.feegow.com/",
+    "fontes": [
+      "https://ajuda.feegow.com/support/solutions/articles/67000714396-como-integrar-o-feegow-via-api-com-outros-sistemas-"
+    ],
+    "status": "API documentada; conector Vereda a desenvolver",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Saludia",
+    "nichos": [
+      "medicina"
+    ],
+    "modo": "Link/encaminhamento; API não confirmada",
+    "escopo": "Site de consultas com rede de unidades em São Paulo, seleção de convênio, especialidade e horário.",
+    "requisitos": "Validar vínculo do profissional e obter confirmação comercial/técnica da Saludia antes de prometer conexão.",
+    "custo": "Condições não identificadas na página consultada.",
+    "limite": "Não é rede social. Nenhuma documentação pública de API/integração CRM foi localizada nesta pesquisa. Isso não prova inexistência de parceria privada.",
+    "fonte": "https://saludia.com.br/",
+    "status": "Serviço identificado; integração não confirmada",
+    "confianca": "alta para identidade; não confirmada para API",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "BoaConsulta",
+    "nichos": [
+      "medicina",
+      "odontologia"
+    ],
+    "modo": "Ecossistema nativo + link; conexão externa sob validação",
+    "escopo": "Perfis e agendamentos integrados ao sistema de gestão BoaConsulta; anuncia integração com calendários como Google.",
+    "requisitos": "Plano do fornecedor; confirmar escopo e direção de qualquer conexão externa antes de contratar.",
+    "custo": "Plataforma comercial recorrente; plano e integrações sob proposta.",
+    "limite": "Não foi confirmada nesta pesquisa uma API pública para CRM próprio ou sincronização bidirecional geral com Google.",
+    "fonte": "https://profissionais.boaconsulta.com/",
+    "fontes": [
+      "https://www.boaconsulta.com/software-medico/",
+      "https://pro.boaconsulta.com/agenda-medica-digital"
+    ],
+    "status": "Integração interna confirmada; API externa não confirmada",
+    "confianca": "média",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "iClinic → Google Calendar",
+    "nichos": [
+      "medicina"
+    ],
+    "modo": "Sincronização nativa apenas para visualização",
+    "escopo": "Agendamentos do iClinic aparecem em calendário Google para conferência.",
+    "requisitos": "Conta iClinic, conta Google e autorização no menu de integrações.",
+    "custo": "Plano iClinic; confirmar condições comerciais vigentes.",
+    "limite": "Criar, remarcar e cancelar exclusivamente no iClinic. Google Calendar não serve como ponte bidirecional para CRM ou Doctoralia.",
+    "fonte": "https://suporte.iclinic.com.br/pt-br/sincronizar-agenda-com-google-agenda",
+    "status": "Confirmado em suporte oficial",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Amplimed API",
+    "nichos": [
+      "medicina",
+      "estetica_medica"
+    ],
+    "modo": "APIs oficiais mediante ativação",
+    "escopo": "API de Dados é de leitura; APIs de Agendamento e Cadastro permitem automação de agenda e cadastro administrativo.",
+    "requisitos": "Ativação e termo de aceite; credenciais variam por API; integração implementada pelo cliente ou integrador.",
+    "custo": "Licença, módulo/API e implantação conforme contratação.",
+    "limite": "Não inferir integração nativa Doctoralia. Solicitar documentação técnica e escopo exato contratado antes de programar.",
+    "fonte": "https://www.amplimed.com.br/blog/amplimed-api/",
+    "status": "Capacidades confirmadas pelo fornecedor; acesso técnico a validar",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Trinks / Conecta Trinks",
+    "nichos": [
+      "estetica"
+    ],
+    "modo": "API oficial e webhooks",
+    "escopo": "Clientes, agenda, serviços e vendas podem alimentar CRM próprio; webhooks avisam criação, alteração e cancelamento de agenda.",
+    "requisitos": "Usuário vinculado ao estabelecimento, solicitação de acesso, X-Api-Key no servidor e receptor HTTPS compatível com SNS.",
+    "custo": "Condições do Conecta e ampliação de limites sob consulta; licença e integração podem ser recorrentes.",
+    "limite": "Documentação informa 60 requisições/minuto e 5.000/mês por chave no padrão; chave pode alcançar todos os estabelecimentos do usuário. Validar assinatura SNS.",
+    "fonte": "https://ajuda.trinks.com/ativando-o-conecta-trinks-um-guia-de-integracao-via-api-e-webhooks",
+    "status": "Documentado; ativação e plano pendentes",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Trinks + Instagram/Facebook/Google",
+    "nichos": [
+      "estetica"
+    ],
+    "modo": "Botões de reserva e integrações nativas",
+    "escopo": "Botões de agendamento encaminham clientes à agenda Trinks; Reserve com o Google conforme elegibilidade.",
+    "requisitos": "Perfis e estabelecimento conectados; configuração e disponibilidade por canal.",
+    "custo": "Plano Trinks e recursos contratados; publicidade paga é separada.",
+    "limite": "Botão de reserva não equivale à sincronização de todas as mensagens privadas ou seguidores com CRM.",
+    "fonte": "https://ajuda.trinks.com/faq-completo-conecta-trinks-e-integracoes",
+    "fontes": [
+      "https://blog.trinks.com/conheca-a-api-de-integracao-da-trinks/"
+    ],
+    "status": "Confirmado pelo fornecedor",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Clinicorp API",
+    "nichos": [
+      "odontologia",
+      "estetica"
+    ],
+    "modo": "API documentada; habilitação a validar",
+    "escopo": "Endpoints publicados incluem cadastro/consulta de pacientes, consultas agendadas, orçamentos e POST /crm/add_leads.",
+    "requisitos": "Confirmar com Clinicorp credenciais, plano, permissões e contrato de acesso à API.",
+    "custo": "Licença e condições de integração sob consulta.",
+    "limite": "A existência dos endpoints não comprova integração nativa com Doctoralia, Saludia ou todos os canais sociais.",
+    "fonte": "https://sistema.clinicorp.com/api-docs/",
+    "status": "Endpoints localizados na documentação oficial; acesso não testado",
+    "confianca": "média",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Jusbrasil — perfil e Escritório Online",
+    "nichos": [
+      "advocacia"
+    ],
+    "modo": "Perfil/link e operação no ambiente do fornecedor",
+    "escopo": "Canal de descoberta jurídica e módulos próprios de oportunidades/conversas, tarefas e processos.",
+    "requisitos": "Conta e plano apropriado; respeitar publicidade profissional e condições da plataforma.",
+    "custo": "Planos e créditos conforme produto.",
+    "limite": "Não foi localizada documentação pública para exportar leads/conversas do Escritório Online ao Vereda. Não confundir com API de dados processuais.",
+    "fonte": "https://suporte.jusbrasil.com.br/hc/pt-br/articles/360042041211-Classifica%C3%A7%C3%A3o-e-permiss%C3%B5es-de-membros-do-Escrit%C3%B3rio-Online-Jusbrasil",
+    "status": "Recursos internos confirmados; conexão de leads não confirmada",
+    "confianca": "média",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Jusbrasil Soluções API",
+    "nichos": [
+      "advocacia"
+    ],
+    "modo": "API comercial de dados jurídicos",
+    "escopo": "Consulta e monitoramento processual, publicações e notificações via API/webhooks, conforme módulos contratados.",
+    "requisitos": "Contratação Jusbrasil Soluções, token e permissões; integração no backend.",
+    "custo": "Comercial, conforme produtos/consumo e contrato.",
+    "limite": "API jurídica não comprova captura de leads comerciais do perfil Jusbrasil. Usar para operação jurídica, com revisão humana de prazos.",
+    "fonte": "https://api.jusbrasil.com.br/docs/index.html",
+    "fontes": [
+      "https://suporte.jusbrasil.com.br/hc/pt-br/articles/40675356104468-Como-Contratar-o-Jusbrasil-para-Organiza%C3%A7%C3%B5es"
+    ],
+    "status": "Confirmado em documentação oficial",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Projuris ADV",
+    "nichos": [
+      "advocacia"
+    ],
+    "modo": "API oficial conforme plano",
+    "escopo": "Pode integrar pessoas, atendimentos, processos, tarefas e arquivos com sistemas próprios.",
+    "requisitos": "Recurso disponível em Premium ou contratação adicional conforme plano; equipe técnica, autenticação e permissões.",
+    "custo": "Assinatura e possível adicional de integração, além de implantação.",
+    "limite": "Confirmar endpoints do ambiente e limite contratado; não foi comprovado conector nativo de leads Jusbrasil. Artigo informa limite de 480 requisições/minuto.",
+    "fonte": "https://www.projuris.com.br/blog/como-integrar-outras-plataformas-no-projuris-adv-software-juridico/",
+    "status": "API confirmada pelo fornecedor; conector Vereda a desenvolver",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Astrea + WhatsApp",
+    "nichos": [
+      "advocacia"
+    ],
+    "modo": "Integração nativa de envio",
+    "escopo": "Envia informações de boletos, andamentos, eventos e tarefas aos contatos cadastrados e monitora o envio.",
+    "requisitos": "Planos elegíveis Up/Smart/Company/VIP e contratação do Turbo; configuração administrativa.",
+    "custo": "Plano Astrea e adicional recorrente; confirmar valor vigente na contratação.",
+    "limite": "Documentação consultada não comprova uma API aberta para CRM próprio, sincronização completa de conversas ou conector Jusbrasil.",
+    "fonte": "https://astrea.aurum.com.br/pt-BR/articles/11660808-como-funciona-o-envio-por-whatsapp-integrado-ao-astrea",
+    "status": "Integração de envio confirmada",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "WhatsApp Business Platform",
+    "nichos": [
+      "advocacia",
+      "estetica",
+      "odontologia",
+      "medicina"
+    ],
+    "modo": "API oficial + webhooks, direta ou provedor",
+    "escopo": "CRM pode receber eventos de mensagens e acompanhar atendimento; mensagens autorizadas e lembretes via backend.",
+    "requisitos": "Configuração empresarial Meta, número autorizado, credenciais e endpoint; regras de consentimento/templates e janela de atendimento.",
+    "custo": "Cobrança por mensagem entregue em categorias tarifadas, conforme mercado; há mensagens gratuitas de serviço e possíveis taxas do provedor.",
+    "limite": "Link para WhatsApp abre conversa e não sincroniza histórico. Mensagens e procedimentos de saúde não devem alimentar segmentação de publicidade.",
+    "fonte": "https://whatsappbusiness.com/developers/developer-hub/",
+    "fontes": [
+      "https://whatsappbusiness.com/products/platform-pricing/"
+    ],
+    "status": "Plataforma e cobrança confirmadas; integração Vereda não implementada",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Meta Lead Ads → HubSpot",
+    "nichos": [
+      "advocacia",
+      "estetica",
+      "odontologia",
+      "medicina"
+    ],
+    "modo": "Conector nativo de formulários de anúncios",
+    "escopo": "Dados enviados em formulários de Facebook/Instagram entram como contatos no HubSpot; campanha pode ser identificada.",
+    "requisitos": "Conta HubSpot e permissões administrativas de anúncios/página; conexão e sincronização de leads habilitadas.",
+    "custo": "Plano/recursos HubSpot e investimento de mídia; confirmar limites do plano.",
+    "limite": "Não importa automaticamente seguidores ou todas as conversas do Instagram. Dados sensíveis não devem ser enviados para otimização publicitária.",
+    "fonte": "https://ecosystem.hubspot.com/marketplace/listing/facebookads",
+    "fontes": [
+      "https://knowledge.hubspot.com/ads/connect-your-facebook-ads-account-to-hubspot"
+    ],
+    "status": "Conector nativo documentado",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "LinkedIn Lead Sync",
+    "nichos": [
+      "advocacia"
+    ],
+    "modo": "API restrita para formulários",
+    "escopo": "Respostas de Lead Gen Forms e notificações podem alimentar CRM; útil para relacionamento empresarial.",
+    "requisitos": "Aprovação específica no programa Lead Sync, OAuth e permissões sobre conta/página.",
+    "custo": "Mídia e integração; eventuais custos de CRM contratado.",
+    "limite": "Ter Advertising API não libera Lead Sync automaticamente. Não autoriza extração irrestrita de perfis/mensagens.",
+    "fonte": "https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/leadsync-overview",
+    "fontes": [
+      "https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/leadsync"
+    ],
+    "status": "API documentada e sujeita a aprovação",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Google Perfil da Empresa",
+    "nichos": [
+      "advocacia",
+      "estetica",
+      "odontologia",
+      "medicina"
+    ],
+    "modo": "Link de site/agendamento e parceiros de reserva",
+    "escopo": "Busca e Maps encaminham ao site, formulário ou agenda; o formulário do próprio site pode criar registro no CRM.",
+    "requisitos": "Gestão autorizada do perfil e categoria elegível; link de ação válido.",
+    "custo": "Perfil sem compra obrigatória de anúncios; custos da agenda/site são separados.",
+    "limite": "O link por si só não sincroniza CRM. O Google informa que links locais de ação não são geridos pela Business Profile API nem por upload de planilha.",
+    "fonte": "https://support.google.com/business/answer/6218037?hl=pt-BR",
+    "status": "Confirmado na documentação Google",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "Pipedrive",
+    "nichos": [
+      "advocacia",
+      "estetica",
+      "odontologia",
+      "medicina"
+    ],
+    "modo": "API + webhooks para conector próprio",
+    "escopo": "Eventos de pessoas, negócios e atividades podem atualizar aplicação externa; site pode criar contatos/negócios via backend.",
+    "requisitos": "Conta Pipedrive, OAuth para app ou token de usuário e receptor HTTPS autenticado; controlar duplicatas.",
+    "custo": "Licença Pipedrive e eventual automação/provedor, além de desenvolvimento.",
+    "limite": "API genérica não significa conector nativo Doctoralia/Saludia; token herda acessos do usuário. Usar webhooks v2.",
+    "fonte": "https://pipedrive.readme.io/docs/guide-for-webhooks",
+    "fontes": [
+      "https://pipedrive.readme.io/docs/core-api-concepts-authentication"
+    ],
+    "status": "API/webhooks documentados; conector específico a desenvolver",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  },
+  {
+    "plataforma": "RD Station CRM",
+    "nichos": [
+      "advocacia",
+      "estetica",
+      "odontologia",
+      "medicina"
+    ],
+    "modo": "API + webhooks conforme plano",
+    "escopo": "Eventos de contato, empresa e negociação enviam dados em JSON ao endpoint externo.",
+    "requisitos": "Conta e plano Basic, Pro ou Advanced para webhooks; token e endpoint HTTPS.",
+    "custo": "Plano elegível recorrente; desenvolvimento e hospedagem da integração.",
+    "limite": "Payload de webhook é padronizado e não customizável; conterá campos preenchidos. Não incluir dados clínicos ou sigilo de casos em campos comerciais.",
+    "fonte": "https://developers.rdstation.com/reference/crm-v1-webhooks",
+    "status": "Confirmado em documentação oficial",
+    "confianca": "alta",
+    "verificado_em": "2026-10-18"
+  }
+]
