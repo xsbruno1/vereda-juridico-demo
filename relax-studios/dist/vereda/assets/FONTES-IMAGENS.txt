@@ -8,3 +8,12 @@ clinic.jpg: https://images.unsplash.com/photo-1497366754035-f200968a6e72
 consult.jpg: https://images.unsplash.com/photo-1497366811353-6870744d04b2
 Condições: https://unsplash.com/license
 Revisão visual: interiores; sem rostos de clientes. Substituir por imagens próprias na implantação quando possível.
+
+
+
+Revisão de experiência: retratos e gastronomia ilustrativos de banco de imagens Unsplash, sem vínculo com equipes ou estabelecimentos reais. Substituir por material autorizado do cliente.
+https://images.unsplash.com/photo-1559839734-2b71ea197ec2
+https://images.unsplash.com/photo-1580489944761-15a19d654956
+https://images.unsplash.com/photo-1533089860892-a7c6f0a88666
+https://images.unsplash.com/photo-1473093295043-cdd812d0e601
+https://images.unsplash.com/photo-1414235077428-338989a2e8c0
