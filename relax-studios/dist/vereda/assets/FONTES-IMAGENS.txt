@@ -1,0 +1,10 @@
+Imagens ilustrativas de ambientes. Nenhuma retrata instalações dos clientes.
+Origem Unsplash, arquivos obtidos em 23/10/2026 com auto=format, fit=crop, w=1200, q=85.
+hotel.jpg: https://images.unsplash.com/photo-1611892440504-42a792e24d32
+urban.jpg: https://images.unsplash.com/photo-1590490360182-c33d57733427
+suite.jpg: https://images.unsplash.com/photo-1566665797739-1674de7a421a
+office.jpg: https://images.unsplash.com/photo-1497366216548-37526070297c
+clinic.jpg: https://images.unsplash.com/photo-1497366754035-f200968a6e72
+consult.jpg: https://images.unsplash.com/photo-1497366811353-6870744d04b2
+Condições: https://unsplash.com/license
+Revisão visual: interiores; sem rostos de clientes. Substituir por imagens próprias na implantação quando possível.

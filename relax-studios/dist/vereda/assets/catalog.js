@@ -10,8 +10,14 @@ const models=[
 ['medicina','integra','Íntegra','Clínica integrada','Busca de especialidades em destaque para facilitar o acesso.'],
 ['petshop','companhia','Companhia','Catálogo e delivery','Busca, categorias, carrinho e solicitação de entrega.'],
 ['pizzaria','forno','Forno','Cardápio e pedidos','Montagem de pizza, meio a meio e resumo com valores claros.'],
-['salao','ritual','Ritual','Serviços e agenda','Serviço, duração, profissional e solicitação de horário.']];
-const categories={advocacia:'Advocacia',estetica:'Estética',medicina:'Medicina',odontologia:'Odontologia',petshop:'Petshop',pizzaria:'Pizzaria',salao:'Salão de beleza'};
+['salao','ritual','Ritual','Serviços e agenda','Serviço, duração, profissional e solicitação de horário.'],
+["hotelaria", "lumina", "Lumina", "Hotel boutique e pousada", "Dias leves. Memórias que ficam."],
+["hotelaria", "stays", "Stays", "Hotel executivo e urbano", "Sua cidade. Seu ritmo. Sua estadia."],
+["hotelaria", "prive", "Privé", "Reservas por período", "Um espaço só seu. No seu tempo."],
+["psiquiatria", "anima", "Anima", "Psicologia individual", "Um tempo para se escutar."],
+["psiquiatria", "equilibrium", "Equilibrium", "Clínica de psicologia", "Diferentes olhares. Cuidado compartilhado."],
+["psiquiatria", "institucional-sobrio", "Institucional Sóbrio", "Psiquiatria e teleconsulta", "Informação clara. Atendimento responsável."]];
+const categories={advocacia:'Advocacia',estetica:'Estética',medicina:'Medicina',odontologia:'Odontologia',petshop:'Petshop',pizzaria:'Pizzaria',salao:'Salão de beleza',hotelaria:'Hotelaria e motéis',psiquiatria:'Psicologia e psiquiatria'};
 document.getElementById('catalog').innerHTML=models.map(([cat,slug,name,type,desc],i)=>`<article class="model" data-category="${cat}"><a class="preview" href="${cat}/${slug}.html" aria-label="Explorar modelo ${name}"><iframe src="${cat}/${slug}.html" title="Prévia visual do modelo ${name}" loading="lazy" tabindex="-1" aria-hidden="true" inert></iframe></a><div class="model-info"><div class="category"><span>${categories[cat]} / ${String(i+1).padStart(2,'0')}</span><span>↗</span></div><h3>${name} <span style="font-size:12px;color:#788075;font-weight:400">/ ${type}</span></h3><p>${desc}</p><a href="${cat}/${slug}.html">Explorar modelo</a></div></article>`).join('');
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});let total=0;document.querySelectorAll('[data-category]').forEach(card=>{card.hidden=button.dataset.filter!=='todos'&&card.dataset.category!==button.dataset.filter;if(!card.hidden)total++;});document.getElementById('count').textContent=`${total} modelos disponíveis`;}));
 if('ResizeObserver' in window){const previews=new ResizeObserver(entries=>{for(const entry of entries){const width=entry.contentRect.width;if(!width)continue;entry.target.querySelector('iframe').style.transform=`scale(${width/1300})`;entry.target.style.height=Math.round(width*.7)+'px';}});document.querySelectorAll('.preview').forEach(el=>previews.observe(el));}
