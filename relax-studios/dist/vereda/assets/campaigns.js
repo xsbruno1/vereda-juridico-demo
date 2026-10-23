@@ -3,7 +3,7 @@
   const S = window.VeredaStudio, form = document.getElementById('campaign-form'), $ = id => document.getElementById(id), money = value => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
   $('platform').innerHTML = Object.entries(S.platforms).map(([key, p]) => `<option value="${key}">${S.esc(p.name)}</option>`).join('');
   const params = new URLSearchParams(location.search), requested = params.get('nicho') === 'saude' ? 'medicina' : params.get('nicho');
-  if (['advocacia','estetica','saude','medicina','odontologia','petshop','pizzaria','salao'].includes(requested)) $('niche').value = requested;
+  if (['advocacia','estetica','saude','medicina','odontologia','petshop','pizzaria','salao','hotelaria','psiquiatria'].includes(requested)) $('niche').value = requested;
   const model = S.models.find(m => m[1] === params.get('modelo'));
   if (model) $('niche').value = model[0];
   let drafts = [], current = null;

@@ -9,7 +9,7 @@
   if (override && typeof override === 'object') {
     const name = S.clean(override.name, 60);
     if (name) {
-      document.querySelectorAll('.brand, .logo, .footer-brand').forEach(el => {
+      document.querySelectorAll('.brand, .logo, .footer-brand, .wordmark').forEach(el => {
         const node = Array.from(el.childNodes).find(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim());
         if (node) node.textContent = name;
         el.setAttribute('aria-label', name + ', início');
@@ -25,7 +25,7 @@
   }
   const tools = document.createElement('section');
   tools.className = 'vereda-client-tools'; tools.setAttribute('aria-label', 'Ferramentas de demonstração');
-  tools.innerHTML = `<div><strong>VEREDA / ${S.esc(model[2])}</strong><span>Personalização e gestão · demonstração local</span></div><nav><a href="../personalizar.html?modelo=${file}">Personalizar este modelo ↗</a><a href="../crm.html?nicho=${model[0]}">Abrir CRM ↗</a><a href="../campanhas.html?nicho=${model[0]}&modelo=${file}">Preparar campanha ↗</a></nav><div class="vereda-social-links"></div>`;
+  tools.innerHTML = `<div><strong>VEREDA / ${S.esc(model[2])}</strong><span>Área do prestador · configuração e gestão demonstrativas</span></div><nav><a href="../personalizar.html?modelo=${file}">Personalizar este modelo ↗</a><a href="../crm.html?nicho=${model[0]}&modelo=${file}">Organizar atendimentos ↗</a><a href="../campanhas.html?nicho=${model[0]}&modelo=${file}">Preparar campanha ↗</a></nav><div class="vereda-social-links"></div>`;
   document.body.append(tools);
   const socials = tools.querySelector('.vereda-social-links');
   for (const [key, label] of [['instagram', 'Instagram'], ['linkedin', 'LinkedIn'], ['facebook', 'Facebook'], ['booking', 'Agenda externa']]) {
@@ -45,12 +45,17 @@
   document.addEventListener('vereda:demo-inquiry', event => {
     const data = event.detail || {}, key = 'vereda-demo-v1-' + model[0];
     const state = S.read(key, { contacts: [], appointments: [] });
-    if (!Array.isArray(state.contacts) || !Array.isArray(state.appointments)) return;
+    if (!state || !Array.isArray(state.contacts) || !Array.isArray(state.appointments)) {
+      if (data.result) data.result.textContent = 'Os exemplos salvos neste navegador precisam de revisão. Abra a gestão para recuperá-los. Esta solicitação não foi registrada.';
+      return;
+    }
     const supplied = S.clean(data.name, 80);
     const name = /^(teste|contato exemplo|pessoa exemplo|qa |demonstração)/i.test(supplied) ? supplied : 'Contato demonstração ' + (state.contacts.length + 1);
     const context = S.clean(data.context, 100);
-    state.contacts.push({ id: 'site-' + (crypto.randomUUID?.() || Date.now()), name, source: 'Site próprio', stage: 0, email: 'demo@example.com', owner: 'Equipe de atendimento', date: new Date().toLocaleDateString('en-CA'), consent: false, done: false, model: file, context, attribution });
+    if (data.result?.dataset.demoRecorded === 'true') { data.result.textContent='Esta solicitação de exemplo já está no painel. Altere os campos para preparar outra.'; return; }
+    state.contacts.push({ id: 'site-' + (crypto.randomUUID?.() || Date.now()), name, source: 'Site próprio', stage: 0, email: 'demo@example.com', owner: 'Equipe de atendimento', date: new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo'}).format(new Date()), consent: false, done: false, model: file, context, period: S.clean(data.period,40), channel: S.clean(data.channel,40), requestedDate: S.clean(data.requestedDate,10), requestedTime: S.clean(data.requestedTime,5), service: S.clean(data.service,100), attribution });
     const saved = S.write(key, state);
-    if (data.result) data.result.textContent = saved ? 'Simulação registrada no CRM deste nicho, neste navegador. Abra “Abrir CRM” para conferir. Nenhuma mensagem foi enviada e nenhum horário foi confirmado.' : 'Simulação concluída. O navegador bloqueou o armazenamento; nenhum registro foi salvo. Nenhuma mensagem enviada.';
+    if (saved && data.result) { data.result.dataset.demoRecorded='true'; const inquiryForm=data.result.closest('form'); inquiryForm?.addEventListener('input',()=>{data.result.dataset.demoRecorded='false';},{once:true}); }
+    if (data.result) data.result.textContent = saved ? 'Simulação registrada no CRM deste nicho, neste navegador. Abra “Organizar atendimentos” para conferir. Nenhuma mensagem foi enviada e nenhum horário foi confirmado.' : 'Simulação concluída. O navegador bloqueou o armazenamento; nenhum registro foi salvo. Nenhuma mensagem enviada.';
   });
 })();

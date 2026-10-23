@@ -8,9 +8,9 @@
  if(/^#[a-f0-9]{6}$/i.test(profile.paper||''))document.body.style.setProperty('--paper',profile.paper);
  let timer;function say(s){$('#feedback').textContent=s;clearTimeout(timer);timer=setTimeout(()=>$('#feedback').textContent='',6000);}
  function readRequests(){try{const x=JSON.parse(sessionStorage.getItem('vereda-requests-'+sector)||'[]');return Array.isArray(x)?x:[];}catch{return [];}}
- function storeRequest(record){const r={...record,id:'DEMO-'+crypto.randomUUID().slice(0,8).toUpperCase(),createdAt:new Date().toISOString(),status:'Aguardando confirmação'};const rows=readRequests();rows.push(r);try{sessionStorage.setItem('vereda-requests-'+sector,JSON.stringify(rows));}catch{throw Error('Não foi possível guardar a solicitação neste navegador.');}return r;}
+ function storeRequest(record){if(payload)return payload;const r={...record,id:'DEMO-'+crypto.randomUUID().slice(0,8).toUpperCase(),createdAt:new Date().toISOString(),status:'Aguardando confirmação'};const rows=readRequests();rows.push(r);try{sessionStorage.setItem('vereda-requests-'+sector,JSON.stringify(rows));}catch{throw Error('Não foi possível guardar a solicitação neste navegador.');}return r;}
  function invalidate(){payload=null;summary='';$('#order-result').hidden=true;}
- function showRequest(record,text){payload=record;summary=`${record.id} / DEMONSTRAÇÃO\n${text}\nStatus: aguardando confirmação.\nNenhuma mensagem, pagamento ou pedido real foi enviado.`;$('#order-summary').textContent=summary;$('#order-result').hidden=false;
+ function showRequest(record,text){payload=record;summary=`${record.id} / DEMONSTRAÇÃO\n${text}\nStatus: solicitação de exemplo — confirmação não realizada.\nNenhuma mensagem, pagamento ou pedido real foi enviado.`;$('#order-summary').textContent=summary;$('#order-result').hidden=false;$('#order-result').setAttribute('tabindex','-1');$('#order-result').focus({preventScroll:true});$('#order-result').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
   const a=$('#whatsapp-order');if(/^[1-9]\d{9,14}$/.test(profile.whatsapp||'')){a.href='https://wa.me/'+profile.whatsapp+'?text='+encodeURIComponent(summary);a.hidden=false;}
   say('Solicitação demonstrativa preparada. Confira o resumo.');
  }

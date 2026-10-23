@@ -2,28 +2,46 @@
   const menu = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.site-nav');
   if (menu && nav) {
-    menu.addEventListener('click', () => { const open = menu.getAttribute('aria-expanded') !== 'true'; menu.setAttribute('aria-expanded', String(open)); nav.classList.toggle('is-open', open); });
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.setAttribute('aria-expanded', 'false'); nav.classList.remove('is-open'); }));
-    document.addEventListener('keydown', e => { if(e.key === 'Escape') { menu.setAttribute('aria-expanded','false'); nav.classList.remove('is-open'); } });
+    menu.addEventListener('click', () => { const open = menu.getAttribute('aria-expanded') !== 'true'; menu.setAttribute('aria-expanded', String(open)); nav.classList.toggle('is-open', open); menu.setAttribute('aria-label',open?'Fechar menu':'Abrir menu'); });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.setAttribute('aria-expanded', 'false'); nav.classList.remove('is-open'); menu.setAttribute('aria-label','Abrir menu'); }));
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') { menu.setAttribute('aria-expanded','false'); nav.classList.remove('is-open'); menu.setAttribute('aria-label','Abrir menu'); } });
   }
   const dialog = document.querySelector('#appointment');
   const form = dialog && dialog.querySelector('form');
   const result = dialog && dialog.querySelector('.form-result');
+  let bookingTrigger=null;
+  form?.elements.name.addEventListener('input',()=>form.elements.name.setCustomValidity(''));
+function showCareReceipt(result, context, period, niche) {
+  const message=result.textContent;
+  result.replaceChildren();
+  const title=document.createElement('strong'); title.className='care-result-title'; title.textContent='Pedido simulado. Horário a confirmar.';
+  const status=document.createElement('p'); status.textContent=message;
+  const summary=document.createElement('p'); summary.className='care-result-summary'; summary.textContent=`Interesse: ${context}. Preferência: ${period}.`;
+  const next=document.createElement('p'); next.className='care-result-next'; next.textContent='Próximo passo em uma operação real: a recepção confirma profissional, dia, horário e local. Esta simulação não ocupa a agenda.';
+  const link=document.createElement('a'); link.className='care-result-link'; link.href=`../crm.html?nicho=${niche}`; link.textContent='Ver o contato na gestão demonstrativa ↗';
+  result.append(title,status,summary,next,link); result.focus();
+}
+
   document.querySelectorAll('[data-book]').forEach(button => button.addEventListener('click', () => {
-    form.hidden = false; result.hidden = true; form.reset();
+    bookingTrigger=button;
+    menu?.setAttribute('aria-expanded','false'); menu?.setAttribute('aria-label','Abrir menu'); nav?.classList.remove('is-open');
+    form.hidden = false; result.hidden = true; form.reset(); form.elements.name.setCustomValidity('');
     const select = form.querySelector('select');
     if (button.dataset.book && [...select.options].some(o => o.value === button.dataset.book)) select.value = button.dataset.book;
     dialog.showModal();
   }));
   if (dialog) {
+    dialog.addEventListener('close',()=>{if(bookingTrigger?.offsetParent)bookingTrigger.focus();else menu?.focus();});
     dialog.querySelector('.close-dialog').addEventListener('click', () => dialog.close());
     dialog.addEventListener('click', e => { if(e.target === dialog) { const r = dialog.getBoundingClientRect(); if(e.clientX<r.left || e.clientX>r.right || e.clientY<r.top || e.clientY>r.bottom) dialog.close(); } });
     form.addEventListener('submit', e => {
-      e.preventDefault(); const name = form.querySelector('[name="name"]').value.trim();
+      e.preventDefault(); if(form.hidden)return; const name = form.querySelector('[name="name"]').value.trim();
+      if(!name){form.elements.name.setCustomValidity('Use um nome fictício para testar o pedido.');form.elements.name.reportValidity();return;}
+      const context=form.elements.interest.selectedOptions[0]?.textContent.trim()||form.elements.interest.value, period=form.elements.period.value;
       form.hidden = true; result.hidden = false;
-      result.textContent = `Simulação concluída${name ? ', '+name : ''}. Em um site conectado, sua solicitação seguiria para a recepção e para o CRM. Este modelo não enviou nem armazenou dados e não confirmou nenhum agendamento.`;
-      document.dispatchEvent(new CustomEvent('vereda:demo-inquiry', {detail:{name,context:form.querySelector('select').value,result}}));
-      result.focus();
+      result.textContent = 'Simulação concluída. Nenhuma mensagem foi enviada e nenhum horário foi confirmado.';
+      document.dispatchEvent(new CustomEvent('vereda:demo-inquiry', {detail:{name,context,period,result}}));
+      showCareReceipt(result,context,period,'estetica');
     });
   }
   document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {

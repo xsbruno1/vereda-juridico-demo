@@ -2,14 +2,15 @@
   'use strict';
   const S = window.VeredaStudio, form = document.getElementById('profile-form'), select = document.getElementById('model');
   const $ = id => document.getElementById(id);
-  select.innerHTML = S.models.map(([n, slug, name]) => `<option value="${slug}">${S.esc(name)} · ${n}</option>`).join('');
+  const labels={advocacia:'Advocacia',estetica:'Estética',medicina:'Medicina',odontologia:'Odontologia',petshop:'Petshop',pizzaria:'Pizzaria',salao:'Salão de beleza',hotelaria:'Hotelaria e motéis',psiquiatria:'Psicologia e psiquiatria'};
+  select.innerHTML = S.models.map(([n, slug, name]) => `<option value="${slug}">${S.esc(name)} · ${labels[n]}</option>`).join('');
   const asked = new URLSearchParams(location.search).get('modelo');
   if (S.models.some(m => m[1] === asked)) select.value = asked;
   function current() { return S.models.find(m => m[1] === select.value); }
   function preview() {
     const [niche, slug, name] = current(), url = `${niche}/${slug}.html`;
     $('client-preview').src = url; $('open-preview').href = url; $('preview-name').textContent = name + ' / Prévia local';
-    $('crm-link').href = ['petshop','pizzaria','salao'].includes(niche) ? 'operacao.html?setor=' + niche : 'crm.html?nicho=' + niche; $('campaign-link').href = 'campanhas.html?nicho=' + niche + '&modelo=' + slug;
+    $('crm-link').href = 'crm.html?nicho='+niche+'&modelo='+slug; $('campaign-link').href = 'campanhas.html?nicho=' + niche + '&modelo=' + slug;
   }
   function load() {
     const model = select.value, p = S.read('vereda-profile-' + model, {});
