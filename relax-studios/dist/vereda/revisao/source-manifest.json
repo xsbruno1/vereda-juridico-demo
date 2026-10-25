@@ -1,6 +1,6 @@
 {
   "date": "2026-10-25",
-  "snapshot_sha256": "afa2e9e387dfca4ece467142574ee5d100281818654a00872ab8ddab87693dd3",
+  "snapshot_sha256": "23c41a4d93d65822fc200d337fb0552b4e0043e7d5dbae06184cca97a141c424",
   "scope": "Public interface plus explicitly listed local domain foundation. No production deployment of identity, database or payments.",
   "excluded": [
     "private prospect lists",
@@ -32,6 +32,12 @@
       "url": "fontes/backend/tests/test_client_portal.py.txt"
     },
     {
+      "path": "backend/tests/test_consultation.py",
+      "bytes": 22912,
+      "sha256": "49853694e17abba83c1d7ca8f4c0e9f0907a486458d14eef700936af24b67595",
+      "url": "fontes/backend/tests/test_consultation.py.txt"
+    },
+    {
       "path": "backend/vereda_core/__init__.py",
       "bytes": 74,
       "sha256": "50f17292b2019c56414080428e7a2d3308ff3c1dbab6ea904f9c0cc4cde898ff",
@@ -44,6 +50,12 @@
       "url": "fontes/backend/vereda_core/case_timeline.py.txt"
     },
     {
+      "path": "backend/vereda_core/client_portal/README-consultation.txt",
+      "bytes": 10646,
+      "sha256": "d7a906ca84ad942c16e914867f4e42f524ea05b7a92971ba1a1f59813c0a98eb",
+      "url": "fontes/backend/vereda_core/client_portal/README-consultation.txt.txt"
+    },
+    {
       "path": "backend/vereda_core/client_portal/README.md",
       "bytes": 10777,
       "sha256": "b6bffb18c0d3668d10cea19c9dd2683b83ee270f28df645ea71f7d8cd0ccfff4",
@@ -54,6 +66,12 @@
       "bytes": 206,
       "sha256": "93ea5d21b05412888653f90ae275480f51020fc73b95f18b3a1bddfe2d02a5be",
       "url": "fontes/backend/vereda_core/client_portal/__init__.py.txt"
+    },
+    {
+      "path": "backend/vereda_core/client_portal/consultation.py",
+      "bytes": 26007,
+      "sha256": "1f4eba79c87d427d433b5a8b2502b511a1e8dd810d8c31f67723efaa10fab4e9",
+      "url": "fontes/backend/vereda_core/client_portal/consultation.py.txt"
     },
     {
       "path": "backend/vereda_core/client_portal/core.py",
@@ -110,10 +128,22 @@
       "url": "fontes/guias/ARQUITETURA-E-ACEITE.txt.txt"
     },
     {
+      "path": "guias/ATENDIMENTO-E-ACEITE.txt",
+      "bytes": 5416,
+      "sha256": "e863b2507eb8a5ded7f781c5090aa3370b353f004c0eda35c643f1c1e730ecdc",
+      "url": "fontes/guias/ATENDIMENTO-E-ACEITE.txt.txt"
+    },
+    {
       "path": "guias/PEDIDO-DE-REVISAO.txt",
       "bytes": 1939,
       "sha256": "abc9719479d0ce520cbde7b20d2eb929de08ab48ec1a9abca48e9f727c3d8624",
       "url": "fontes/guias/PEDIDO-DE-REVISAO.txt.txt"
+    },
+    {
+      "path": "guias/VERIFICACAO-SALA.json",
+      "bytes": 2100,
+      "sha256": "abac3a39e1ce0da40e813bce5742709bf1e9950fddd0d3f2d46cd42398b163b0",
+      "url": "fontes/guias/VERIFICACAO-SALA.json.txt"
     },
     {
       "path": "guias/VERIFICACAO.json",
@@ -132,6 +162,12 @@
       "bytes": 17536,
       "sha256": "463860c3f738b04ae52720642c76cb443e1e8c65dec458de98cbbaf42ae55b9f",
       "url": "fontes/guias/referencia-memed.html.txt"
+    },
+    {
+      "path": "guias/sala-integrada.html",
+      "bytes": 10504,
+      "sha256": "1ea8aac71ee351dd78776b3f54bc3cb85257ceb5acc5990e2e9c62cdb6b7b140",
+      "url": "fontes/guias/sala-integrada.html.txt"
     },
     {
       "path": "public/assets/diagnostico.css",
@@ -660,6 +696,36 @@
       "url": "fontes/public/vereda/assets/workspace-modern.css.txt"
     },
     {
+      "path": "public/vereda/atendimento/README.txt",
+      "bytes": 1648,
+      "sha256": "eb0cc3c8a09747d9c023acdd78c874bf34a7c60bad05f04549cb93dbbc373c7f",
+      "url": "fontes/public/vereda/atendimento/README.txt.txt"
+    },
+    {
+      "path": "public/vereda/atendimento/app.js",
+      "bytes": 13646,
+      "sha256": "dd0409059f07bbc612a3711b6d277ca49f33c95d41398b5407f33226c6c0acb8",
+      "url": "fontes/public/vereda/atendimento/app.js.txt"
+    },
+    {
+      "path": "public/vereda/atendimento/core.js",
+      "bytes": 7958,
+      "sha256": "38da4a557e78c0283a2986932c57ff1ff1e7698a76f5d2eb4d5a937398e48a7f",
+      "url": "fontes/public/vereda/atendimento/core.js.txt"
+    },
+    {
+      "path": "public/vereda/atendimento/index.html",
+      "bytes": 7018,
+      "sha256": "8bebbc8d823500998e702afdbb728eed74176a80d32a134e17cef41b000d768c",
+      "url": "fontes/public/vereda/atendimento/index.html.txt"
+    },
+    {
+      "path": "public/vereda/atendimento/room.css",
+      "bytes": 19425,
+      "sha256": "a4887d2f60390ed8be38e599370e6b4d8f03c6ad2a13e8068072c294e5156faf",
+      "url": "fontes/public/vereda/atendimento/room.css.txt"
+    },
+    {
       "path": "public/vereda/campanhas.html",
       "bytes": 6340,
       "sha256": "88d6f9965ee8c70124334dd1daca812b33e15f054e8a18a7b68bcd17fa3c12bd",
@@ -953,8 +1019,8 @@
     },
     {
       "path": "public/vereda/portal/app.js",
-      "bytes": 36412,
-      "sha256": "118bcedd33420894ede815d9578ecc18751e293582950d9bedfee67f6238a103",
+      "bytes": 37364,
+      "sha256": "be4eeaa1a1af9358c1fd8c912df61c66e3acbb95c5a7b93d88c1b742f94bc309",
       "url": "fontes/public/vereda/portal/app.js.txt"
     },
     {
@@ -1029,8 +1095,8 @@
     },
     {
       "path": "public/vereda/sala.html",
-      "bytes": 5401,
-      "sha256": "18652ad17d234f6688bc9ac6090d5e4d66fa685e64db872445b74f59efe3f06b",
+      "bytes": 5901,
+      "sha256": "200a133df4239b51479567024b5810e77ffd6d28503ea9b8ac8862093c57f14b",
       "url": "fontes/public/vereda/sala.html.txt"
     },
     {
@@ -1091,6 +1157,12 @@
       "bytes": 7614,
       "sha256": "6f060f7ce6d8132d09f0cb56607a53915387d9f609c4184dc33ee7bc8a37f491",
       "url": "fontes/work/portal-v3/portal-core.test.mjs.txt"
+    },
+    {
+      "path": "work/portal-v4/room-ui.test.mjs",
+      "bytes": 6954,
+      "sha256": "3c6645ae9b1b5a8dba435c148e6daab98dc1b1a1d557a0c63b415aa8c2da15ed",
+      "url": "fontes/work/portal-v4/room-ui.test.mjs.txt"
     }
   ]
 }
