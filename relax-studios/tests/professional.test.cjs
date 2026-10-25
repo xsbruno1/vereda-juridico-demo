@@ -1,0 +1,15 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const assert=require('node:assert/strict');
+const file=path.resolve(__dirname,'../dist/vereda/assets/professional-v2.js');
+const holder={exports:{}};
+new Function('module',fs.readFileSync(file,'utf8'))(holder);
+const {guideFor,validDate,reminderICS}=holder.exports;
+assert.ok(validDate('2024-02-29'));assert.ok(!validDate('2026-02-29'));assert.ok(!validDate('2026-13-01'));assert.ok(!validDate('2026-04-31'));assert.ok(!validDate('25/10/2026'));
+const legal=guideFor('dossier','contratos');assert.ok(legal.some(x=>x.includes('contrato')));assert.ok(!guideFor('dossier','unknown').some(x=>x.includes('profissional;')));legal.push('mutation');assert.equal(guideFor('dossier','contratos').length,3);
+assert.ok(guideFor('care','online').some(x=>x.includes('áudio')));assert.equal(guideFor('listening','retorno').length,3);
+const ics=reminderICS('2026-10-26','09:00','2026-10-25','20261025T120000Z','demo@example');
+assert.ok(ics.includes('DTSTART:20261026T090000\r\n'));assert.ok(ics.includes('STATUS:TENTATIVE'));assert.ok(ics.includes('Não é consulta confirmada'));assert.ok(ics.endsWith('END:VCALENDAR\r\n'));assert.ok(!ics.includes('TZID='));
+for(const [d,t] of [['2026-10-24','09:00'],['2026-02-29','09:00'],['2026-10-26','24:00'],['2026-10-26','09:60'],['2026-10-26','09:00\nSUMMARY:x']])assert.throws(()=>reminderICS(d,t,'2026-10-25','20261025T120000Z','demo'),RangeError);
+const escaped=reminderICS('2026-10-25','09:00','2026-10-25','20261025T120000Z','demo\nX:bad');assert.ok(escaped.includes('UID:demo\\nX:bad\r\n'));
+console.log('Calendar and checklist: 21 assertions passed.');
