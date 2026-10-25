@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Memed como referência de jornada · Relax Studios / Vereda</title>
+<style>
+:root{--ink:#172439;--muted:#536279;--blue:#2450dc;--line:#dbe2ec;--paper:#f5f7fb}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:1120px;margin:auto;padding:40px 24px 72px}header{padding:32px 0 42px;max-width:850px}.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:750;color:var(--blue)}h1{font-size:clamp(34px,5.2vw,60px);line-height:1.07;letter-spacing:-.045em;margin:20px 0}h2{font-size:28px;line-height:1.2;letter-spacing:-.025em;margin:0 0 20px}h3{font-size:19px;margin:0 0 9px}p{margin:10px 0 18px}a{color:#1646c5;text-underline-offset:3px}a:focus-visible{outline:3px solid var(--blue);outline-offset:5px}.lead{font-size:21px;color:var(--muted)}.meta,.small{font-size:14px;color:var(--muted)}section{margin-bottom:32px;padding:30px;background:white;border:1px solid var(--line);border-radius:22px}.alert{border-color:#ecd4a5;background:#fff9eb}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{border:1px solid var(--line);border-radius:16px;padding:20px}.badge{display:inline-block;font-size:11px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;color:#24468a;background:#edf2ff;padding:5px 9px;border-radius:6px;margin-bottom:12px}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:750px;font-size:15px}th,td{text-align:left;vertical-align:top;padding:17px 14px;border-bottom:1px solid var(--line)}th{color:#3d506c;background:#f5f7fc;font-size:13px}td:first-child{font-weight:700;min-width:140px}ol,ul{padding-left:23px}li{margin:9px 0}.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;list-style:none;padding:0}.flow li{padding:18px;background:#f3f6fc;border-radius:15px;margin:0}.step{display:block;color:var(--blue);font-weight:800;margin-bottom:8px}.decision{background:#172439;color:white}.decision p{color:#d6dfee}.decision a{color:#b6ccff}footer{font-size:14px;color:var(--muted)}@media(max-width:760px){main{padding:22px 16px 44px}section{padding:23px 18px}.grid,.flow{grid-template-columns:1fr}.lead{font-size:19px}h2{font-size:25px}}@media print{body{background:white}main{padding:0}section{break-inside:avoid;border-radius:0}.grid{display:block}.card{margin:12px 0}.table-wrap{overflow:visible}table{min-width:0;font-size:10pt}.decision{background:white;color:var(--ink)}.decision p{color:var(--ink)}a{color:inherit}}
+</style>
+</head>
+<body><main>
+<header>
+<div class="eyebrow">Relax Studios · Vereda · Estudo de produto</div>
+<h1>O valor está em continuar o cuidado.</h1>
+<p class="lead">A Memed é uma boa referência para conectar o trabalho do profissional ao próximo passo do paciente. Para a Vereda, a oportunidade é organizar essa jornada e integrar serviços especializados aprovados.</p>
+<p class="meta">Fontes oficiais consultadas em 25 de outubro de 2026. Análise de produto e proposta de integração; nenhuma parceria, credencial ou operação de prescrição foi ativada.</p>
+</header>
+
+<section class="alert" aria-labelledby="estado">
+<span class="badge">Estado atual confirmado</span>
+<h2 id="estado">A compra online pela Experiência Memed está pausada.</h2>
+<p>O suporte ao paciente, atualizado em <strong>27/09/2026</strong>, informa a pausa da compra online nas farmácias parceiras e orienta o uso da receita na farmácia física escolhida pelo paciente. Outras páginas comerciais ainda descrevem compra e entrega; para a nossa oferta, prevalece esse aviso operacional mais recente. Não podemos vender um fluxo de compra conectado à Memed como disponível hoje. <a href="https://suporte-paciente.memed.com.br/hc/pt-br/articles/6196568729371-Como-realizo-a-compra-de-medicamentos-atrav%C3%A9s-da-Experi%C3%AAncia-Memed">Consultar aviso oficial.</a></p>
+</section>
+
+<section>
+<h2>O que está comprovado na referência</h2>
+<div class="grid">
+<article class="card"><span class="badge">Profissional</span><h3>Prescrever, assinar e entregar</h3><p>A jornada orientada pela Memed inclui certificado de pessoa física ICP-Brasil, preparação do documento e emissão para o paciente. O envio pode usar SMS ou e-mail, com outras formas de compartilhamento apresentadas depois.</p><p class="small"><a href="https://suporte-medico.memed.com.br/hc/pt-br/articles/38684866112411-Como-eu-assino-digitalmente-pela-Memed">Guia de assinatura e envio.</a></p></article>
+<article class="card"><span class="badge">Paciente</span><h3>Receber e usar o documento</h3><p>O paciente abre o link recebido e apresenta o código da receita na farmácia. A própria orientação preserva a escolha do estabelecimento. A parte desse guia que descreve compra online deve ser lida junto ao aviso de pausa acima.</p><p class="small"><a href="https://suporte-paciente.memed.com.br/hc/pt-br/articles/5382896585371-Recebi-uma-Receita-Digital-com-medicamentos-Como-usar">Guia de uso da receita.</a></p></article>
+<article class="card"><span class="badge">Parceiro de software</span><h3>Integrar uma ferramenta especializada</h3><p>A Memed anuncia histórico de prescrições, alertas de interações e alergias e recursos para sistemas parceiros. São recursos declarados pelo fornecedor; não equivalem a validação clínica independente feita pela Relax Studios.</p><p class="small"><a href="https://memed.com.br/parceiro-software/">Oferta para empresas de software.</a></p></article>
+</div>
+</section>
+
+<section>
+<h2>Profissão, acesso técnico e competência são verificações distintas</h2>
+<p>A documentação de integração reconhece registros de várias categorias, incluindo CRM, CRO e CRP, e afirma que a base de medicamentos é compartilhada. Ela atribui ao integrador a validação do que cada categoria pode prescrever. Isso exige regras próprias na Vereda; ter um cadastro aceito no fornecedor não amplia a habilitação do profissional. <a href="https://suporte-medico.memed.com.br/hc/pt-br/articles/53501867490715-Tipos-de-usu%C3%A1rio-prescritor">Tipos de usuário e responsabilidade do integrador.</a></p>
+<p>O cadastro direto descrito pelo suporte é dirigido à jornada médica. O mesmo artigo informa que dentistas e enfermeiros utilizam o produto por prontuários parceiros. Assim, a entrada do nosso piloto odontológico precisa ser confirmada pelo processo de integração e contratação, sem prometer um cadastro direto universal. <a href="https://suporte-medico.memed.com.br/hc/pt-br/articles/48011868421787-Como-me-cadastrar-na-Memed">Cadastro e elegibilidade por canal.</a></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Perfil</th><th>O que precisa receber do paciente</th><th>O que deve devolver ao paciente</th><th>Limite do produto</th></tr></thead>
+<tbody>
+<tr><td>Dentista</td><td>Motivo da consulta, região do incômodo, alergias e medicamentos em uso, histórico pertinente e exames anteriores quando necessários. Identificação e responsável legal, quando aplicável.</td><td>Plano explicado por etapas, alternativas e orçamento discriminado; procedimentos registrados; orientações de cuidado; exames, encaminhamentos e receitas emitidos pelo profissional habilitado.</td><td>Prescrição dentro da Odontologia; nenhum medicamento sugerido automaticamente pela marcação de dor. A indicação odontológica integra a competência prevista no art. 6º da Lei 5.081/1966. <a href="https://planalto.gov.br/ccivil_03/leis/l5081.htm">Lei.</a></td></tr>
+<tr><td>Médico / psiquiatra</td><td>Queixa, contexto e evolução, tratamentos e medicações atuais, alergias e exames relevantes. Cada coleta deve ter finalidade clínica definida; prontuário não é um formulário de vendas.</td><td>Resumo de conduta compreensível, exames solicitados, documentos assinados, prescrição quando indicada e data ou critério de retorno; canal de dúvida com prazo de resposta explícito.</td><td>A decisão clínica e a assinatura pertencem ao prescritor. Renovação não é automática. Situações urgentes precisam de atendimento adequado, sem depender da caixa de mensagens.</td></tr>
+<tr><td>Psicólogo</td><td>Demanda e objetivos, preferências e condições de atendimento; história relevante apenas no ambiente clínico. Informações de outros tratamentos podem apoiar o cuidado, sem transformar a recepção em triagem clínica.</td><td>Agenda e acordos de atendimento, materiais combinados, encaminhamentos e documentos psicológicos adequados. Solicitação de cópia deve ter fluxo próprio, considerando informações de terceiros e materiais restritos.</td><td>No perfil CRP, a emissão de medicamentos fica bloqueada. Outra habilitação profissional exige perfil e registro separados. Prescrição terapêutica psicológica não se confunde com prescrição medicamentosa. <a href="https://site.cfp.org.br/wp-content/uploads/2012/04/ANAOAOATOMEDICO.pdf">Distinção explicada pelo CFP.</a></td></tr>
+<tr><td>Recepção / financeiro</td><td>Identificação administrativa, contato preferido, disponibilidade, confirmação e informações de cobrança estritamente necessárias.</td><td>Agendamento confirmado, instruções de acesso, aviso de alteração e comprovante financeiro.</td><td>Sem histórico clínico, sintomas ou receita em listas de atendimento, cobranças, métricas comerciais ou mensagens de marketing.</td></tr>
+</tbody></table></div>
+<p class="small">As entradas e entregas da tabela são uma proposta de desenho a validar com os profissionais do piloto. Não constituem protocolo clínico nem substituem avaliação profissional. Começar com dados mínimos para agendar; coletar informações clínicas adicionais apenas quando necessárias ao atendimento.</p>
+</section>
+
+<section>
+<h2>A experiência Vereda que faz sentido oferecer</h2>
+<p><span class="badge">Proposta própria</span> O cliente do consultório deve entender onde está, o que recebeu e o que fazer depois. A equipe deve saber quem precisa de retorno, qual informação está pendente e quem é responsável.</p>
+<ol class="flow">
+<li><span class="step">01 · Antes</span><strong>Preparação simples</strong><p>Convite individual, identificação, preferências, agenda e documentos pedidos. Relatos do paciente ficam identificados como relato, pendentes de conferência.</p></li>
+<li><span class="step">02 · Durante</span><strong>Contexto para atender</strong><p>Profissional vê o que é pertinente à sua alçada, registra o atendimento e revisa o que será disponibilizado. Recepção acompanha somente o fluxo administrativo.</p></li>
+<li><span class="step">03 · Depois</span><strong>Próximo passo claro</strong><p>Documento, orientação assinada quando aplicável, retorno e canal de esclarecimento. Cada item mostra origem, responsável, data e situação.</p></li>
+<li><span class="step">04 · Continuidade</span><strong>Acompanhamento com responsabilidade</strong><p>Paciente solicita revisão, compartilha um documento com destinatário definido ou pede cópia integral. A equipe recebe uma tarefa com responsável e prazo.</p></li>
+</ol>
+<p>Na Odontologia, o mapa de incômodo ajuda a comunicar a localização; o plano de tratamento explica etapas e decisões. Na Medicina, documentos e resultados ficam ligados ao atendimento certo. Na Psicologia, agenda, acordos e materiais podem gerar valor sem incentivar coleta excessiva de histórias íntimas. Essas diferenças devem existir no produto, além da personalização de cores.</p>
+</section>
+
+<section>
+<h2>Como integrar sem refazer um prescritor</h2>
+<ol>
+<li><strong>Confirmar a parceria e a categoria do piloto.</strong> A Memed mantém etapa formal de autorização para credenciais de produção. O formulário inclui cadastro do profissional e identificação do paciente. <a href="https://doc.memed.com.br/docs/obter-credenciais/">Requisitos publicados.</a></li>
+<li><strong>Enviar somente o conjunto necessário.</strong> A documentação de configuração de paciente e a lista de homologação diferem na forma de classificar campos obrigatórios. Confirmar o contrato atual com a Memed, inclusive identificação, nascimento e contatos; não enviar história clínica inteira apenas porque existe um campo disponível. <a href="https://doc.memed.com.br/docs/frontend/comandos-mdhub/set-patient/">Campos e diferenças por documento.</a></li>
+<li><strong>Manter um vínculo estável por negócio e paciente.</strong> O fornecedor exige identificação consistente do paciente, segredo do parceiro fora do navegador e tratamento dos eventos de emissão e exclusão para manter os registros coerentes. <a href="https://doc.memed.com.br/docs/boas-praticas-integracao/">Boas práticas e homologação.</a></li>
+<li><strong>Profissional confirma e assina.</strong> Vereda organiza o atendimento; o módulo oficial realiza a emissão dentro das competências autorizadas. A equipe confere os dados antes de entregar.</li>
+<li><strong>Registrar falhas de forma compreensível.</strong> Documento ainda não emitido, assinatura não concluída e envio não confirmado precisam de estados diferentes. Indisponibilidade gera uma pendência assistida; não produz uma receita com aparência válida.</li>
+</ol>
+<p class="small">Situação da Vereda nesta entrega: demonstração de portal e regras locais de segurança/cobrança. Integração Memed, assinatura e prescrição reais permanecem não ativadas. Nenhuma chave de exemplo da documentação foi copiada para o projeto.</p>
+</section>
+
+<section>
+<h2>Receita comercial: fatos, inferências e decisão</h2>
+<div class="grid">
+<article class="card"><span class="badge">Fato publicado</span><h3>Há modalidades gratuitas e adicionais</h3><p>Os termos do profissional descrevem a jornada básica gratuita e a possibilidade de serviços pagos adicionais. As condições gerais de parceria também preveem uso gratuito no escopo contratado e contratação separada de funcionalidades futuras. Isso não fornece um orçamento completo para o nosso caso.</p><p class="small"><a href="https://suporte-medico.memed.com.br/hc/pt-br/articles/11822598155419-Termos-de-uso-M%C3%A9dicos">Termos do profissional, seção 8.</a> <a href="https://suporte-medico.memed.com.br/hc/pt-br/articles/9419131744155-Condi%C3%A7%C3%B5es-gerais-de-licenciamento-de-uso-da-plataforma-na-modalidade-Software-as-a-Service-SAAS">Condições gerais, seção 5.</a></p></article>
+<article class="card"><span class="badge">Fato + limite da evidência</span><h3>Existem produtos para empresas</h3><p>A Memed divulga serviços para indústria farmacêutica, como comunicação e inteligência de mercado. Isso comprova uma oferta comercial empresarial. Não comprova quanto ela ganha, a participação de cada receita nem uma comissão disponível para a Relax Studios.</p><p class="small"><a href="https://memed.com.br/indus-farma/">Oferta oficial à indústria.</a> Não foi identificada nas fontes consultadas uma tabela de comissões para o nosso projeto.</p></article>
+<article class="card"><span class="badge">Recomendação Vereda</span><h3>Cobrar pela operação bem entregue</h3><p>Implantação e personalização, mensalidade de portal e gestão, suporte delimitado e integração contratada. Medir margem por cliente após hospedagem, mensagens, fornecedores e atendimento. A viabilidade inicial deve funcionar sem receita de indicação de medicamentos.</p><p class="small">Proposta comercial nossa, sujeita a validação de custo e disposição de pagar.</p></article>
+</div>
+<p>Dados de saúde e remuneração vinculada a indicações exigem atenção específica: a LGPD restringe compartilhamento de dados sensíveis de saúde com finalidade econômica, com exceções legais delimitadas; o Código de Ética Médica contém restrições sobre vantagens por encaminhamento e lucro associado à influência profissional. Por isso, compra/afiliados ficam desativados até análise contratual e jurídica da operação concreta. Consentimento genérico não resolve essas restrições. <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm">LGPD, art. 11.</a> <a href="https://cem.cfm.org.br/">Código de Ética Médica, arts. 59 e 69.</a></p>
+</section>
+
+<section class="decision">
+<h2>Próxima validação: um atendimento completo</h2>
+<p>Escolher um consultório piloto e acompanhar uma jornada real autorizada, da marcação ao retorno. Medir tempo da equipe, informações repetidas, documentos que o paciente consegue encontrar, dúvidas resolvidas, falhas de entrega, pedidos de cópia e satisfação dos dois lados.</p>
+<p>O primeiro aceite deve exigir que o paciente consiga explicar seu próximo passo e que a equipe consiga identificar o responsável por cada pendência. A ligação com prescrição especializada entra depois da validação da identidade, da competência profissional, do contrato e da homologação.</p>
+<p><a href="analise-setorial.html">Ler também a análise por ramo.</a></p>
+</section>
+<footer>Documento de discussão do produto, com fontes públicas primárias. Não usa dados de pacientes, não certifica conformidade e não representa parceria com a Memed. Memed é marca de seu titular. O objetivo é aprender com a jornada e avaliar integração oficial.</footer>
+</main></body></html>

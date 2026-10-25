@@ -25,7 +25,7 @@
   }
   const tools = document.createElement('section');
   tools.className = 'vereda-client-tools'; tools.setAttribute('aria-label', 'Ferramentas de demonstração');
-  tools.innerHTML = `<div><strong>VEREDA / ${S.esc(model[2])}</strong><span>Área do prestador · configuração e gestão demonstrativas</span></div><nav><a href="../personalizar.html?modelo=${file}">Personalizar este modelo ↗</a><a href="../crm.html?nicho=${model[0]}&modelo=${file}">Organizar atendimentos ↗</a><a href="../campanhas.html?nicho=${model[0]}&modelo=${file}">Preparar campanha ↗</a></nav><div class="vereda-social-links"></div>`;
+  tools.innerHTML = `<div><strong>VEREDA / ${S.esc(model[2])}</strong><span>Área do prestador · configuração e gestão demonstrativas</span></div><nav><a href="../portal/?setor=${model[0]}">Área de clientes e pacientes ↗</a><a href="../personalizar.html?modelo=${file}">Personalizar este modelo ↗</a><a href="../crm.html?nicho=${model[0]}&modelo=${file}">Organizar atendimentos ↗</a><a href="../campanhas.html?nicho=${model[0]}&modelo=${file}">Preparar campanha ↗</a></nav><div class="vereda-social-links"></div>`;
   document.body.append(tools);
   const socials = tools.querySelector('.vereda-social-links');
   for (const [key, label] of [['instagram', 'Instagram'], ['linkedin', 'LinkedIn'], ['facebook', 'Facebook'], ['booking', 'Agenda externa']]) {

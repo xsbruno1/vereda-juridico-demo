@@ -1,0 +1,99 @@
+VEREDA — COLEÇÃO DE SITES E GESTÃO
+Coleção revisada · Versão demonstrativa · 20/10/2026
+
+COMO ABRIR
+Extraia o ZIP e abra index.html em Chrome, Edge ou Firefox atualizado.
+Mantenha as pastas e arquivos juntos. Não é necessário instalar dependências.
+A coleção também funciona em hospedagem estática, incluindo Render.
+
+O QUE FOI ENTREGUE
+9 protótipos navegáveis de site, com estruturas e interações distintas:
+  Advocacia: Atlas (áreas de atuação), Prisma (escopos especializados),
+  Acordo (entrada guiada por assunto).
+  Estética: Aurora (editorial por interesse), Essentia (guia de avaliação),
+  Viva (catálogo com filtros).
+  Saúde: Elo (momentos de acompanhamento), Forma (jornada odontológica),
+  Íntegra (busca de especialidades).
+3 configurações de CRM na página crm.html, selecionáveis pelo menu lateral.
+9 referências oficiais e suas adaptações na página referencias.html.
+Pesquisa de 21 possibilidades de integração em integracoes.html.
+Matriz técnica com fontes em integracoes.json.
+Tipografia, conteúdo e interações locais. Sem imagens de espaços ou pessoas fictícias.
+
+COMO EXPERIMENTAR O CRM
+Use apenas dados fictícios. Os registros iniciais são exemplos.
+Cadastre contatos, altere etapas, filtre por origem e pesquise nomes.
+Edite contatos, conclua tarefas e crie/confirme compromissos na agenda local.
+Exporte os exemplos em JSON ou restaure a demonstração pelo menu lateral.
+Cada nicho usa uma chave separada no armazenamento local do navegador.
+A persistência depende das políticas do navegador, especialmente em file://.
+Se o armazenamento estiver bloqueado, as alterações duram somente a sessão.
+
+LIMITES DO PROTÓTIPO
+As páginas permitem avaliar apresentação e interação; não são sistemas
+prontos para atendimento em produção. A escolha do modelo precisa virar um
+escopo de implantação com conteúdo, funcionalidades e operação do cliente.
+Os formulários dos sites simulam o fluxo e não enviam mensagens.
+Os formulários criam contatos fictícios no CRM deste navegador, preservando modelo e contexto.
+Nenhuma conta externa, agenda real ou integração de produção está conectada.
+Não existem servidor, autenticação, permissões, auditoria ou banco de produção.
+O CRM de saúde é administrativo, não é prontuário médico/odontológico.
+O CRM jurídico não gerencia processos, documentos ou prazos judiciais.
+Não inserir dados reais de pessoas, casos, saúde ou credenciais.
+As etapas do funil não automatizam verificação de conflito, avaliação profissional
+ou confirmação de disponibilidade; dependem da equipe responsável.
+
+ANTES DE ADAPTAR PARA UM CLIENTE
+Substituir marcas fictícias, serviços e conteúdo pelo material aprovado.
+Inserir responsáveis técnicos e registros profissionais efetivos aplicáveis.
+Revisar publicidade conforme profissão e conselho competente.
+Definir política de privacidade, finalidade, retenção e canal de atendimento.
+Implementar autenticação, permissões, logs, backups e testes de restauração.
+Contratar/habilitar integrações com o fornecedor e obter autorização do cliente.
+Manter segredos e tokens apenas no servidor, nunca nos arquivos do site.
+Verificar cada fonte e condição comercial antes de vender uma integração.
+
+RENDER — PUBLICAR A VITRINE COMO SITE ESTÁTICO
+1. Crie um repositório contendo os arquivos desta pasta na raiz.
+2. No Render, crie um Static Site e conecte o repositório.
+3. Build Command: deixe vazio se a interface permitir; se exigir, use true.
+4. Publish Directory: .
+5. O index.html abre a coleção e os links relativos abrem todos os modelos.
+6. Revise limites de banda, builds e serviços do plano antes de compartilhar.
+Fonte oficial: https://render.com/docs/static-sites
+A vitrine integra a publicação da Relax Studios. O CRM permanece demonstrativo local. Veja também README.txt para personalização e campanhas.
+
+MODELO COMERCIAL
+Os arquivos podem ser adaptados e entregues ao cliente como implantação.
+Hospedagem, domínio, e-mail, WhatsApp/API e plataformas parceiras podem cobrar
+recorrência própria. Venda sem mensalidade do Vereda não elimina esses custos.
+Escolha integrações por necessidade: primeiro link/widget, depois integração
+nativa do sistema usado pelo cliente, e só então API própria quando aprovada.
+
+DOCUMENTAÇÃO DE INTEGRAÇÕES
+Abra integracoes.html. A matriz informa alcance, requisitos, limitações,
+fontes, confiança e data de verificação. As informações foram pesquisadas,
+não homologadas em contas de produção. "Não localizada" não significa
+que uma API inexista; pode haver acesso privado ou comercial não documentado.
+
+REFERÊNCIAS E DECISÕES DE PROJETO
+Abra referencias.html para comparar os nove modelos e acessar suas fontes.
+Advocacia: Clifford Chance, A&O Shearman e Baker McKenzie.
+Estética: SkinSpirit, LaserAway e Thérapie Clinic.
+Saúde: One Medical, Bupa Dental Care e Mayo Clinic.
+A página distingue observação da estrutura oficial e interpretação Vereda.
+Perfis de cliente e adaptações são propostas de projeto, não resultados
+medidos de conversão nem ranking dos fornecedores. Não há associação
+comercial ou endosso dessas organizações aos modelos demonstrativos.
+Consulta das fontes: 20/10/2026. O conteúdo dos sites pode mudar.
+A análise da LaserAway usa páginas oficiais de serviço e FAQs, pois sua
+homepage retornou HTTP 403. A Thérapie Clinic foi observada na versão dos EUA.
+Não foram reproduzidos marcas, textos, credenciais, imagens ou instalações
+dessas referências nos modelos. A pesquisa é principalmente estrutural,
+com limites de leitura registrados em cada entrada da página.
+
+PUBLICIDADE E MARCAS
+Todas as marcas da coleção são conceitos fictícios de demonstração.
+Não representam escritórios ou clínicas existentes. Fotos de espaços, equipes e resultados devem ser fornecidas pelo cliente e verificadas. Antes de uso comercial,
+verifique disponibilidade da marca e autorização para conteúdo e imagens.
+

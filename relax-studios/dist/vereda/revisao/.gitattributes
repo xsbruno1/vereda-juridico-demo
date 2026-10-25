@@ -1,0 +1,4 @@
+# Review snapshots preserve the original bytes listed in source-manifest.json.
+fontes/** -text -whitespace
+codigo-principal.txt -text -whitespace
+*.zip binary

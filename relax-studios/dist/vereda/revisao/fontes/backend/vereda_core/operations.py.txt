@@ -1,0 +1,36 @@
+"""Plano operacional e caixa de avisos; transporte externo exige canal conectado."""
+import hashlib
+import json
+import threading
+from .hub import Store
+from .schedule import recalculate
+
+
+class Operations:
+    def __init__(self,store=None):
+        self.store=store or Store()
+        self.lock=threading.RLock()
+
+    def apply(self,tenant,plan,expected_revision):
+        with self.lock:
+            current=self.store.get(tenant,'agenda','current')
+            revision=current['revision'] if current else 0
+            if expected_revision != revision:
+                raise ValueError('Agenda alterada em outra operação. Atualize antes de salvar.')
+            result=recalculate(plan)
+            record={'id':'current','revision':revision+1,'plan':plan,'result':result}
+            self.store.put(tenant,'agenda','current',record)
+            for notice in result['notices']:
+                identifier=hashlib.sha256(json.dumps([notice['booking_id'],notice['start'],notice['end']]).encode()).hexdigest()
+                if not self.store.get(tenant,'outbox',identifier):
+                    self.store.put(tenant,'outbox',identifier,{'id':identifier,'revision':revision+1,
+                        **notice,'message':f"Previsão de início {notice['start']//60:02d}:{notice['start']%60:02d} e término {notice['end']//60:02d}:{notice['end']%60:02d}. Você pode aguardar ou solicitar remarcação. Confirme com a recepção."})
+            # Avisos anteriores ainda não enviados são substituídos, nunca disparados
+            # para uma previsão antiga. Logs enviados não são apagados.
+            active={n['booking_id']:n for n in result['notices']}
+            for item in self.store.all(tenant,'outbox'):
+                latest=active.get(item['booking_id'])
+                if item['delivery']=='pending' and (not latest or latest['start'] != item['start'] or latest['end'] != item['end']):
+                    item['delivery']='superseded'
+                    self.store.put(tenant,'outbox',item['id'],item)
+            return {**result,'revision':revision+1}

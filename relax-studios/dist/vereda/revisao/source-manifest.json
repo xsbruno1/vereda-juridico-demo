@@ -1,0 +1,1096 @@
+{
+  "date": "2026-10-25",
+  "snapshot_sha256": "afa2e9e387dfca4ece467142574ee5d100281818654a00872ab8ddab87693dd3",
+  "scope": "Public interface plus explicitly listed local domain foundation. No production deployment of identity, database or payments.",
+  "excluded": [
+    "private prospect lists",
+    "customer databases",
+    "credentials",
+    "environment files",
+    "browser/session data",
+    "operational logs",
+    "personal documents",
+    "video work files"
+  ],
+  "files": [
+    {
+      "path": "backend/requirements.txt",
+      "bytes": 21,
+      "sha256": "8b5c18678b29b5e8e0fb586a35ac1dce3ccd9da321e8f12ace0e118350b4e568",
+      "url": "fontes/backend/requirements.txt.txt"
+    },
+    {
+      "path": "backend/tests/test_case_timeline.py",
+      "bytes": 3921,
+      "sha256": "311fe5f39b376a1d46dcc2064d496500421460dcb449d30c2870601a5e4a7420",
+      "url": "fontes/backend/tests/test_case_timeline.py.txt"
+    },
+    {
+      "path": "backend/tests/test_client_portal.py",
+      "bytes": 20197,
+      "sha256": "82ec3af3b5a7b6b33baeb1af8d6688e196842b5d72c3816d5df8a23787a3837a",
+      "url": "fontes/backend/tests/test_client_portal.py.txt"
+    },
+    {
+      "path": "backend/vereda_core/__init__.py",
+      "bytes": 74,
+      "sha256": "50f17292b2019c56414080428e7a2d3308ff3c1dbab6ea904f9c0cc4cde898ff",
+      "url": "fontes/backend/vereda_core/__init__.py.txt"
+    },
+    {
+      "path": "backend/vereda_core/case_timeline.py",
+      "bytes": 6101,
+      "sha256": "88748933d72167f66dfd9d7fd73d76e841109bc77405d9fa8b7a7347fe0d83bc",
+      "url": "fontes/backend/vereda_core/case_timeline.py.txt"
+    },
+    {
+      "path": "backend/vereda_core/client_portal/README.md",
+      "bytes": 10777,
+      "sha256": "b6bffb18c0d3668d10cea19c9dd2683b83ee270f28df645ea71f7d8cd0ccfff4",
+      "url": "fontes/backend/vereda_core/client_portal/README.md.txt"
+    },
+    {
+      "path": "backend/vereda_core/client_portal/__init__.py",
+      "bytes": 206,
+      "sha256": "93ea5d21b05412888653f90ae275480f51020fc73b95f18b3a1bddfe2d02a5be",
+      "url": "fontes/backend/vereda_core/client_portal/__init__.py.txt"
+    },
+    {
+      "path": "backend/vereda_core/client_portal/core.py",
+      "bytes": 19355,
+      "sha256": "c902dbdee95559bf4ae1910d84c8ab3f69236fcba38139226c117e656cb16ecb",
+      "url": "fontes/backend/vereda_core/client_portal/core.py.txt"
+    },
+    {
+      "path": "backend/vereda_core/client_portal/payments.py",
+      "bytes": 14935,
+      "sha256": "39b6f1bc90688004f4b844a12a2973fc7d26a942c869f6d90c42090a7bf3f567",
+      "url": "fontes/backend/vereda_core/client_portal/payments.py.txt"
+    },
+    {
+      "path": "backend/vereda_core/compliance.py",
+      "bytes": 2282,
+      "sha256": "826572646987bf07435e856a95bd255daab72bb4f5fc412e5d3a9f090c301fe4",
+      "url": "fontes/backend/vereda_core/compliance.py.txt"
+    },
+    {
+      "path": "backend/vereda_core/editorial.py",
+      "bytes": 5357,
+      "sha256": "565645fe6b68b482a061b537c65506dc684094c62d4a9d75a11ef6f3b8543937",
+      "url": "fontes/backend/vereda_core/editorial.py.txt"
+    },
+    {
+      "path": "backend/vereda_core/hub.py",
+      "bytes": 10134,
+      "sha256": "68d694fd24b36968c9c8c6ad8495e6a2052162233a5c3843671288c39e72d2b6",
+      "url": "fontes/backend/vereda_core/hub.py.txt"
+    },
+    {
+      "path": "backend/vereda_core/operations.py",
+      "bytes": 2079,
+      "sha256": "519db2afb47cd1e0a5661ed3f7bae534e20eb4b63cdbae166438b093b43a806c",
+      "url": "fontes/backend/vereda_core/operations.py.txt"
+    },
+    {
+      "path": "backend/vereda_core/publication.py",
+      "bytes": 5820,
+      "sha256": "e179354302fa460c413c25d30b25be1e69bbd544fc53d51c61e6351f21759035",
+      "url": "fontes/backend/vereda_core/publication.py.txt"
+    },
+    {
+      "path": "backend/vereda_core/schedule.py",
+      "bytes": 6328,
+      "sha256": "8ff42a8bd9550a9fd62be84b706cc1f4e60b8562d59994b271aa1f88a7b26a74",
+      "url": "fontes/backend/vereda_core/schedule.py.txt"
+    },
+    {
+      "path": "guias/ARQUITETURA-E-ACEITE.txt",
+      "bytes": 9205,
+      "sha256": "464e867e1d04cb60b643923b0758bf4ad3bb2cd5f4f5bd752d5ade5f2348c415",
+      "url": "fontes/guias/ARQUITETURA-E-ACEITE.txt.txt"
+    },
+    {
+      "path": "guias/PEDIDO-DE-REVISAO.txt",
+      "bytes": 1939,
+      "sha256": "abc9719479d0ce520cbde7b20d2eb929de08ab48ec1a9abca48e9f727c3d8624",
+      "url": "fontes/guias/PEDIDO-DE-REVISAO.txt.txt"
+    },
+    {
+      "path": "guias/VERIFICACAO.json",
+      "bytes": 2157,
+      "sha256": "0a0d781416a7cf22b3503332234c7a62bbef7317995e89e3d5cfe96aa44ce280",
+      "url": "fontes/guias/VERIFICACAO.json.txt"
+    },
+    {
+      "path": "guias/analise-setorial.html",
+      "bytes": 27603,
+      "sha256": "979e41624dec062f4487940df9ddee333d674fe996c608917a56aa15c4f5c787",
+      "url": "fontes/guias/analise-setorial.html.txt"
+    },
+    {
+      "path": "guias/referencia-memed.html",
+      "bytes": 17536,
+      "sha256": "463860c3f738b04ae52720642c76cb443e1e8c65dec458de98cbbaf42ae55b9f",
+      "url": "fontes/guias/referencia-memed.html.txt"
+    },
+    {
+      "path": "public/assets/diagnostico.css",
+      "bytes": 3390,
+      "sha256": "717df782e5260d32447850e3b1cf7f18a29cd2ba8dc1c58f2393af1099fb0995",
+      "url": "fontes/public/assets/diagnostico.css.txt"
+    },
+    {
+      "path": "public/assets/diagnostico.js",
+      "bytes": 4832,
+      "sha256": "64708f67978e28292c4f048aeae95f4e949a0e7e23cf31ed98cbbd489ec60dbf",
+      "url": "fontes/public/assets/diagnostico.js.txt"
+    },
+    {
+      "path": "public/assets/favicon.svg",
+      "bytes": 221,
+      "sha256": "617ece4455cb65dbf0fe359f78216d76b0f9d914fc6650e47307b428bfeb5546",
+      "url": "fontes/public/assets/favicon.svg.txt"
+    },
+    {
+      "path": "public/assets/products.css",
+      "bytes": 11030,
+      "sha256": "514519f52a469a683e83f633f498a005e4ebed96b203e7432603a5fcbc758203",
+      "url": "fontes/public/assets/products.css.txt"
+    },
+    {
+      "path": "public/assets/relax-studios-logo-email.png",
+      "bytes": 7934,
+      "sha256": "bcc09fb6e30a7e127f50a8ccf47e1d19012cb576b4b6d1de35b6ad2a18eda77e"
+    },
+    {
+      "path": "public/assets/relax-studios-logo-transparente.png",
+      "bytes": 37526,
+      "sha256": "2983fa7329a3d00bf79f3cc405c598a4654ac0b5956b80a8755837f395bf05a2"
+    },
+    {
+      "path": "public/assets/relax-studios-logo.svg",
+      "bytes": 513,
+      "sha256": "85e1d985eceb2c388731397a107e57bbeea0e9ea58b4d31263d28a06f6278489",
+      "url": "fontes/public/assets/relax-studios-logo.svg.txt"
+    },
+    {
+      "path": "public/assets/showcase.js",
+      "bytes": 2200,
+      "sha256": "0075e03ad4cdba34f15bbad831399bb41952366244889f8b0132f65f57669224",
+      "url": "fontes/public/assets/showcase.js.txt"
+    },
+    {
+      "path": "public/assets/site-config.js",
+      "bytes": 195,
+      "sha256": "c65107f92da4a2f1aa53c92f48591eec1c81ceb334f95d28f455f44266adab56",
+      "url": "fontes/public/assets/site-config.js.txt"
+    },
+    {
+      "path": "public/assets/site.css",
+      "bytes": 25261,
+      "sha256": "26b99cf81ed4a3e24725cbf1bd1aedae277ba697c7768a1a2805be24ff9ddc66",
+      "url": "fontes/public/assets/site.css.txt"
+    },
+    {
+      "path": "public/assets/site.js",
+      "bytes": 7620,
+      "sha256": "0c7e4a8d04ed743d8ddb136440b276434dd5982fac9527d58a6b0f4025b1d7c2",
+      "url": "fontes/public/assets/site.js.txt"
+    },
+    {
+      "path": "public/assets/social.jpg",
+      "bytes": 65722,
+      "sha256": "6638fe5a052590fec2e75d6d94e282b1c0457d4ef054b4c39f8ac3b979c45ede"
+    },
+    {
+      "path": "public/assets/social.svg",
+      "bytes": 779,
+      "sha256": "0a6baa527aad471be5cf6b3af4293b444a46ac9047fad6460ee196e1330c9e56",
+      "url": "fontes/public/assets/social.svg.txt"
+    },
+    {
+      "path": "public/assets/studio-2026.css",
+      "bytes": 13937,
+      "sha256": "d1d1ec23dc25e16b4ab22c6dde89045756fa516ba11b690692fd78eff6bac7f4",
+      "url": "fontes/public/assets/studio-2026.css.txt"
+    },
+    {
+      "path": "public/contato.html",
+      "bytes": 4620,
+      "sha256": "8ff94345daae51f0d32ccdef4113675cb3f569ba4ebd8e2c8542ee5c81a8abdb",
+      "url": "fontes/public/contato.html.txt"
+    },
+    {
+      "path": "public/diagnostico.html",
+      "bytes": 12053,
+      "sha256": "0025e2ce5bb1f2a39909633b36e4c406fd1a33eb1c50cbd05d5e3dc90bba9e74",
+      "url": "fontes/public/diagnostico.html.txt"
+    },
+    {
+      "path": "public/entrega.html",
+      "bytes": 4661,
+      "sha256": "dc61052c82eaedb6fe854828c593860bab6b590a6261c86bb0b716a8499a654b",
+      "url": "fontes/public/entrega.html.txt"
+    },
+    {
+      "path": "public/escopo.html",
+      "bytes": 5225,
+      "sha256": "7ad5a914d1d96623cb34aa35cc1693348857b53e1a53eae1f9e820869f5f029f",
+      "url": "fontes/public/escopo.html.txt"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 9115,
+      "sha256": "4260f360fb4daa0bae37427fbf2d686b8251ba13c828f742a314fdb9a44969fe",
+      "url": "fontes/public/index.html.txt"
+    },
+    {
+      "path": "public/investimento.html",
+      "bytes": 5554,
+      "sha256": "e82520db542041351abc431f1e4c91649b07e7d4259624bd0d0cc248c5c7c2e7",
+      "url": "fontes/public/investimento.html.txt"
+    },
+    {
+      "path": "public/privacidade.html",
+      "bytes": 4407,
+      "sha256": "29bcdd5f104d8ea8d05e0a700267f0388561d6a870f1edf0caeddc34423e613b",
+      "url": "fontes/public/privacidade.html.txt"
+    },
+    {
+      "path": "public/projetos/gatinhos-na-surdina.html",
+      "bytes": 4943,
+      "sha256": "c5cb4133c6cb555f0012d23cd454bf7b8d04b301d9144964778490416a66c186",
+      "url": "fontes/public/projetos/gatinhos-na-surdina.html.txt"
+    },
+    {
+      "path": "public/projetos/nota10.html",
+      "bytes": 4729,
+      "sha256": "c624d9695c30355091b86e9652b312c5cb5bbf3650d50b0489ded0a20c943287",
+      "url": "fontes/public/projetos/nota10.html.txt"
+    },
+    {
+      "path": "public/projetos/vereda.html",
+      "bytes": 6040,
+      "sha256": "2a34f902be2ed776604cfb085312d58d66fc9775adf5ec41a644f29aef40d179",
+      "url": "fontes/public/projetos/vereda.html.txt"
+    },
+    {
+      "path": "public/robots.txt",
+      "bytes": 95,
+      "sha256": "06faabacd3512ef3eb2ce7e85cb45bb2eea4c3059120c3e38d5e6dfc2e4f01b7",
+      "url": "fontes/public/robots.txt.txt"
+    },
+    {
+      "path": "public/servicos.html",
+      "bytes": 5694,
+      "sha256": "608d4bdb77b1062908954c98c519ea7f2406cebaa706dddb98b582294127c0d3",
+      "url": "fontes/public/servicos.html.txt"
+    },
+    {
+      "path": "public/sitemap.xml",
+      "bytes": 894,
+      "sha256": "5bacd25477794f7eecba7447e93f8c126a8e89d72e74faf495c5582859ba231a",
+      "url": "fontes/public/sitemap.xml.txt"
+    },
+    {
+      "path": "public/solucoes.html",
+      "bytes": 5506,
+      "sha256": "7fccfabf540d787e22e5e8992fe85ef8469a9379092192483e70793edc291111",
+      "url": "fontes/public/solucoes.html.txt"
+    },
+    {
+      "path": "public/vereda/LEIA-ME.txt",
+      "bytes": 6140,
+      "sha256": "db475073b49f5543793ae819d7b847e98daed3faa2e0710e16b537729e634e30",
+      "url": "fontes/public/vereda/LEIA-ME.txt.txt"
+    },
+    {
+      "path": "public/vereda/README.txt",
+      "bytes": 1297,
+      "sha256": "c38adf3e7714852353b6e07011f82b27a265b39398ad482cc8b586e9feaac6f7",
+      "url": "fontes/public/vereda/README.txt.txt"
+    },
+    {
+      "path": "public/vereda/advocacia/acordo.html",
+      "bytes": 8306,
+      "sha256": "81a885c2e93a55df5f889eb0b955bfa1335ae2347cec474b7a6384b0f79e7e17",
+      "url": "fontes/public/vereda/advocacia/acordo.html.txt"
+    },
+    {
+      "path": "public/vereda/advocacia/atlas.html",
+      "bytes": 8265,
+      "sha256": "8758edff679f3eea1108f4d7afcec8f6c6448d6496451a4056d7ad2379b2fb9a",
+      "url": "fontes/public/vereda/advocacia/atlas.html.txt"
+    },
+    {
+      "path": "public/vereda/advocacia/prisma.html",
+      "bytes": 8290,
+      "sha256": "562f39d174e18c0751d8a77b28995e96b331b3feebc8d3a8a4db190fcb1cd19c",
+      "url": "fontes/public/vereda/advocacia/prisma.html.txt"
+    },
+    {
+      "path": "public/vereda/advocacia/site.css",
+      "bytes": 46254,
+      "sha256": "38721a5bffc222d3ef2a7f7bf5ded3e5685f5b7d22131893fc244ac21c5666d7",
+      "url": "fontes/public/vereda/advocacia/site.css.txt"
+    },
+    {
+      "path": "public/vereda/advocacia/site.js",
+      "bytes": 9472,
+      "sha256": "a18f907b44f9619e14ff7ccb734e9328604edf4396d2e495048ff8e0b11a2a6f",
+      "url": "fontes/public/vereda/advocacia/site.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/FONTES-IMAGENS.txt",
+      "bytes": 1280,
+      "sha256": "8f953f86c0db06a971134f939e5a6574b72738325e2240dacfdbfaf242045d4f",
+      "url": "fontes/public/vereda/assets/FONTES-IMAGENS.txt.txt"
+    },
+    {
+      "path": "public/vereda/assets/anima.css",
+      "bytes": 39,
+      "sha256": "88ac74c8d0ad810a32cea8c3ef588b3b7a45369693f31b2c01c8ddc6c3f787ed",
+      "url": "fontes/public/vereda/assets/anima.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/base.css",
+      "bytes": 7297,
+      "sha256": "d63d27279f493146949e4517a44233bfd65358d0d21407c847d75d9fda7b3aee",
+      "url": "fontes/public/vereda/assets/base.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/cafe-ilustrativo.jpg",
+      "bytes": 63143,
+      "sha256": "2612805b9a3afa2810a5831ca80954be00d9ec5167deb63cf1eec5050fd67cdb"
+    },
+    {
+      "path": "public/vereda/assets/campaigns.js",
+      "bytes": 6870,
+      "sha256": "b461aead4befb44ae0ecb73747a640fe50c8366a1304cb2f3e3b0a24b43a0613",
+      "url": "fontes/public/vereda/assets/campaigns.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/catalog.js",
+      "bytes": 1172,
+      "sha256": "40368940376905b4d53dfebaee62319d0e76c6ebffe72312d88a90f2750b6f48",
+      "url": "fontes/public/vereda/assets/catalog.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/client-runtime.js",
+      "bytes": 7166,
+      "sha256": "5457e27b74000112d45490b3c5098be60391353dfe3c583d8178fc193be7d7d3",
+      "url": "fontes/public/vereda/assets/client-runtime.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/clinic.jpg",
+      "bytes": 158936,
+      "sha256": "bde946754c7f98f82842e9cec2e8e31b6ca58642055c16e2d3d9120223e0bf07"
+    },
+    {
+      "path": "public/vereda/assets/commerce-admin.js",
+      "bytes": 5356,
+      "sha256": "5be1fc1e5ec72482c1a6f0d35f8c987bffa727f3df22855af3e8912a7f59b782",
+      "url": "fontes/public/vereda/assets/commerce-admin.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/commerce-core.js",
+      "bytes": 8700,
+      "sha256": "18383488255e4ac629588d5efdbc2360468274227632dd68387370942188e3fa",
+      "url": "fontes/public/vereda/assets/commerce-core.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/commerce-ui.js",
+      "bytes": 12949,
+      "sha256": "96787b5b1c517ee4fd83c8d6f052f03cf654f6423ec9b81e4efe76f879dd4ec5",
+      "url": "fontes/public/vereda/assets/commerce-ui.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/commerce-v2.css",
+      "bytes": 26038,
+      "sha256": "88b4a646899e58a9b6dc1eeb835121d05d35d7b07edfa854609d21365c25357e",
+      "url": "fontes/public/vereda/assets/commerce-v2.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/commerce-v2.js",
+      "bytes": 4702,
+      "sha256": "2da08100ca005172bfcefd36e63c2711da68b34e43064ba4f7aedf6b2145628c",
+      "url": "fontes/public/vereda/assets/commerce-v2.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/commerce.css",
+      "bytes": 9569,
+      "sha256": "002e442643d877783bc5a1e6ae7fc9d02dcc65a95e76e825d6e6e6e36a8cc31c",
+      "url": "fontes/public/vereda/assets/commerce.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/consult.jpg",
+      "bytes": 170786,
+      "sha256": "88e03fbeb62a1eb6fdf6f2eb13633f493da060ad80121440006da553436de3df"
+    },
+    {
+      "path": "public/vereda/assets/crm-editorial.css",
+      "bytes": 11945,
+      "sha256": "954cfcc21290af7cf2ad9df0378ba3b5bfeabcb62178ef1e343f4f55618b5182",
+      "url": "fontes/public/vereda/assets/crm-editorial.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/crm-routines.css",
+      "bytes": 2283,
+      "sha256": "d911905ac5237718f7aab1f66a446b6a5a0e36fd536519bde119412adf8eb4af",
+      "url": "fontes/public/vereda/assets/crm-routines.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/crm.css",
+      "bytes": 11579,
+      "sha256": "db8b9650cf548d1caf3f5b22e68b1801a0693544f1a3192ca261fd88a10de459",
+      "url": "fontes/public/vereda/assets/crm.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/crm.js",
+      "bytes": 46567,
+      "sha256": "7de8144ae35a8e9d005bfc258ab1bb687837777730313e9d733082ad9113d586",
+      "url": "fontes/public/vereda/assets/crm.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/editorial.css",
+      "bytes": 6848,
+      "sha256": "d6059863fff826421adc571301b54e2ab1d49800e1d0a7ae248210bccadf9083",
+      "url": "fontes/public/vereda/assets/editorial.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/equilibrium.css",
+      "bytes": 39,
+      "sha256": "6a06a1993daa8b733c8cc64a90c7635d57d78851ad2d43e4aaab73eb104db011",
+      "url": "fontes/public/vereda/assets/equilibrium.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/equipe-ilustrativa.jpg",
+      "bytes": 97881,
+      "sha256": "e520f23fa279b39c00014a7d69ac6907feda6df53d0ec2de7d1b17c68953fa5f"
+    },
+    {
+      "path": "public/vereda/assets/experience.css",
+      "bytes": 2475,
+      "sha256": "c316f61dcdac56ff276a02c9ef25a44f5b02984538a2b275ac23f9ede3ebcb8b",
+      "url": "fontes/public/vereda/assets/experience.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/hospitality-v2.css",
+      "bytes": 14577,
+      "sha256": "7cf76d93e5db1318c0eb0b689871d5272d2fa3f89578a6c8d87b07164631bf7f",
+      "url": "fontes/public/vereda/assets/hospitality-v2.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/hospitality-v2.js",
+      "bytes": 5629,
+      "sha256": "ea5e31250d609940a8b8b27b42cbb66b4f0266fd91b7a3b2a19ae6c3b1e6514e",
+      "url": "fontes/public/vereda/assets/hospitality-v2.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/hotel.jpg",
+      "bytes": 200415,
+      "sha256": "c739d2da6519bedef56074e67baf5fa3bec2647f7dcbd9c2390924b66ce5f924"
+    },
+    {
+      "path": "public/vereda/assets/institucional-sobrio.css",
+      "bytes": 39,
+      "sha256": "f1249a3b7d93ade131e99faf8dd4a7482f9124d988aeb409dd2e1a745ba26ab9",
+      "url": "fontes/public/vereda/assets/institucional-sobrio.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/integrations-ui.js",
+      "bytes": 1845,
+      "sha256": "db17850f0b4cc2a18061719cc1b510f2e2d54a8eb996077ac6273266776cffb9",
+      "url": "fontes/public/vereda/assets/integrations-ui.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/jantar-ilustrativo.jpg",
+      "bytes": 77554,
+      "sha256": "967812334b88eaf587b0f9cde748f3079ece0aaead0a76d7e7dfa5f4a5cc79c0"
+    },
+    {
+      "path": "public/vereda/assets/lumina.css",
+      "bytes": 39,
+      "sha256": "081933218236da28c4ad811629177a4e29aa6640975893d4e6d5e861cf1b8eb3",
+      "url": "fontes/public/vereda/assets/lumina.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/margin.js",
+      "bytes": 3250,
+      "sha256": "1dec7363b1a457a95706bd42bb976601a5b211c0a47be129821a8deceeed5959",
+      "url": "fontes/public/vereda/assets/margin.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/massa-ilustrativa.jpg",
+      "bytes": 76916,
+      "sha256": "1e49d390a1f3822e8730644dff885945cc58ce9ada4516c48bf39773e254c35b"
+    },
+    {
+      "path": "public/vereda/assets/office.jpg",
+      "bytes": 129069,
+      "sha256": "2e848ecbdcd81d70be06ddceb4c60e9669417709342ef1def0d91efbe9173b4f"
+    },
+    {
+      "path": "public/vereda/assets/operations-v2.css",
+      "bytes": 8870,
+      "sha256": "8d48782f35759222a3ef00cf94c5405b60f718b71544fd01e754b614250033ba",
+      "url": "fontes/public/vereda/assets/operations-v2.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/pessoa-ilustrativa.jpg",
+      "bytes": 88834,
+      "sha256": "aabc5ae940b308f0827ea8a8bcbece2368142763f4979c9723b6036bacf8e2e6"
+    },
+    {
+      "path": "public/vereda/assets/prive.css",
+      "bytes": 39,
+      "sha256": "b7f7b08535fb56c6cbb5ece92c5be4f9fbaf5f065988ac36af31afe0ea0807a7",
+      "url": "fontes/public/vereda/assets/prive.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/professional-v2.css",
+      "bytes": 24519,
+      "sha256": "123ca2187e9157fd1ff0247d78f155a998a08979b863cb751d78f3a8e895b2e9",
+      "url": "fontes/public/vereda/assets/professional-v2.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/professional-v2.js",
+      "bytes": 10312,
+      "sha256": "b6b8e21979be341d3c9b4a2e60e46422cb6f5d1cc57ed7f9438b027b2d0cf0c9",
+      "url": "fontes/public/vereda/assets/professional-v2.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/profile-editor.js",
+      "bytes": 3219,
+      "sha256": "8749a444afefa394268d5198fd636f54705718f2a04164d885b44e458bbb1ac6",
+      "url": "fontes/public/vereda/assets/profile-editor.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/room-core.js",
+      "bytes": 524,
+      "sha256": "75e44e4a7a2248e44c800fd65a20afa96367515b7ab5e1b02930df55a9b58f7a",
+      "url": "fontes/public/vereda/assets/room-core.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/room.js",
+      "bytes": 2891,
+      "sha256": "4cf6da70856316a8623fee304bc59bc3ffeecce18f831936a9d9718be19b8a4d",
+      "url": "fontes/public/vereda/assets/room.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/sector-modern.css",
+      "bytes": 5738,
+      "sha256": "dc889b14e372db61577527de3a772f80786e50b6426aa7d45daa7cbca00b576b",
+      "url": "fontes/public/vereda/assets/sector-modern.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/stay-core.js",
+      "bytes": 1408,
+      "sha256": "14ba9f1c5c02cfba6c94ad36bf6b146fcc97f273aabb27ab530fb39c3a92d609",
+      "url": "fontes/public/vereda/assets/stay-core.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/stay-ui.js",
+      "bytes": 4015,
+      "sha256": "0b196ddc5a99a0dd7f0e7a600ca5b92486686da7aefa23da18dabf901b201fb6",
+      "url": "fontes/public/vereda/assets/stay-ui.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/stay.css",
+      "bytes": 1999,
+      "sha256": "cd7dabdba3012a8713f4300fff847b356b5fd19c29100e05ba93e34c9c991917",
+      "url": "fontes/public/vereda/assets/stay.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/stays.css",
+      "bytes": 39,
+      "sha256": "7ff03df2f8dc3835bf960612a187ea57cd9691c93ec5870586738b0fc7d8e228",
+      "url": "fontes/public/vereda/assets/stays.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/studio-core.js",
+      "bytes": 5394,
+      "sha256": "99c0ba74b0cf19fa9e64860a1a8323f01811f2da571a74e343f391e7f3028b20",
+      "url": "fontes/public/vereda/assets/studio-core.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/studio.css",
+      "bytes": 3960,
+      "sha256": "8d2c60aeace875bf14ea470c47e5d21657fef9310240e0d402895d91bdc42627",
+      "url": "fontes/public/vereda/assets/studio.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/suite.jpg",
+      "bytes": 236581,
+      "sha256": "a9e54e6f704c029ab50f3fbbfdb0bc5f8292143b7de04293b8e32857c8e0594e"
+    },
+    {
+      "path": "public/vereda/assets/team-core.js",
+      "bytes": 4409,
+      "sha256": "7ebaae99a9fb8210e1d4331fb2699b449d12bceb3a086acde9ed2da27f70f054",
+      "url": "fontes/public/vereda/assets/team-core.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/team.js",
+      "bytes": 11686,
+      "sha256": "e7636a65e0d7f9a095d6634f2ebc01e608ef303e0a8f4b4304e5c916f1780264",
+      "url": "fontes/public/vereda/assets/team.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/template.js",
+      "bytes": 1890,
+      "sha256": "6fbcdcc5396b6b11bdf323438c2f522ea5c24ee379f89dc6403330f9aaa705a4",
+      "url": "fontes/public/vereda/assets/template.js.txt"
+    },
+    {
+      "path": "public/vereda/assets/templates.css",
+      "bytes": 8892,
+      "sha256": "154c7f53d9a217d427445f258596008407fffd649a249b1ea6a6510af1356256",
+      "url": "fontes/public/vereda/assets/templates.css.txt"
+    },
+    {
+      "path": "public/vereda/assets/urban.jpg",
+      "bytes": 207726,
+      "sha256": "85c69f1b0063060014e44f1bf1634e37a0e667121f5b2dda5563ceb2cab2505c"
+    },
+    {
+      "path": "public/vereda/assets/workspace-modern.css",
+      "bytes": 1687,
+      "sha256": "4dcce86c12f2fafa65ecea5bb49e2e351976fc274f9c5b5344e4f53508e1973f",
+      "url": "fontes/public/vereda/assets/workspace-modern.css.txt"
+    },
+    {
+      "path": "public/vereda/campanhas.html",
+      "bytes": 6340,
+      "sha256": "88d6f9965ee8c70124334dd1daca812b33e15f054e8a18a7b68bcd17fa3c12bd",
+      "url": "fontes/public/vereda/campanhas.html.txt"
+    },
+    {
+      "path": "public/vereda/canal-direto.html",
+      "bytes": 7580,
+      "sha256": "823060dba2ae33c34040879d9169daa9ffd747db6b95fb6c5bf2569d852cdeb8",
+      "url": "fontes/public/vereda/canal-direto.html.txt"
+    },
+    {
+      "path": "public/vereda/central.html",
+      "bytes": 5555,
+      "sha256": "d38f6441b2e937d13e7312f8ad7bf5e1557ae5a6776f13fdde2fae7bf3463819",
+      "url": "fontes/public/vereda/central.html.txt"
+    },
+    {
+      "path": "public/vereda/config/anima.json",
+      "bytes": 1729,
+      "sha256": "bd1b93c719dd3d3c073bd43444c16291ef8dafa097912eae34da123f868437d6",
+      "url": "fontes/public/vereda/config/anima.json.txt"
+    },
+    {
+      "path": "public/vereda/config/equilibrium.json",
+      "bytes": 1755,
+      "sha256": "d9778a6b357001c6662bd164f4c121df799952d2909ef66d7786cc7eefde34c6",
+      "url": "fontes/public/vereda/config/equilibrium.json.txt"
+    },
+    {
+      "path": "public/vereda/config/institucional-sobrio.json",
+      "bytes": 1703,
+      "sha256": "4ba8ae05f8ce2043480a85fd0af84896b50fb0ff684ca8749050e4281d70683d",
+      "url": "fontes/public/vereda/config/institucional-sobrio.json.txt"
+    },
+    {
+      "path": "public/vereda/config/lumina.json",
+      "bytes": 1557,
+      "sha256": "d0d73015426de55e992a6a5e412c4ee31c243c2d2af295ec8903f6ff976a3c67",
+      "url": "fontes/public/vereda/config/lumina.json.txt"
+    },
+    {
+      "path": "public/vereda/config/prive.json",
+      "bytes": 1605,
+      "sha256": "a65a2e6857624f72a596b5c8c7e4e451eebeffcd0d929d6fb682e4176a2ac7a2",
+      "url": "fontes/public/vereda/config/prive.json.txt"
+    },
+    {
+      "path": "public/vereda/config/stays.json",
+      "bytes": 1574,
+      "sha256": "100ec58e0ef3a362104b963cd4cd1b530c98b11f944dcc06dcafb543659656e0",
+      "url": "fontes/public/vereda/config/stays.json.txt"
+    },
+    {
+      "path": "public/vereda/crm.html",
+      "bytes": 7995,
+      "sha256": "d908a3d6ce76f5bb0ecd5c51ba9f4244610438e634478a0e41ea487a30325a1c",
+      "url": "fontes/public/vereda/crm.html.txt"
+    },
+    {
+      "path": "public/vereda/equipe.html",
+      "bytes": 8811,
+      "sha256": "ec8cf6cbbf43c0bd9fa98058bd0c400b939c99600c9a9c2a43ab923bc7908b7e",
+      "url": "fontes/public/vereda/equipe.html.txt"
+    },
+    {
+      "path": "public/vereda/estetica/aurora.html",
+      "bytes": 8935,
+      "sha256": "5e5de26f0ac853b4c0adcab338c17d4bdea1ed530f750bf417c77549192fb7e4",
+      "url": "fontes/public/vereda/estetica/aurora.html.txt"
+    },
+    {
+      "path": "public/vereda/estetica/essentia.html",
+      "bytes": 8978,
+      "sha256": "10468648a4548c50df619425d6d927842b48256beb64f45084a3336a3cdcd03f",
+      "url": "fontes/public/vereda/estetica/essentia.html.txt"
+    },
+    {
+      "path": "public/vereda/estetica/site.css",
+      "bytes": 42572,
+      "sha256": "012eb97843c345a47cfd81f3fbff7a010cba6d870ed6accfcc809d5ea0cd07c2",
+      "url": "fontes/public/vereda/estetica/site.css.txt"
+    },
+    {
+      "path": "public/vereda/estetica/site.js",
+      "bytes": 8699,
+      "sha256": "7dee59befdab25a02482b952b132010b6a21d646ccd503e8cf1542e43faea48c",
+      "url": "fontes/public/vereda/estetica/site.js.txt"
+    },
+    {
+      "path": "public/vereda/estetica/viva.html",
+      "bytes": 8843,
+      "sha256": "ec2ef1bc76bfdb90268d5915dd27792de70ddc1a9c04051db4169e4482a4509a",
+      "url": "fontes/public/vereda/estetica/viva.html.txt"
+    },
+    {
+      "path": "public/vereda/hotelaria/estadia.html",
+      "bytes": 3306,
+      "sha256": "dab805f05ad488281ea0fcc52c0756adb27b1a4d7d7550aef7bfcaee3a5517ba",
+      "url": "fontes/public/vereda/hotelaria/estadia.html.txt"
+    },
+    {
+      "path": "public/vereda/hotelaria/index.html",
+      "bytes": 1638,
+      "sha256": "0b5e540af449b354cb25af76aa04109e352f30ae71f6166693086171e590532b",
+      "url": "fontes/public/vereda/hotelaria/index.html.txt"
+    },
+    {
+      "path": "public/vereda/hotelaria/lumina.html",
+      "bytes": 5644,
+      "sha256": "b90788fb88fa40ee5f17238c83a847c0fdc1fc5de87edbba113b7b80ed25d504",
+      "url": "fontes/public/vereda/hotelaria/lumina.html.txt"
+    },
+    {
+      "path": "public/vereda/hotelaria/prive.html",
+      "bytes": 5676,
+      "sha256": "fc2dbd3230942eb41d5234255da1ebe90dbdfcb446d471353701858d86c32f6a",
+      "url": "fontes/public/vereda/hotelaria/prive.html.txt"
+    },
+    {
+      "path": "public/vereda/hotelaria/stays.html",
+      "bytes": 5942,
+      "sha256": "f3c7f48a1a6d469617972bce19d3e60f6158d998689bac29afdfb4f33bc28234",
+      "url": "fontes/public/vereda/hotelaria/stays.html.txt"
+    },
+    {
+      "path": "public/vereda/imobiliaria/app.js",
+      "bytes": 21206,
+      "sha256": "d27c7e1775f87a24f43662a2a0f28e04783ed8f03490ba5e692173016ebc8ad3",
+      "url": "fontes/public/vereda/imobiliaria/app.js.txt"
+    },
+    {
+      "path": "public/vereda/imobiliaria/client-config.json",
+      "bytes": 452,
+      "sha256": "7f103aaeb187fcd70a034def7ee81920118f7e6ac0254fc0c46084d260e6be2c",
+      "url": "fontes/public/vereda/imobiliaria/client-config.json.txt"
+    },
+    {
+      "path": "public/vereda/imobiliaria/core.js",
+      "bytes": 7685,
+      "sha256": "cb10025ee6608fdab836c38db26ee9f2adffc00cd44f44eb696959da1d38e00c",
+      "url": "fontes/public/vereda/imobiliaria/core.js.txt"
+    },
+    {
+      "path": "public/vereda/imobiliaria/index.html",
+      "bytes": 17276,
+      "sha256": "a35acac101da045a240637a306202bf1e1e151c149db75a806344b26ce341c3f",
+      "url": "fontes/public/vereda/imobiliaria/index.html.txt"
+    },
+    {
+      "path": "public/vereda/imobiliaria/style.css",
+      "bytes": 18923,
+      "sha256": "541be2c7ccc81fd59d2ed7da29f0e8e650dce1f39b529749287ebc059bf10aea",
+      "url": "fontes/public/vereda/imobiliaria/style.css.txt"
+    },
+    {
+      "path": "public/vereda/index.html",
+      "bytes": 18653,
+      "sha256": "a843e3c26fd7cf0625356835128aea737e364870c19c4bb169f1271f65a992bb",
+      "url": "fontes/public/vereda/index.html.txt"
+    },
+    {
+      "path": "public/vereda/integracoes.html",
+      "bytes": 91815,
+      "sha256": "42f2a4d761019c71dca8d41b799bfa868a499cf4887c3cf11d92c17da0162508",
+      "url": "fontes/public/vereda/integracoes.html.txt"
+    },
+    {
+      "path": "public/vereda/integracoes.json",
+      "bytes": 19998,
+      "sha256": "1aa7bab41b5c61605ceeb215ea8fc50148c257e33e24095efc354ad3ec71c46e",
+      "url": "fontes/public/vereda/integracoes.json.txt"
+    },
+    {
+      "path": "public/vereda/medicina/elo.html",
+      "bytes": 9155,
+      "sha256": "10d4bacb8d691c97756a938b9a1c114490b0e92622032988bb0abfa1932e0114",
+      "url": "fontes/public/vereda/medicina/elo.html.txt"
+    },
+    {
+      "path": "public/vereda/medicina/integra.html",
+      "bytes": 9404,
+      "sha256": "34b64e966bcd459632175d53b5318384fa8c62c4734ddd1966ca52466c54ffc7",
+      "url": "fontes/public/vereda/medicina/integra.html.txt"
+    },
+    {
+      "path": "public/vereda/medicina/saude.css",
+      "bytes": 28142,
+      "sha256": "798cbfdc55e9b7079090f1a304b2e4bdad7531aa619727db5c1c6c56a937a70e",
+      "url": "fontes/public/vereda/medicina/saude.css.txt"
+    },
+    {
+      "path": "public/vereda/medicina/saude.js",
+      "bytes": 5452,
+      "sha256": "c05d99f83e09e14144bda612e1330bce56dba3f5887b67a4418324c167a1265b",
+      "url": "fontes/public/vereda/medicina/saude.js.txt"
+    },
+    {
+      "path": "public/vereda/modulos.html",
+      "bytes": 5457,
+      "sha256": "6a2a340639320c35b66048b2cb7c0c0ff191621310622ac14881cd5f4a6886a9",
+      "url": "fontes/public/vereda/modulos.html.txt"
+    },
+    {
+      "path": "public/vereda/odontologia/saude.css",
+      "bytes": 28142,
+      "sha256": "798cbfdc55e9b7079090f1a304b2e4bdad7531aa619727db5c1c6c56a937a70e",
+      "url": "fontes/public/vereda/odontologia/saude.css.txt"
+    },
+    {
+      "path": "public/vereda/odontologia/saude.js",
+      "bytes": 5452,
+      "sha256": "c05d99f83e09e14144bda612e1330bce56dba3f5887b67a4418324c167a1265b",
+      "url": "fontes/public/vereda/odontologia/saude.js.txt"
+    },
+    {
+      "path": "public/vereda/odontologia/sorriso.html",
+      "bytes": 8775,
+      "sha256": "a14232ff41f733a09c8cdc64e8b6b118f376e155b68495e1cd97895bc8269463",
+      "url": "fontes/public/vereda/odontologia/sorriso.html.txt"
+    },
+    {
+      "path": "public/vereda/operacao.html",
+      "bytes": 4554,
+      "sha256": "46a680937985576dffc8fc7e6506ed322b479cfd2e96d1074ef3a6d6b6c00131",
+      "url": "fontes/public/vereda/operacao.html.txt"
+    },
+    {
+      "path": "public/vereda/personalizar.html",
+      "bytes": 3896,
+      "sha256": "f3acc2679f1e1756d81f50b4c8b5634660edfcf276ca912d0165eded9373aa8f",
+      "url": "fontes/public/vereda/personalizar.html.txt"
+    },
+    {
+      "path": "public/vereda/petshop/FONTES-IMAGENS.txt",
+      "bytes": 569,
+      "sha256": "04b3cec86c3869198c88d9085f865d8982ce6a970b3ddb5af37f4e00da91a232",
+      "url": "fontes/public/vereda/petshop/FONTES-IMAGENS.txt.txt"
+    },
+    {
+      "path": "public/vereda/petshop/companhia.html",
+      "bytes": 8673,
+      "sha256": "41af36c0e7babae8eaa7cb8211d1ccff6e8d45b56e3c79d56e033149dc81b294",
+      "url": "fontes/public/vereda/petshop/companhia.html.txt"
+    },
+    {
+      "path": "public/vereda/petshop/editorial-ilustrativa.jpg",
+      "bytes": 100144,
+      "sha256": "449f095a46b60ddcf8bcc99a7308c2d35286f322383b55485690ac33de1d9ab5"
+    },
+    {
+      "path": "public/vereda/petshop/review.css",
+      "bytes": 4065,
+      "sha256": "6a5b7d8c43de9c13253ab49b45ea23b8a0a618ae8dc006304fa2718fffa97a81",
+      "url": "fontes/public/vereda/petshop/review.css.txt"
+    },
+    {
+      "path": "public/vereda/pizzaria/FONTES-IMAGENS.txt",
+      "bytes": 565,
+      "sha256": "168ac4da32f55666549925b33c9528a20d0ef3f4f48a2c8048eb087c854c5ad6",
+      "url": "fontes/public/vereda/pizzaria/FONTES-IMAGENS.txt.txt"
+    },
+    {
+      "path": "public/vereda/pizzaria/editorial-ilustrativa.jpg",
+      "bytes": 269107,
+      "sha256": "b48091be7bfa1eb9ba516cfeac08ab32fea917c1fdb1285862f9c9ab1a2cd857"
+    },
+    {
+      "path": "public/vereda/pizzaria/forno.html",
+      "bytes": 7479,
+      "sha256": "fc3212aefd21ff57c5eb6725150df67e6a9970bcd6bfffa838b863bcb0de1759",
+      "url": "fontes/public/vereda/pizzaria/forno.html.txt"
+    },
+    {
+      "path": "public/vereda/pizzaria/review.css",
+      "bytes": 4065,
+      "sha256": "6a5b7d8c43de9c13253ab49b45ea23b8a0a618ae8dc006304fa2718fffa97a81",
+      "url": "fontes/public/vereda/pizzaria/review.css.txt"
+    },
+    {
+      "path": "public/vereda/por-setor.html",
+      "bytes": 20436,
+      "sha256": "9e25e49d17c995c9b6516af514a433b8bce61a765cfe6082acca6897816c8934",
+      "url": "fontes/public/vereda/por-setor.html.txt"
+    },
+    {
+      "path": "public/vereda/portal/README.txt",
+      "bytes": 6169,
+      "sha256": "be8578fb5c8beca33632c50771f636ea9ce8981a19fe1719903357b2e2053bf6",
+      "url": "fontes/public/vereda/portal/README.txt.txt"
+    },
+    {
+      "path": "public/vereda/portal/app.js",
+      "bytes": 36412,
+      "sha256": "118bcedd33420894ede815d9578ecc18751e293582950d9bedfee67f6238a103",
+      "url": "fontes/public/vereda/portal/app.js.txt"
+    },
+    {
+      "path": "public/vereda/portal/core.js",
+      "bytes": 21527,
+      "sha256": "5f248e4d5eac190c560a8be919fba78f2173c5e8f899d2c49591d721987bc809",
+      "url": "fontes/public/vereda/portal/core.js.txt"
+    },
+    {
+      "path": "public/vereda/portal/index.html",
+      "bytes": 4361,
+      "sha256": "5aaa78408571e903effd7fd755fae02df6bbc4e4b767cc1fa61d7cf2522bb572",
+      "url": "fontes/public/vereda/portal/index.html.txt"
+    },
+    {
+      "path": "public/vereda/portal/portal.css",
+      "bytes": 17570,
+      "sha256": "64f9cf0b961272d8aa1a71f167dd9964f78e3257361bf4e5305460d80a3d7cb0",
+      "url": "fontes/public/vereda/portal/portal.css.txt"
+    },
+    {
+      "path": "public/vereda/privacidade.html",
+      "bytes": 2003,
+      "sha256": "238e9a5f8f4b60cca0411d86022fd404c258847bfb24ec5f6324b160a793042b",
+      "url": "fontes/public/vereda/privacidade.html.txt"
+    },
+    {
+      "path": "public/vereda/psiquiatria/FONTES-IMAGENS.txt",
+      "bytes": 738,
+      "sha256": "711d530eabe08c207ec5a96fd21a88e06867249cf93ca9e36da1d87862acbd45",
+      "url": "fontes/public/vereda/psiquiatria/FONTES-IMAGENS.txt.txt"
+    },
+    {
+      "path": "public/vereda/psiquiatria/anima.html",
+      "bytes": 9489,
+      "sha256": "4eda6625ff67940de9b73891bc685c7c73aaaac63667ad49697d7c826f6ab8ae",
+      "url": "fontes/public/vereda/psiquiatria/anima.html.txt"
+    },
+    {
+      "path": "public/vereda/psiquiatria/equilibrium-acolhimento.jpg",
+      "bytes": 144423,
+      "sha256": "15fae195b6433aa1591f6466f8cfa2ee3e2823f1c4b5135aec68743fb8aec79e"
+    },
+    {
+      "path": "public/vereda/psiquiatria/equilibrium.html",
+      "bytes": 9642,
+      "sha256": "e56aedd5701bce5af1653d3f4612d88daf9b570fd736758bc0a87f67c2701279",
+      "url": "fontes/public/vereda/psiquiatria/equilibrium.html.txt"
+    },
+    {
+      "path": "public/vereda/psiquiatria/index.html",
+      "bytes": 1692,
+      "sha256": "4183b5a473dac4ac851afc31e8a522e9ce1313fd2677a066f1ce53f64762e868",
+      "url": "fontes/public/vereda/psiquiatria/index.html.txt"
+    },
+    {
+      "path": "public/vereda/psiquiatria/institucional-presenca.jpg",
+      "bytes": 387821,
+      "sha256": "1a0491353f0023e6c5acb4ae7ebbf5a215939aa5af8c212a15e201414e28a82c"
+    },
+    {
+      "path": "public/vereda/psiquiatria/institucional-sobrio.html",
+      "bytes": 9756,
+      "sha256": "8e9c3919272992025e99d693dfc884de1a782a0c48ae93f0d417480528b090cf",
+      "url": "fontes/public/vereda/psiquiatria/institucional-sobrio.html.txt"
+    },
+    {
+      "path": "public/vereda/referencias.html",
+      "bytes": 32951,
+      "sha256": "8f4e55eb402a4b46d463d15c727bd6d01fffd40b006e725447d5dd9e7726bd46",
+      "url": "fontes/public/vereda/referencias.html.txt"
+    },
+    {
+      "path": "public/vereda/sala.html",
+      "bytes": 5401,
+      "sha256": "18652ad17d234f6688bc9ac6090d5e4d66fa685e64db872445b74f59efe3f06b",
+      "url": "fontes/public/vereda/sala.html.txt"
+    },
+    {
+      "path": "public/vereda/salao/FONTES-IMAGENS.txt",
+      "bytes": 566,
+      "sha256": "a2445a59ecb7f3363f2b20aaf7ef0d3c869fe582cbddfb1c9af87d92a29ec147",
+      "url": "fontes/public/vereda/salao/FONTES-IMAGENS.txt.txt"
+    },
+    {
+      "path": "public/vereda/salao/editorial-ilustrativa.jpg",
+      "bytes": 128293,
+      "sha256": "c3bf163f5aac3243c7502545864ec2ab7c157ae25f7606488b6424a8fb9ea837"
+    },
+    {
+      "path": "public/vereda/salao/review.css",
+      "bytes": 4065,
+      "sha256": "6a5b7d8c43de9c13253ab49b45ea23b8a0a618ae8dc006304fa2718fffa97a81",
+      "url": "fontes/public/vereda/salao/review.css.txt"
+    },
+    {
+      "path": "public/vereda/salao/ritual.html",
+      "bytes": 5928,
+      "sha256": "2a4079285c30e04385807b86f6c2aae214f437851f24ee35b96979b550d2d2d1",
+      "url": "fontes/public/vereda/salao/ritual.html.txt"
+    },
+    {
+      "path": "public/vereda/saude/elo.html",
+      "bytes": 11070,
+      "sha256": "58d06ed70a372176ec0fc06588efe6f014b8563420a8be2bb4ea8d1f091b4ed7",
+      "url": "fontes/public/vereda/saude/elo.html.txt"
+    },
+    {
+      "path": "public/vereda/saude/integra.html",
+      "bytes": 11890,
+      "sha256": "50bf66821885c3fb990b72bc771684d474904e489d33dac70c33efb670fd31ff",
+      "url": "fontes/public/vereda/saude/integra.html.txt"
+    },
+    {
+      "path": "public/vereda/saude/saude.css",
+      "bytes": 28142,
+      "sha256": "798cbfdc55e9b7079090f1a304b2e4bdad7531aa619727db5c1c6c56a937a70e",
+      "url": "fontes/public/vereda/saude/saude.css.txt"
+    },
+    {
+      "path": "public/vereda/saude/saude.js",
+      "bytes": 5452,
+      "sha256": "c05d99f83e09e14144bda612e1330bce56dba3f5887b67a4418324c167a1265b",
+      "url": "fontes/public/vereda/saude/saude.js.txt"
+    },
+    {
+      "path": "public/vereda/saude/sorriso.html",
+      "bytes": 11140,
+      "sha256": "c1bc793abcb66101e552b33284d2e483b57c1f907b81a5e172817c2073a2c517",
+      "url": "fontes/public/vereda/saude/sorriso.html.txt"
+    },
+    {
+      "path": "work/portal-v3/portal-core.test.mjs",
+      "bytes": 7614,
+      "sha256": "6f060f7ce6d8132d09f0cb56607a53915387d9f609c4184dc33ee7bc8a37f491",
+      "url": "fontes/work/portal-v3/portal-core.test.mjs.txt"
+    }
+  ]
+}

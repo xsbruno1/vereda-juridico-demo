@@ -1,0 +1,352 @@
+"""Local domain reference: explicit identity boundary, live authorization and encrypted records.
+
+This module is NOT an authentication provider or a deployed multi-tenant service.
+Only a trusted server adapter may supply IdentityVerifier and provision membership.
+"""
+from __future__ import annotations
+
+from dataclasses import dataclass
+import hashlib
+import json
+import math
+import re
+import secrets
+import sqlite3
+import threading
+import time
+from typing import Callable, Protocol
+from uuid import uuid4
+
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+
+class AccessDenied(PermissionError):
+    pass
+
+
+@dataclass(frozen=True)
+class Identity:
+    user_id: str
+    session_id: str
+    expires_at: float
+    assurance: str
+
+
+class IdentityVerifier(Protocol):
+    def verify(self, session_token: str) -> Identity:
+        """Verify issuer, audience, signature, expiry AND current revocation server-side.
+
+        Do not construct this result from request JSON, browser storage or editable JWT
+        user_metadata. Production staff access requires MFA (aal2).
+        """
+
+
+class Store:
+    """SQLite reference repository for local tests; keys must come from an external vault.
+
+    No ephemeral/default encryption key is generated. A production shared database,
+    backup/restore, distributed transactions and access transport are separate work.
+    """
+    def __init__(self, key_resolver: Callable[[str, int], bytes], path=':memory:'):
+        self.key_resolver = key_resolver
+        self.lock = threading.RLock()
+        self.db = sqlite3.connect(path, check_same_thread=False)
+        self.db.row_factory = sqlite3.Row
+        self.db.execute('PRAGMA foreign_keys=ON')
+        self.db.executescript('''
+          CREATE TABLE IF NOT EXISTS portal_subjects (
+            tenant TEXT NOT NULL, id TEXT NOT NULL, user_id TEXT NOT NULL,
+            active INTEGER NOT NULL DEFAULT 1 CHECK(active IN(0,1)),
+            PRIMARY KEY(tenant,id), UNIQUE(tenant,user_id));
+          CREATE TABLE IF NOT EXISTS portal_memberships (
+            tenant TEXT NOT NULL, user_id TEXT NOT NULL, role TEXT NOT NULL
+              CHECK(role IN('owner','reception','clinician','lawyer','finance')),
+            active INTEGER NOT NULL DEFAULT 1 CHECK(active IN(0,1)),
+            PRIMARY KEY(tenant,user_id));
+          CREATE TABLE IF NOT EXISTS portal_assignments (
+            tenant TEXT NOT NULL, subject_id TEXT NOT NULL, user_id TEXT NOT NULL,
+            PRIMARY KEY(tenant,subject_id,user_id),
+            FOREIGN KEY(tenant,subject_id) REFERENCES portal_subjects(tenant,id),
+            FOREIGN KEY(tenant,user_id) REFERENCES portal_memberships(tenant,user_id));
+          CREATE TABLE IF NOT EXISTS portal_records (
+            tenant TEXT NOT NULL, id TEXT NOT NULL, subject_id TEXT NOT NULL,
+            category TEXT NOT NULL CHECK(category IN('administrative','clinical','legal')),
+            key_version INTEGER NOT NULL, ciphertext BLOB NOT NULL,
+            created_by TEXT NOT NULL, created_at REAL NOT NULL,
+            released INTEGER NOT NULL DEFAULT 0 CHECK(released IN(0,1)),
+            released_by TEXT, released_at REAL,
+            PRIMARY KEY(tenant,id),
+            FOREIGN KEY(tenant,subject_id) REFERENCES portal_subjects(tenant,id));
+          CREATE TABLE IF NOT EXISTS portal_shares (
+            token_hash TEXT PRIMARY KEY, tenant TEXT NOT NULL, record_id TEXT NOT NULL,
+            subject_id TEXT NOT NULL, owner_user TEXT NOT NULL, recipient_user TEXT NOT NULL,
+            action TEXT NOT NULL CHECK(action IN('view','download')),
+            expires_at REAL NOT NULL, revoked INTEGER NOT NULL DEFAULT 0 CHECK(revoked IN(0,1)),
+            FOREIGN KEY(tenant,record_id) REFERENCES portal_records(tenant,id));
+          CREATE TABLE IF NOT EXISTS portal_access_requests (
+            id TEXT PRIMARY KEY, tenant TEXT NOT NULL, subject_id TEXT NOT NULL,
+            requested_by TEXT NOT NULL, created_at REAL NOT NULL,
+            status TEXT NOT NULL CHECK(status IN('requested','under_review','fulfilled')),
+            FOREIGN KEY(tenant,subject_id) REFERENCES portal_subjects(tenant,id));
+          CREATE TABLE IF NOT EXISTS portal_invites (
+            token_hash TEXT PRIMARY KEY, tenant TEXT NOT NULL, subject_id TEXT NOT NULL,
+            recipient_user TEXT NOT NULL, expires_at REAL NOT NULL,
+            revoked INTEGER NOT NULL DEFAULT 0 CHECK(revoked IN(0,1)), accepted_at REAL,
+            FOREIGN KEY(tenant,subject_id) REFERENCES portal_subjects(tenant,id));
+          CREATE TABLE IF NOT EXISTS portal_audit (
+            id TEXT PRIMARY KEY, at REAL NOT NULL, tenant TEXT NOT NULL,
+            actor TEXT NOT NULL, action TEXT NOT NULL, target TEXT NOT NULL,
+            outcome TEXT NOT NULL CHECK(outcome IN('allowed','denied')));
+          CREATE TRIGGER IF NOT EXISTS portal_audit_no_update BEFORE UPDATE ON portal_audit
+            BEGIN SELECT RAISE(ABORT,'append-only audit'); END;
+          CREATE TRIGGER IF NOT EXISTS portal_audit_no_delete BEFORE DELETE ON portal_audit
+            BEGIN SELECT RAISE(ABORT,'append-only audit'); END;
+          CREATE INDEX IF NOT EXISTS portal_record_subject ON portal_records(tenant,subject_id);
+        ''')
+
+    def close(self):
+        self.db.close()
+
+    def cipher(self, tenant, version):
+        if type(version) is not int or version < 1:
+            raise ValueError('Invalid encryption key version')
+        key = self.key_resolver(tenant, version)
+        if not isinstance(key, bytes) or len(key) != 32:
+            raise ValueError('An external 256-bit key is required')
+        return AESGCM(key)
+
+
+class Portal:
+    def __init__(self, store: Store, verifier: IdentityVerifier, now=time.time):
+        self.store, self.verifier, self.now = store, verifier, now
+
+    def identify(self, token: str) -> Identity:
+        identity = self.verifier.verify(token)
+        if (not isinstance(identity, Identity) or not isinstance(identity.user_id, str)
+                or not re.fullmatch(r'[A-Za-z0-9_-]{1,128}', identity.user_id)
+                or not isinstance(identity.session_id, str)
+                or not re.fullmatch(r'[A-Za-z0-9_-]{1,256}', identity.session_id)
+                or type(identity.expires_at) not in (int, float) or not math.isfinite(identity.expires_at)
+                or identity.assurance not in ('aal1','aal2') or identity.expires_at <= self.now()):
+            raise AccessDenied('Sessão inválida ou expirada.')
+        return identity
+
+    def _audit(self, identity, tenant, action, target, allowed):
+        # Intentionally no symptoms, record content, contact details, token or medication.
+        self.store.db.execute('INSERT INTO portal_audit VALUES(?,?,?,?,?,?,?)',
+            (str(uuid4()), self.now(), tenant, identity.user_id, action, target,
+             'allowed' if allowed else 'denied'))
+
+    def _subject(self, tenant, subject_id):
+        return self.store.db.execute(
+            'SELECT * FROM portal_subjects WHERE tenant=? AND id=? AND active=1',
+            (tenant, subject_id)).fetchone()
+
+    def _owner(self, identity, tenant, subject_id):
+        subject = self._subject(tenant, subject_id)
+        return bool(subject and subject['user_id'] == identity.user_id)
+
+    def staff_role(self, identity, tenant):
+        row = self.store.db.execute(
+            'SELECT role FROM portal_memberships WHERE tenant=? AND user_id=? AND active=1',
+            (tenant, identity.user_id)).fetchone()
+        return row['role'] if row and identity.assurance == 'aal2' else None
+
+    def _staff(self, identity, tenant, subject_id, category):
+        if not self._subject(tenant, subject_id):
+            return False
+        role = self.staff_role(identity, tenant)
+        if category == 'administrative' and role in ('owner', 'reception'):
+            return True
+        if role not in ('clinician', 'lawyer'):
+            return False
+        if category not in ('administrative', 'clinical' if role == 'clinician' else 'legal'):
+            return False
+        return self.store.db.execute(
+            'SELECT 1 FROM portal_assignments WHERE tenant=? AND subject_id=? AND user_id=?',
+            (tenant, subject_id, identity.user_id)).fetchone() is not None
+
+    def _record(self, tenant, record_id):
+        return self.store.db.execute('SELECT * FROM portal_records WHERE tenant=? AND id=?',
+                                     (tenant, record_id)).fetchone()
+
+    @staticmethod
+    def _aad(tenant, record_id, subject_id, category, key_version):
+        return json.dumps([tenant, record_id, subject_id, category, key_version],
+                          separators=(',', ':')).encode()
+
+    def _decrypt(self, record):
+        aad = self._aad(*(record[k] for k in ('tenant','id','subject_id','category','key_version')))
+        cipher = record['ciphertext']
+        return json.loads(self.store.cipher(record['tenant'], record['key_version']).decrypt(cipher[:12], cipher[12:], aad))
+
+    def create_record(self, token, tenant, subject_id, category, payload, *, key_version=1):
+        identity = self.identify(token)
+        if category not in ('administrative', 'clinical', 'legal') or not isinstance(payload, dict):
+            raise ValueError('Categoria ou conteúdo inválido.')
+        if category == 'administrative':
+            # Reception records have no free-text note, symptoms, prescription or diagnosis field.
+            if (set(payload) - {'appointment_id','start_at','end_at','resource_id','status'}
+                    or any(not isinstance(v,str) or len(v)>160 for v in payload.values())):
+                raise ValueError('Campos administrativos não podem conter prontuário ou relato clínico.')
+        raw = json.dumps(payload, ensure_ascii=False, allow_nan=False).encode('utf-8')
+        if len(raw) > 65536:
+            raise ValueError('Conteúdo excede o limite; anexos precisam de armazenamento privado.')
+        with self.store.lock, self.store.db:
+            allowed = self._staff(identity, tenant, subject_id, category)
+            self._audit(identity, tenant, 'create_record', subject_id, allowed)
+            if allowed:
+                record_id = str(uuid4())
+                nonce = secrets.token_bytes(12)
+                aad = self._aad(tenant, record_id, subject_id, category, key_version)
+                ciphertext = nonce + self.store.cipher(tenant, key_version).encrypt(nonce, raw, aad)
+                self.store.db.execute('''INSERT INTO portal_records
+                    (tenant,id,subject_id,category,key_version,ciphertext,created_by,created_at)
+                    VALUES(?,?,?,?,?,?,?,?)''',
+                    (tenant,record_id,subject_id,category,key_version,ciphertext,identity.user_id,self.now()))
+        if not allowed:
+            raise AccessDenied('Acesso não autorizado.')
+        return record_id
+
+    def release_record(self, token, tenant, record_id):
+        identity = self.identify(token)
+        with self.store.lock, self.store.db:
+            record = self._record(tenant, record_id)
+            allowed = bool(record and self._staff(identity, tenant, record['subject_id'], record['category']))
+            self._audit(identity, tenant, 'release_record', record_id, allowed)
+            if allowed:
+                self.store.db.execute('''UPDATE portal_records SET released=1,released_by=?,released_at=?
+                    WHERE tenant=? AND id=?''', (identity.user_id,self.now(),tenant,record_id))
+        if not allowed:
+            raise AccessDenied('Acesso não autorizado.')
+
+    def read_record(self, token, tenant, record_id):
+        identity = self.identify(token)
+        with self.store.lock, self.store.db:
+            record = self._record(tenant, record_id)
+            allowed = bool(record and (
+                self._staff(identity, tenant, record['subject_id'], record['category']) or
+                (record['released'] and self._owner(identity, tenant, record['subject_id']))))
+            self._audit(identity, tenant, 'read_record', record_id, allowed)
+            if allowed:
+                value = self._decrypt(record)
+        if not allowed:
+            raise AccessDenied('Acesso não autorizado.')
+        return value
+
+    def request_complete_copy(self, token, tenant, subject_id):
+        """A titular may request the complete record, not only the portal's released summary.
+
+        Identity verification, legal exceptions/third-party redaction and delivery are
+        reviewed by the controller. This request does not automatically disclose records.
+        """
+        identity = self.identify(token)
+        with self.store.lock, self.store.db:
+            allowed = self._owner(identity, tenant, subject_id)
+            self._audit(identity, tenant, 'request_complete_copy', subject_id, allowed)
+            if allowed:
+                identifier = str(uuid4())
+                self.store.db.execute('INSERT INTO portal_access_requests VALUES(?,?,?,?,?,?)',
+                    (identifier,tenant,subject_id,identity.user_id,self.now(),'requested'))
+        if not allowed:
+            raise AccessDenied('Acesso não autorizado.')
+        return {'id': identifier, 'status': 'requested'}
+
+    def create_invite(self, token, tenant, subject_id, *, lifetime=86400):
+        """Activate a pre-provisioned client link, never create passwords or staff roles.
+
+        Provisioning/identity verification occurs in the trusted identity provider first.
+        Owner MFA is mandatory: reception cannot reactivate a disabled client link.
+        """
+        identity = self.identify(token)
+        if type(lifetime) not in (int,float) or not math.isfinite(lifetime) or not 1 <= lifetime <= 172800:
+            raise ValueError('Validade de convite inválida.')
+        with self.store.lock, self.store.db:
+            subject = self.store.db.execute('SELECT * FROM portal_subjects WHERE tenant=? AND id=?',
+                                            (tenant,subject_id)).fetchone()
+            allowed = bool(subject and not subject['active'] and self.staff_role(identity, tenant) == 'owner')
+            self._audit(identity, tenant, 'create_invite', subject_id, allowed)
+            if allowed:
+                self.store.db.execute('UPDATE portal_invites SET revoked=1 WHERE tenant=? AND subject_id=?',
+                                      (tenant,subject_id))
+                invitation = secrets.token_urlsafe(32)
+                self.store.db.execute('INSERT INTO portal_invites VALUES(?,?,?,?,?,0,NULL)',
+                    (hashlib.sha256(invitation.encode()).hexdigest(),tenant,subject_id,
+                     subject['user_id'],self.now()+lifetime))
+        if not allowed:
+            raise AccessDenied('Acesso não autorizado.')
+        return invitation
+
+    def accept_invite(self, token, tenant, invitation):
+        identity = self.identify(token)
+        digest = hashlib.sha256(invitation.encode()).hexdigest()
+        with self.store.lock, self.store.db:
+            invite = self.store.db.execute('SELECT * FROM portal_invites WHERE token_hash=? AND tenant=?',
+                                           (digest,tenant)).fetchone()
+            subject = self.store.db.execute('SELECT * FROM portal_subjects WHERE tenant=? AND id=?',
+                (tenant,invite['subject_id'])).fetchone() if invite else None
+            allowed = bool(invite and subject and not subject['active'] and not invite['revoked']
+                and invite['accepted_at'] is None and invite['expires_at'] > self.now()
+                and invite['recipient_user'] == identity.user_id == subject['user_id'])
+            if invite:
+                self._audit(identity,tenant,'accept_invite',invite['subject_id'],allowed)
+            if allowed:
+                self.store.db.execute('UPDATE portal_invites SET accepted_at=? WHERE token_hash=?',
+                                      (self.now(),digest))
+                self.store.db.execute('UPDATE portal_subjects SET active=1 WHERE tenant=? AND id=?',
+                                      (tenant,invite['subject_id']))
+        if not allowed:
+            raise AccessDenied('Convite inválido, expirado ou já utilizado.')
+        return {'subject_id':invite['subject_id'],'status':'active'}
+
+    def create_share(self, token, tenant, record_id, recipient_user, action, *, lifetime=3600):
+        identity = self.identify(token)
+        if action not in ('view', 'download') or not recipient_user or not 1 <= lifetime <= 86400:
+            raise ValueError('Destinatário, ação ou validade inválidos.')
+        with self.store.lock, self.store.db:
+            record = self._record(tenant, record_id)
+            allowed = bool(record and record['released'] and self._owner(identity, tenant, record['subject_id']))
+            self._audit(identity, tenant, 'create_share', record_id, allowed)
+            if allowed:
+                share_token = secrets.token_urlsafe(32)
+                self.store.db.execute('INSERT INTO portal_shares VALUES(?,?,?,?,?,?,?,?,0)',
+                    (hashlib.sha256(share_token.encode()).hexdigest(),tenant,record_id,
+                     record['subject_id'],identity.user_id,recipient_user,action,self.now()+lifetime))
+        if not allowed:
+            raise AccessDenied('Acesso não autorizado.')
+        return share_token
+
+    def read_share(self, token, share_token, action):
+        identity = self.identify(token)
+        if action not in ('view', 'download'):
+            raise AccessDenied('Acesso não autorizado.')
+        digest = hashlib.sha256(share_token.encode()).hexdigest()
+        with self.store.lock, self.store.db:
+            grant = self.store.db.execute('SELECT * FROM portal_shares WHERE token_hash=?', (digest,)).fetchone()
+            record = self._record(grant['tenant'], grant['record_id']) if grant else None
+            allowed = bool(grant and record and record['released'] and not grant['revoked']
+                and grant['expires_at'] > self.now() and grant['action'] == action
+                and grant['recipient_user'] == identity.user_id
+                and self._subject(grant['tenant'], grant['subject_id'])
+                and self._subject(grant['tenant'], grant['subject_id'])['user_id'] == grant['owner_user'])
+            if grant:
+                self._audit(identity, grant['tenant'], 'read_share', grant['record_id'], allowed)
+            if allowed:
+                value = self._decrypt(record)
+        if not allowed:
+            raise AccessDenied('Acesso não autorizado.')
+        return value
+
+    def revoke_share(self, token, share_token):
+        identity = self.identify(token)
+        digest = hashlib.sha256(share_token.encode()).hexdigest()
+        with self.store.lock, self.store.db:
+            grant = self.store.db.execute('SELECT * FROM portal_shares WHERE token_hash=?', (digest,)).fetchone()
+            allowed = bool(grant and grant['owner_user'] == identity.user_id
+                           and self._owner(identity, grant['tenant'], grant['subject_id']))
+            if grant:
+                self._audit(identity, grant['tenant'], 'revoke_share', grant['record_id'], allowed)
+            if allowed:
+                self.store.db.execute('UPDATE portal_shares SET revoked=1 WHERE token_hash=?', (digest,))
+        if not allowed:
+            raise AccessDenied('Acesso não autorizado.')

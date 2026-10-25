@@ -1,0 +1,44 @@
+"""Política editorial conservadora do produto, não parecer jurídico automático."""
+import re
+import unicodedata
+
+
+def normalize(text):
+    return ''.join(c for c in unicodedata.normalize('NFKD', text.lower()) if not unicodedata.combining(c))
+
+
+def inspect(text, sector, *, image_review=None):
+    value = normalize(text)
+    reasons = []
+    rules = {
+        'promessa_resultado': r'cura|curad[oa]|resultado.{0,25}garant|garant.{0,25}resultado|100\s*%|definitiv[oa]|sem risco|em \d+ sesso',
+        'depoimento': r'depoimento|testemunho|paciente.{0,30}(disse|relatou)|antes\s*(e|/)\s*depois|antes e apos',
+        'exposicao': r'prontuario|diagnostico|triagem|cpf|cid\s*[:\d]|paciente\s*:\s*\w+',
+    }
+    if sector in ('psicologia', 'psiquiatria'):
+        for reason, pattern in rules.items():
+            if re.search(pattern, value):
+                reasons.append(reason)
+        if re.search(r'desconto|cupom|sorteio|promocao|preco social', value):
+            reasons.append('apelo_promocional_saude')
+    if sector == 'motel':
+        if re.search(r'nudez|nu explicito|sexo|sexual|erotic|fetiche|sensual|cliente\s*:|hospede\s*:', value):
+            reasons.append('conteudo_restrito_ou_exposicao')
+        if re.search(r'\b[\w.+-]+@[\w.-]+\.[a-z]{2,}\b|\b\d{3}\.\d{3}\.\d{3}-\d{2}\b', value):
+            reasons.append('dados_pessoais')
+    if image_review is not None:
+        # Nunca se infere ausência de rostos/nudez a partir da legenda.
+        if not image_review.get('reviewed') or image_review.get('contains_client_faces') or image_review.get('adult_content'):
+            reasons.append('revisao_visual_obrigatoria')
+    return {'allowed': not reasons, 'reasons': reasons}
+
+
+def public_context(brand, brief):
+    allowed = {'name', 'sector', 'colors', 'tone', 'restrictions', 'services', 'registration', 'logo'}
+    if set(brand) - allowed:
+        raise ValueError('Somente kit público de marca pode entrar na IA')
+    if not inspect(brief, 'psicologia')['allowed']:
+        raise ValueError('Briefing contém expressão bloqueada ou dado clínico')
+    if re.search(r'\b\d{3}\.?\d{3}\.?\d{3}-?\d{2}\b|[\w.+-]+@[\w.-]+\.[a-z]{2,}', brief):
+        raise ValueError('Dados pessoais não pertencem ao briefing')
+    return {'brand': brand, 'brief': brief}

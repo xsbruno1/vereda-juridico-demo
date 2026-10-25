@@ -1,0 +1,116 @@
+"""Agenda determinística. Minutos inteiros em uma linha do tempo local do dia.
+
+Na persistência, o dia/fuso devem acompanhar o plano; não converter hora local em
+UTC sem o fuso IANA. Nenhuma alteração de recurso ou antecipação é silenciosa.
+"""
+from copy import deepcopy
+from decimal import Decimal, ROUND_HALF_UP
+
+
+def number(value, name, minimum=0):
+    if type(value) is not int or value < minimum:
+        raise ValueError(f'{name}: inteiro >= {minimum} obrigatório')
+    return value
+
+
+def overlaps(start, end, busy):
+    return start < busy[1] and end > busy[0]
+
+
+def recalculate(plan):
+    data = deepcopy(plan)
+    resources = {r['id']: r for r in data['resources']}
+    if len(resources) != len(data['resources']):
+        raise ValueError('Recursos duplicados')
+    bookings = data['bookings']
+    if len({b['id'] for b in bookings}) != len(bookings):
+        raise ValueError('Compromissos duplicados')
+    busy = {key: [] for key in resources}
+    result, notices = [], []
+    for booking in sorted(bookings, key=lambda b: (b['start'], b['id'])):
+        number(booking['start'], 'início')
+        duration = number(booking['duration'], 'duração', 1)
+        buffer = number(booking.get('buffer', 0), 'buffer')
+        tolerance = number(booking.get('tolerance', 0), 'tolerância')
+        delay = number(booking.get('delay', 0), 'atraso')
+        ids = booking['resources']
+        if not ids or len(set(ids)) != len(ids) or any(r not in resources for r in ids):
+            raise ValueError('Recursos inválidos')
+        if booking.get('status') == 'cancelled':
+            result.append({**booking, 'predicted_start': None, 'predicted_end': None})
+            continue
+        earliest = booking['start'] + delay
+        for resource_id in ids:
+            resource = resources[resource_id]
+            if resource.get('status') in ('dirty', 'cleaning') and 'available_at' not in resource:
+                raise ValueError('Limpeza sem previsão de liberação: bloquear recurso')
+            earliest = max(earliest, number(resource.get('available_at', 0), 'liberação'))
+        # Encontra a primeira janela que cabe em TODOS os recursos. Isso resolve
+        # conflitos por sala, profissional e equipamento, não apenas por agenda.
+        while True:
+            conflicts = [end for r in ids for start, end in busy[r]
+                         if overlaps(earliest, earliest + duration + buffer, (start, end))]
+            if not conflicts:
+                break
+            earliest = max(conflicts)
+        end = earliest + duration
+        for r in ids:
+            busy[r].append((earliest, end + buffer))
+        options = ['aguardar', 'remarcar']
+        if earliest > booking['start']:
+            options.append('solicitar_antecipacao_em_outro_horario')
+        equivalent = [r for r in resources.values() if r['id'] not in ids
+                      and r.get('equivalence') and r.get('equivalence') == resources[ids[0]].get('equivalence')
+                      and r.get('status', 'ready') == 'ready'
+                      and r.get('available_at', 0) <= booking['start']
+                      and not any(overlaps(booking['start'], booking['start'] + duration + buffer,
+                                           (s, e)) for s, e in busy[r['id']])]
+        result.append({**booking, 'predicted_start': earliest, 'predicted_end': end,
+                       'release_at': end + buffer, 'options': options,
+                       'equivalent_candidates': [r['id'] for r in equivalent]})
+        if earliest != booking['start']:
+            notices.append({'booking_id': booking['id'], 'start': earliest, 'end': end,
+                            'within_tolerance': earliest - booking['start'] <= tolerance,
+                            'delivery': 'pending', 'options': options})
+    # Lista de espera FIFO: oferta de janela, não confirmação/antecipação sem aceite.
+    offers, reserved = [], deepcopy(busy)
+    for waiting in data.get('waitlist', []):
+        duration = number(waiting['duration'], 'duração espera', 1)
+        buffer = number(waiting.get('buffer', 0), 'buffer espera')
+        start = number(waiting['earliest'], 'início espera')
+        latest = number(waiting['latest'], 'fim espera')
+        ids = waiting['resources']
+        if not ids or any(r not in resources for r in ids):
+            raise ValueError('Recurso de espera inválido')
+        if any(resources[r].get('status') in ('dirty', 'cleaning') and 'available_at' not in resources[r] for r in ids):
+            continue
+        start = max([start] + [resources[r].get('available_at', 0) for r in ids])
+        while start + duration + buffer <= latest:
+            conflicts = [e for r in ids for s, e in reserved[r]
+                         if overlaps(start, start + duration + buffer, (s, e))]
+            if not conflicts:
+                offers.append({'wait_id': waiting['id'], 'start': start, 'end': start + duration,
+                               'resources': ids, 'status': 'awaiting_acceptance'})
+                for r in ids:
+                    reserved[r].append((start, start + duration + buffer))
+                break
+            start = max(conflicts)
+    # Equivalência precisa considerar TODOS os agendamentos, inclusive os futuros.
+    for booking in result:
+        if booking.get('predicted_start') is not None:
+            booking['equivalent_candidates'] = [r for r in booking['equivalent_candidates']
+                if not any(overlaps(booking['start'], booking['start'] + booking['duration'] + booking.get('buffer', 0), pair)
+                           for pair in busy[r])]
+    return {'bookings': result, 'notices': notices, 'waitlist_offers': offers}
+
+
+def quote(base_cents, period, multiplier='1', extras_cents=0):
+    number(base_cents, 'preço base')
+    number(extras_cents, 'adicionais')
+    if period not in ('3h', '6h', '12h', 'pernoite', 'diaria'):
+        raise ValueError('Período inválido')
+    factor = Decimal(str(multiplier))
+    if not factor.is_finite() or not Decimal('0.1') <= factor <= Decimal('5'):
+        raise ValueError('Multiplicador fora do limite')
+    return {'period': period, 'total_cents': int((Decimal(base_cents) * factor).quantize(Decimal('1'), rounding=ROUND_HALF_UP)) + extras_cents,
+            'requires_confirmation': True}

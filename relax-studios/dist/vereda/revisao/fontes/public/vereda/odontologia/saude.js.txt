@@ -1,0 +1,35 @@
+const menu=document.querySelector('.menu'),nav=document.querySelector('.masthead nav');
+function closeCareMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Abrir menu');}
+menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeCareMenu));
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&nav.classList.contains('open')){closeCareMenu();menu.focus();}});
+const dialog=document.getElementById('booking'),form=document.getElementById('booking-form'),result=document.getElementById('booking-result');
+let bookingTrigger=null;
+form.elements.name.addEventListener('input',()=>form.elements.name.setCustomValidity(''));
+document.querySelectorAll('[data-book]').forEach(b=>b.addEventListener('click',()=>{bookingTrigger=b;closeCareMenu();form.reset();form.elements.name.setCustomValidity('');const panel=b.closest('[data-care-panel]');const label=panel?.getAttribute('aria-labelledby');form.elements.context.value=b.dataset.book||document.getElementById(label)?.textContent?.trim()||'Contato administrativo';result.hidden=true;form.querySelector('[type=submit]').disabled=false;dialog.showModal();}));
+dialog.querySelector('.close').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('close',()=>{if(bookingTrigger?.offsetParent)bookingTrigger.focus();else menu.focus();});
+dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
+form.addEventListener('submit',e=>{
+ e.preventDefault(); if(form.querySelector('[type=submit]').disabled)return; const name=form.elements.name.value.trim();
+ if(!name){form.elements.name.setCustomValidity('Use um nome fictício para testar o pedido.');form.elements.name.reportValidity();return;}
+ const context=form.elements.context.value, period=form.elements.period.value;
+ result.textContent='Simulação concluída. Nenhuma mensagem foi enviada e nenhum horário foi confirmado.';result.hidden=false;form.querySelector('[type=submit]').disabled=true;
+ document.dispatchEvent(new CustomEvent('vereda:demo-inquiry',{detail:{name,context,period,channel:form.elements.channel.value,result}}));
+ showCareReceipt(result,context,period,document.body.classList.contains('forma')?'odontologia':'medicina');
+});
+
+function showCareReceipt(result, context, period, niche) {
+  const message=result.textContent;
+  result.replaceChildren();
+  const title=document.createElement('strong'); title.className='care-result-title'; title.textContent='Pedido simulado. Horário a confirmar.';
+  const status=document.createElement('p'); status.textContent=message;
+  const summary=document.createElement('p'); summary.className='care-result-summary'; summary.textContent=`Interesse: ${context}. Preferência: ${period}.`;
+  const next=document.createElement('p'); next.className='care-result-next'; next.textContent='Próximo passo em uma operação real: a recepção confirma profissional, dia, horário e local. Esta simulação não ocupa a agenda.';
+  const link=document.createElement('a'); link.className='care-result-link'; link.href=`../crm.html?nicho=${niche}`; link.textContent='Ver o contato na gestão demonstrativa ↗';
+  result.append(title,status,summary,next,link); result.focus();
+}
+document.querySelectorAll('[role=tablist]').forEach(list=>{const tabs=Array.from(list.querySelectorAll('[data-care-tab]'));function activate(tab,focus=false){tabs.forEach(t=>{const selected=t===tab;t.setAttribute('aria-selected',String(selected));t.tabIndex=selected?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!selected;});if(focus)tab.focus();}tabs.forEach((tab,index)=>{tab.addEventListener('click',()=>activate(tab));tab.addEventListener('keydown',event=>{let next=index;if(['ArrowRight','ArrowDown'].includes(event.key))next=(index+1)%tabs.length;else if(['ArrowLeft','ArrowUp'].includes(event.key))next=(index-1+tabs.length)%tabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=tabs.length-1;else return;event.preventDefault();activate(tabs[next],true);});});});
+const search=document.getElementById('specialty-search');
+if(search)search.addEventListener('input',()=>{const clean=s=>s.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().trim();let n=0;document.querySelectorAll('[data-specialty]').forEach(card=>{card.hidden=!clean(card.dataset.specialty).includes(clean(search.value));if(!card.hidden)n++;});document.getElementById('search-result').textContent=n?(n===1?'1 especialidade encontrada.':n+' especialidades encontradas.'):'Nenhuma especialidade encontrada. Tente outro termo.';const empty=document.getElementById('specialty-empty');if(empty)empty.hidden=n!==0;});
+document.querySelectorAll("[data-specialty-filter]").forEach(button=>button.addEventListener("click",()=>{search.value=button.dataset.specialtyFilter;search.dispatchEvent(new Event("input"));}));if(search)search.addEventListener("input",()=>document.querySelectorAll("[data-specialty-filter]").forEach(button=>button.setAttribute("aria-pressed",String(button.dataset.specialtyFilter.toLowerCase()===search.value.trim().toLowerCase()))));
