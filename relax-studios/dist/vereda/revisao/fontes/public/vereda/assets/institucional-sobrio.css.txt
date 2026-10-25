@@ -1,1 +1,0 @@
-:root{--accent:#25445a;--paper:#edf0f2}

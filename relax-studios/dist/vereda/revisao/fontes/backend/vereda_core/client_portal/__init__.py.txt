@@ -1,4 +1,0 @@
-"""Tested portal domain foundation. No public server, production login or live gateway."""
-from .core import AccessDenied, Identity, Portal, Store
-
-__all__ = ['AccessDenied', 'Identity', 'Portal', 'Store']

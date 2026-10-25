@@ -1,1 +1,0 @@
-"""Expansão isolada de templates e operação Vereda / Relax Studios."""

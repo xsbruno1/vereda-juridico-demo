@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /vereda/
-Sitemap: https://relaxstudios.com.br/sitemap.xml
