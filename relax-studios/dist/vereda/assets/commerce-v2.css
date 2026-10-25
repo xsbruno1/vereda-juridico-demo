@@ -61,3 +61,8 @@
   .ritual .booking-panel .slots-field legend{margin-bottom:6px}
   .ritual .booking-panel .fine{margin-bottom:8px}
 }
+/* Forno: editorial Neapolitan pizza replaces the decorative drawing. */
+.forno .pizza-heading{grid-column:1/-1}
+.forno .pizza-dial{width:100%;max-width:620px;aspect-ratio:3/2;border:0;border-radius:16px;transform:none;background:none;box-shadow:none;margin:24px auto 16px;grid-column:1/-1;grid-row:auto}
+.forno .pizza-dial>img{display:block;position:relative;width:100%;height:100%;object-fit:cover;z-index:1}
+.forno .pizza-dial>.pizza-half,.forno .pizza-dial>.pizza-divider{display:none}

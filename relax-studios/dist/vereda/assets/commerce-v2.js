@@ -21,7 +21,7 @@
       $('#visual-flavor-b').textContent=half?(b.selectedOptions[0]?.textContent||'Escolha outro sabor'):'Pizza inteira';
       $('.half-a').dataset.flavor=a.value;$('.half-b').dataset.flavor=half?b.value:a.value;
       $('.pizza-divider').hidden=!half;
-      $('.pizza-dial').setAttribute('aria-label','Esquema ilustrativo: '+$('#visual-flavor-a').textContent+(half?' e '+$('#visual-flavor-b').textContent:''));
+      $('.pizza-dial').setAttribute('aria-label','Pizza napoletana em imagem ilustrativa. Sabores selecionados no configurador: '+$('#visual-flavor-a').textContent+(half?' e '+$('#visual-flavor-b').textContent:''));
       try{const result=C.pizzaTotal(C.load('pizzaria'),Object.fromEntries(new FormData(form)));$('#dock-total').textContent=C.money(result.total_centavos);$('#dock-order').disabled=false;}
       catch{ $('#dock-total').textContent='Revise os sabores';$('#dock-order').disabled=true; }
     }
