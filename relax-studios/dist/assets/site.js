@@ -23,13 +23,15 @@
   }
   document.querySelectorAll('[data-niche]').forEach(button => button.addEventListener('click', () => { document.querySelectorAll('[data-niche]').forEach(b => { b.classList.toggle('active', b === button); b.setAttribute('aria-pressed', String(b === button)); }); renderModels(button.dataset.niche); }));
   if ($('model-list')) renderModels('advocacia');
-  $('year').textContent = new Date().getFullYear();
+  if ($('year')) $('year').textContent = new Date().getFullYear();
   const form = $('brief-form');
   if (!form) return;
+  const interests = { presenca: 'Site personalizado', atendimento: 'Organização do atendimento', continuidade: 'Acompanhamento mensal' };
+  const selectedInterest = interests[new URLSearchParams(location.search).get('interesse')];
+  if (selectedInterest) form.elements.package.value = selectedInterest;
   if (cfg.emailActive === true && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cfg.email || '')) {
     $('contact-email').href = 'mailto:' + cfg.email; $('contact-email').removeAttribute('aria-disabled');
     $('email-state').textContent = 'Escreva para o estúdio ou prepare seu briefing no formulário.';
-    $('send-brief').hidden = false;
   }
   document.querySelectorAll('[data-package]').forEach(a => a.addEventListener('click', () => { form.elements.package.value = a.dataset.package; }));
   function brief() {
@@ -37,7 +39,8 @@
     const data = new FormData(form), val = key => String(data.get(key) || '').trim();
     return ['BRIEFING / RELAX STUDIOS', '', 'Nome: ' + val('name'), 'Empresa ou projeto: ' + val('company'), 'E-mail de retorno: ' + val('email'), 'Interesse: ' + val('package'), '', 'Objetivo:', val('goal'), '', 'Proposta sujeita à definição e aprovação de escopo.'].join('\n');
   }
-  form.addEventListener('submit', e => { e.preventDefault(); const text = brief(); if (!text) return; $('brief-text').value = text; $('brief-result').hidden = false; if (cfg.emailActive === true) { $('send-brief').href = `mailto:${cfg.email}?subject=${encodeURIComponent('Projeto / Relax Studios')}&body=${encodeURIComponent(text)}`; } $('brief-status').textContent = 'Briefing preparado neste navegador. Nenhuma mensagem foi enviada automaticamente.'; });
+  form.addEventListener('submit', e => { e.preventDefault(); const text = brief(); if (!text) return; $('brief-text').value = text; $('brief-result').hidden = false; if (cfg.emailActive === true && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cfg.email || '')) { $('send-brief').href = `mailto:${cfg.email}?subject=${encodeURIComponent('Projeto / Relax Studios')}&body=${encodeURIComponent(text)}`; $('send-brief').hidden = false; } $('brief-status').textContent = 'Briefing preparado neste navegador. Nenhuma mensagem foi enviada automaticamente.'; });
+  form.addEventListener('input', () => { if (!$('brief-result').hidden) { $('brief-result').hidden = true; $('send-brief').hidden = true; $('send-brief').removeAttribute('href'); $('brief-status').textContent = 'Você alterou as respostas. Prepare o briefing novamente antes de enviar.'; } });
   $('copy-brief').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('brief-text').value); $('brief-status').textContent = 'Briefing copiado.'; } catch { $('brief-text').focus(); $('brief-text').select(); $('brief-status').textContent = 'Selecione e copie o texto do briefing.'; } });
   $('download-brief').addEventListener('click', () => { const text = brief(); if (!text) return; const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' })), a = document.createElement('a'); a.href = url; a.download = 'briefing-relax-studios.txt'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); $('brief-status').textContent = 'Briefing preparado para download. Os campos não são armazenados pelo site.'; });
   $('year').textContent = new Date().getFullYear();
