@@ -1,20 +1,977 @@
-<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Yankin · Seu momento de pausa</title><link rel="icon" href="favicon.svg"><style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#141512;color:#f3f0e7;font:16px/1.6 Arial,sans-serif}a{color:inherit;text-decoration:none}button,input,select{font:inherit}button,a.cta{cursor:pointer;background:#d8c29a;color:#191a16;border:0;border-radius:6px;padding:14px 20px;font-weight:bold}button:hover,a.cta:hover{background:#f0dbb5}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #e9c47e;outline-offset:4px}.notice{background:#ded2bb;color:#27271f;text-align:center;padding:8px;font-size:12px}header{max-width:1280px;margin:auto;padding:24px 5%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #37382f}.brand{font:32px Georgia;letter-spacing:5px}.brand small{display:block;font:10px Arial;letter-spacing:3px}nav{display:flex;gap:24px;font-size:13px}.hero{max-width:1280px;margin:auto;padding:65px 5%;display:grid;grid-template-columns:1.2fr 1fr;gap:65px}.tag{color:#d8c29a;font-size:11px;letter-spacing:3px}h1{font:clamp(48px,6vw,82px)/1.06 Georgia;margin:24px 0}h2{font:clamp(30px,4vw,48px)/1.2 Georgia}h3{font:26px Georgia}.muted,p{color:#c5c5b9}.hero img{width:100%;height:260px;object-fit:cover;border-radius:120px 120px 5px 5px;margin-top:30px;filter:saturate(.5)}figcaption{font-size:11px;color:#bbb}figure{margin:0}.booking{background:#23251f;border:1px solid #44463a;padding:30px;border-radius:12px;align-self:center}.booking h2{margin:12px 0 25px;font-size:34px}label{display:block;font-size:13px;margin:15px 0}input,select{display:block;width:100%;padding:12px;background:#151711;color:#fff;border:1px solid #686b5a;border-radius:5px;margin-top:7px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.booking button{width:100%;margin-top:15px}.fine{font-size:12px}.section{max-width:1150px;margin:auto;padding:65px 5%;border-top:1px solid #37382f}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}.card{padding:26px;background:#20221c;border-radius:8px;border:1px solid #3d4033}.card .num{color:#d8c29a;font-size:12px}.card p{font-size:14px}.card button{padding:10px 16px}.professional{display:flex;gap:16px;align-items:center}.avatar{height:55px;width:55px;border:1px solid #756c56;border-radius:50%;display:grid;place-items:center;font:25px Georgia;color:#d8c29a}details{padding:20px 0;border-bottom:1px solid #414336}summary{cursor:pointer}footer{padding:40px 5%;border-top:1px solid #37382f;font-size:12px}.dashboard{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:14px;text-align:left;border-bottom:1px solid #484a3c}#result{white-space:pre-line;padding:16px;border-left:3px solid #d8c29a;background:#151711}#result:empty{display:none}@media(max-width:760px){header{align-items:flex-start}nav{gap:12px;flex-wrap:wrap;max-width:180px}.hero{grid-template-columns:1fr;gap:30px;padding-top:35px}.cards{grid-template-columns:1fr}.booking{padding:22px}.section{padding-top:40px}.grid{grid-template-columns:1fr}h1{font-size:54px}}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow"><link rel="icon" href="favicon.svg"><title>YK / YANKIN — Private Relax &amp; Lounge | Vitrine &amp; Gestão Integrada</title>
+  <link rel="stylesheet" href="gemini-tailwind.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --yk-red: #841222;
+      --yk-red-dark: #4F0913;
+      --yk-crimson: #A91D32;
+      --yk-gold: #C5A06E;
+      --yk-ivory: #FAF7F5;
+      --yk-charcoal: #120D0E;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--yk-ivory);
+      color: #1E1618;
+      overflow-x: hidden;
+    }
+    .font-serif-editorial {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    .yk-gradient {
+      background: linear-gradient(135deg, #42060F 0%, #841222 55%, #A31A2E 100%);
+    }
+    .yk-dark-surface {
+      background: radial-gradient(circle at top right, #2D0910 0%, #120B0C 65%, #0A0708 100%);
+    }
+    .petal-watermark {
+      background-image: radial-gradient(rgba(132, 18, 34, 0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .slide-fade {
+      transition: opacity 0.7s ease-in-out, transform 0.7s ease-out;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .slide-fade, * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f3ecee; }
+    ::-webkit-scrollbar-thumb { background: #841222; border-radius: 3px; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col petal-watermark">
 
-/* Identidade exclusiva da demonstração Yankin */
-body{background:#fffafa;color:#43101a}p,.muted{color:#70464d}.notice{background:#a30b27;color:white}.yk{display:inline-grid;place-items:center;background:#bf1234;color:#fff;width:62px;height:62px;border-radius:4px;font:italic 32px Georgia;letter-spacing:-4px;margin-right:12px}.brand{color:#9d102b;letter-spacing:3px}.brand small{margin-top:8px}header{border-color:#e8cbd0}h1{color:#9e1230;letter-spacing:-3px}h1 em{font-weight:normal;color:#b91d3b}.tag{color:#a30b27}.hero{background:radial-gradient(ellipse at 0 50%,#f9dfe4,transparent 65%)}.hero img{filter:saturate(.55) sepia(.15);border-radius:170px 170px 8px 8px;height:330px}.booking{background:#fff;border-color:#e2b5bf;box-shadow:0 20px 70px #7f0b2312}.booking h2{color:#98132c}input,select{background:#fff8fa;color:#43101a;border-color:#c58c99}button,a.cta{background:#aa102e;color:#fff;border-radius:30px}button:hover,a.cta:hover{background:#7c0920}.section,footer{border-color:#e9ccd2}.card{background:#fff;border-color:#e7c6cf}.card .num{color:#a30b27}.avatar{border-color:#c78a98;color:#a30b27}details,td,th{border-color:#e9ccd2}#result{background:#fff1f4;border-color:#a30b27}.fine,figcaption{color:#75464f}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline-color:#a30b27}@media(max-width:760px){header .brand{font-size:22px}.yk{width:42px;height:42px;font-size:26px;margin-right:5px}nav{max-width:145px;font-size:12px}h1{font-size:49px;letter-spacing:-2px}}
+  <p style="margin:0;padding:12px;background:#fff0f3;color:#681023;text-align:center;font:13px Arial">DEMONSTRAÇÃO: dados fictícios nesta aba, apagados ao atualizar. Sem autenticação real, envio de mensagens ou e-mail. Não insira dados reais.</p><!-- Top Editorial Notice Banner -->
+  <div class="bg-[#160B0D] text-[#E8D5D8] text-xs py-2 px-4 border-b border-[#841222]/40">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-[#C5A06E]"></span>
+        <span><strong>PRÉVIA INTERATIVA INDEPENDENTE (SAMPLE):</strong> Fotografias e perfis são estritamente ilustrativos. Novo endereço em confirmação (Região Ana Rosa / São Paulo).</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span id="header-auth-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-white/10 text-white">Visitante Público</span>
+        <button id="btn-quick-vip-toggle" type="button" class="underline text-[#F3D299] hover:text-white font-medium transition">
+          Simular acesso Cliente VIP
+        </button>
+      </div>
+    </div>
+  </div>
 
-body{background:#fffaf8}header{position:relative;z-index:2;max-width:none;padding:22px 6%;background:#fff}.notice{font-size:10px;letter-spacing:1px}.immersive{height:min(820px,88vh);min-height:590px;position:relative;overflow:hidden;background:#31040e}.immersive>img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) saturate(.65)}.veil{position:absolute;inset:0;background:linear-gradient(90deg,#26000be8 0%,#5d0a2166 60%,#21000833),linear-gradient(0deg,#30020ddd,transparent 35%)}.hero-title{position:absolute;top:14%;left:8%;max-width:780px}.hero-title h1{font-size:clamp(62px,7.5vw,112px);color:#fff7ee;line-height:.99;letter-spacing:-4px;margin:30px 0}.hero-title h1 em{color:#f0b8bc}.hero-title p{color:#f4dfe1;font-size:18px;line-height:1.8}.hero-title .tag{color:#f3c6cb}.hero-actions{display:flex;gap:15px;align-items:center;margin-top:35px}.hero-actions .cta{background:#fff7f3;color:#8e142e;padding:17px 28px}.outline{padding:15px 25px;border:1px solid #d8a6af;border-radius:30px;color:white}.image-note{display:block;color:#e0c3c8;font-size:10px;margin-top:30px}.hero-bottom{position:absolute;bottom:30px;left:8%;right:8%;display:flex;justify-content:space-between;color:#e9c9ce;font-size:10px;letter-spacing:3px;border-top:1px solid #ffffff38;padding-top:22px}.manifest{display:flex;justify-content:space-between;align-items:center;padding:45px 8%;background:#9c1230;color:white}.manifest>span{font:32px Georgia}.manifest p{color:#f5dde3;font-size:14px}.appointment-section{padding:90px 7%;gap:90px}.appointment-section h1{font-size:68px}.appointment-section img{border-radius:4px;height:340px}.section{max-width:1280px;padding:80px 7%}.cards{gap:22px}.card{border-radius:2px;padding:34px;box-shadow:0 12px 35px #6b092008}.card h3{font-size:32px}.private-entry{display:grid;grid-template-columns:1fr 1fr;min-height:450px;overflow:hidden;background:#9c1230;border-radius:3px}.private-visual{position:relative;min-height:450px}.private-visual img{width:100%;height:100%;position:absolute;object-fit:cover;object-position:50% 30%;filter:brightness(.6) saturate(.4)}.private-visual>span{position:absolute;left:35px;bottom:35px;color:white;font:38px/1.15 Georgia}.private-entry .booking{margin:35px;background:transparent;box-shadow:none;border:0;color:white}.private-entry p,.private-entry .fine{color:#f0d1d8}.private-entry button{background:#fff;color:#8e142e}.private-entry h3{font:35px Georgia}.private-entry:has(#access[hidden]){display:none}.profile-photo,.profile-art{width:100%;height:320px;object-fit:cover;object-position:50% 25%;margin-bottom:15px}.profile-art{background:linear-gradient(145deg,#4b0617,#ad1d3d);display:grid;place-items:center;color:#fff;font:100px Georgia}.profile-label{font-size:10px;color:#a30b27;letter-spacing:2px}.space-story{display:grid;grid-template-columns:1.1fr 1fr;background:#310b16;color:white;min-height:520px}.space-story>img{width:100%;height:100%;object-fit:cover;filter:saturate(.5)}.space-story>div{padding:75px 12%}.space-story h2{font-size:54px}.space-story .tag,.space-story p,.space-story small{color:#edc7d0}.space-story small{font-size:11px}footer{background:#8e102b;color:white;padding:55px 7%}footer .brand,footer p{color:#fff0f3}#daily-team .cards{grid-template-columns:1fr 1fr}@media(max-width:760px){.immersive{min-height:620px;height:82vh}.hero-title{left:7%;right:7%;top:13%}.hero-title h1{font-size:65px;letter-spacing:-3px}.hero-title p{font-size:16px}.hero-actions{align-items:stretch;flex-direction:column;max-width:290px}.outline,.hero-actions .cta{text-align:center}.hero-bottom{font-size:8px;letter-spacing:1px;left:7%;right:7%}.manifest{display:block;padding:30px 7%}.manifest>span{font-size:27px}.appointment-section{padding:50px 7%;gap:30px}.appointment-section h1{font-size:50px}.private-entry,.space-story{grid-template-columns:1fr}.private-visual{min-height:330px}.private-entry .booking{margin:20px}.space-story>img{height:300px}.space-story>div{padding:35px 7%}.space-story h2{font-size:42px}#daily-team .cards{grid-template-columns:1fr}.section{padding:50px 7%}.hero-title h1 em{color:#f8c6cd}}
+  <!-- Main Sticky Luxury Navigation -->
+  <header class="sticky top-0 z-40 bg-[#841222] text-white shadow-lg border-b border-[#C5A06E]/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <!-- Brand Logo: YK white on red -->
+      <button id="nav-brand-home" type="button" class="flex items-center gap-3 text-left group focus:outline-none">
+        <div class="w-10 h-10 bg-[#841222] text-white border border-white/50 flex items-center justify-center font-serif-editorial font-bold text-2xl tracking-wider shadow-inner group-hover:scale-105 transition">
+          YK
+        </div>
+        <div>
+          <span class="block font-serif-editorial text-xl font-bold tracking-[0.22em] leading-none">YANKIN</span>
+          <span class="block text-[10px] tracking-[0.25em] uppercase text-[#F2D7D9] mt-0.5">Private Relax &amp; Lounge</span>
+        </div>
+      </button>
 
-header{position:sticky;top:0;background:#fffaf8ed;backdrop-filter:blur(18px);border-bottom:1px solid #d9b4bf;z-index:20}.brand{font-family:Arial,sans-serif;font-size:25px;font-weight:600;letter-spacing:7px}.yk{font-family:Georgia;letter-spacing:-3px}.campaign-slides{position:absolute;inset:0}.campaign-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.045);transition:opacity 1.4s ease,transform 7s linear;filter:saturate(.65) brightness(.7)}.campaign-slide.is-current{opacity:1;transform:scale(1)}.campaign-slide:last-child{object-position:50% 28%}.hero-title h1{font-style:normal;letter-spacing:-4px;line-height:1.03}.hero-title h1 em{font-style:normal;font-weight:normal}.hero-title .tag{letter-spacing:4px;font-size:10px}.campaign-controls{position:absolute;right:6%;bottom:95px;display:flex;align-items:center;gap:10px;color:white;z-index:3}.campaign-controls button{border-radius:50%;border:1px solid #ffffff75;background:#2d031459;color:white;width:42px;height:42px;padding:0;font-size:17px}.campaign-controls #campaign-pause{border-radius:30px;width:auto;padding:0 15px;font-size:12px}.campaign-controls span{font-size:11px;letter-spacing:2px}.section h2{letter-spacing:-1px}.card{transition:transform .3s,box-shadow .3s}.card:hover{transform:translateY(-5px);box-shadow:0 20px 45px #65091b15}.hero-actions .cta,.outline{border-radius:3px}.manifest{background:#7e0927}.space-story img{transition:filter .6s}.space-story:hover img{filter:saturate(.8)}html{scroll-padding-top:115px}@media(max-width:760px){.campaign-controls{bottom:85px;left:7%;right:auto}.hero-title h1{font-size:62px}.hero-title{top:9%}.hero-actions{margin-top:23px}.image-note{margin-top:20px}.brand{font-size:20px;letter-spacing:3px}.hero-bottom{bottom:20px}.immersive{min-height:710px}.card:hover{transform:none}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.campaign-slide{transition:none;transform:none}.card{transition:none}.card:hover{transform:none}}
-</style><div class="notice">Prévia exclusiva de proposta · Relax Studios · Conteúdo e agenda demonstrativos</div><header><a class="brand" href="#"><span class="yk">YK</span> YANKIN<small>MASSAGENS · EXPERIÊNCIAS · DISCRIÇÃO</small></a><nav aria-label="Principal"><a href="#experiencias">Experiências</a><a href="#equipe">Área do cliente</a><a href="#agendar">Agendar</a></nav></header><main><section class="immersive"><div class="campaign-slides"><img class="campaign-slide is-current" src="spa.jpg" alt="Ambiente de spa em fotografia de referência"><img class="campaign-slide" src="ritual.jpg" alt="Ritual de massagem em fotografia ilustrativa" loading="lazy"><img class="campaign-slide" src="portrait.jpg" alt="Retrato editorial ilustrativo; não representa a equipe da Yankin" loading="lazy"></div><div class="veil"></div><div class="hero-title"><span class="tag">YANKIN · MASSAGENS & EXPERIÊNCIAS</span><h1>Presença.<br><em>Pele. Pausa.</em></h1><p>O charme está nos detalhes.<br>O próximo momento é seu.</p><div class="hero-actions"><a class="cta" href="#equipe">Conheça a experiência ↗</a><a class="outline" href="#agendar">Escolher meu horário</a></div><span class="image-note">Fotografia de referência · não representa a Yankin</span></div><div class="campaign-controls" aria-label="Controle de imagens"><button type="button" id="campaign-prev" aria-label="Imagem anterior">←</button><span id="campaign-count" aria-live="polite">01 / 03</span><button type="button" id="campaign-next" aria-label="Próxima imagem">→</button><button type="button" id="campaign-pause" aria-pressed="false">Pausar</button></div><div class="hero-bottom"><span>01 — PRESENÇA</span><span>02 — TOQUE</span><span>03 — PRIVACIDADE</span></div></section><div class="manifest"><span>Uma pausa fora do comum.</span><p>Atmosfera envolvente. Atendimento reservado.<br>A experiência começa antes do primeiro toque.</p></div><section class="hero appointment-section"><div><span class="tag">UM TEMPO PARA VOCÊ</span><h1>Seu próximo<br><em>momento.</em></h1><p>Toque, presença e uma pausa só sua. Descubra uma experiência envolvente em um ambiente reservado.</p><a href="#agendar" class="cta">Encontre seu horário ↗</a><figure><img src="ritual.jpg" alt="Ambiente ilustrativo de acolhimento; não representa as instalações da Yankin"><figcaption>Referência de atmosfera. A versão final terá fotos aprovadas pela Yankin.</figcaption></figure></div><section class="booking" id="agendar"><span class="tag">SUA PRÓXIMA PAUSA</span><h2>Escolha como<br>quer relaxar.</h2><form id="booking"><label>Experiência<select id="service"><option value="Relaxamento">Relaxamento · 60 min</option><option value="Massagem personalizada">Massagem personalizada · 90 min</option><option value="Primeira visita">Primeira visita · 60 min</option></select></label><label>Profissional<select id="person"><option>Sem preferência</option></select></label><p class="fine" id="team-access-note">Para escolher uma profissional da equipe do dia, <a href="#equipe" style="text-decoration:underline">acesse a área do cliente</a>.</p><div class="grid"><label>Data<input id="date" type="date" required></label><label>Horário<select id="time"><option>10:00</option><option>11:30</option><option>14:00</option><option>15:30</option><option>17:00</option></select></label></div><p class="fine" id="end">Duração: 60 minutos. Valores a definir com a Yankin.</p><button>Simular solicitação ↗</button><p class="fine">Simulação sem envio. Horários ilustrativos, sujeitos à confirmação. Não solicitamos dados pessoais nesta prévia.</p><div id="result" role="status" aria-live="polite"></div></form></section></section><section class="section" id="experiencias"><span class="tag">EXPERIÊNCIAS PERSONALIZÁVEIS</span><h2>Seu ritmo.<br>Seu cuidado.</h2><div class="cards"><article class="card"><span class="num">01 / PAUSA</span><h3>Relaxamento</h3><p>Uma proposta de atendimento dedicada à pausa e ao conforto.</p><button data-service="Relaxamento">Escolher · 60 min</button></article><article class="card"><span class="num">02 / PRESENÇA</span><h3>Personalizada</h3><p>Preferências e duração alinhadas com a equipe antes do atendimento.</p><button data-service="Massagem personalizada">Escolher · 90 min</button></article><article class="card"><span class="num">03 / BOAS-VINDAS</span><h3>Primeira visita</h3><p>Conheça o espaço e converse com a equipe sobre a experiência desejada.</p><button data-service="Primeira visita">Escolher · 60 min</button></article></div><p class="fine">Nomes, descrições, durações e serviços são sugestões para aprovação do estabelecimento.</p></section><section class="section" id="equipe"><span class="tag">ÁREA RESERVADA AO CLIENTE</span><h2>Quem recebe você hoje?</h2><p>Consulte as profissionais do dia, conheça seus perfis e escolha seu horário em uma área para clientes cadastrados.</p><div class="private-entry"><div class="private-visual"><img src="portrait.jpg" alt="Retrato editorial ilustrativo, não representa a equipe"><span>O encontro começa<br>com a sua escolha.</span></div><div class="booking" id="access"><h3>Seu acesso à Yankin</h3><p>Na versão final, o cadastro e o acesso serão verificados antes de exibir a equipe do dia.</p><button type="button" id="demo-access">Experimentar área do cliente · demonstração</button><p class="fine">Esta prévia não cria contas nem coleta dados. O acesso abaixo é apenas uma simulação, sem proteção de conteúdo real.</p></div></div><div id="daily-team" hidden><span class="tag">ÁREA DO CLIENTE · EXEMPLO</span><h3>Disponíveis hoje</h3><p>Perfis fictícios para demonstrar a escolha. Fotos e informações reais só serão disponibilizadas com autorização e acesso protegido.</p><div class="cards"><article class="card"><img class="profile-photo" src="portrait.jpg" alt="Retrato de banco de imagens, não representa uma profissional da Yankin"><span class="profile-label">PERFIL ILUSTRATIVO</span><h3>Profissional A</h3><p>Perfil ilustrativo · atendimento de 10h às 16h.</p><button type="button" data-person="Profissional A · exemplo">Escolher e ver horários</button></article><article class="card"><div class="profile-art"><span>YK</span></div><span class="profile-label">PERFIL ILUSTRATIVO</span><h3>Profissional B</h3><p>Perfil ilustrativo · atendimento de 14h às 18h.</p><button type="button" data-person="Profissional B · exemplo">Escolher e ver horários</button></article></div><p><button type="button" id="demo-exit">Sair da demonstração de acesso</button></p></div></section><section class="space-story"><img src="spa.jpg" alt="Ambiente de spa ilustrativo"><div><span class="tag">ESPAÇO & ATMOSFERA</span><h2>Todos os sentidos.<br><em>Um só momento.</em></h2><p>Luz acolhedora, texturas e uma recepção cuidadosa. A identidade da casa em cada detalhe.</p><small>Proposta de atmosfera visual. Instalações reais a fotografar.</small></div></section><section class="section"><span class="tag">NOVO ENDEREÇO, NOVA EXPERIÊNCIA</span><h2>Chegar também<br>deve ser simples.</h2><p>O novo endereço será publicado após confirmação da Yankin, com orientação de entrada e atalhos para traçar a rota.</p><p class="fine">Não reproduzimos o endereço antigo para evitar deslocamentos incorretos.</p></section><section class="section"><span class="tag">VISÃO DA GESTÃO · DEMONSTRAÇÃO LOCAL</span><h2>O atendimento organizado.<br>A equipe no mesmo ritmo.</h2><p>Solicitações simuladas aparecem abaixo. Em uma versão contratada, a gestão poderá coordenar confirmação, duração, intervalos e disponibilidade por profissional.</p><div class="dashboard"><table><thead><tr><th>Atendimento</th><th>Profissional</th><th>Início / término</th><th>Situação</th></tr></thead><tbody id="queue"><tr><td colspan="4">Faça uma simulação acima para conhecer o fluxo.</td></tr></tbody></table></div><p class="fine">Esta área ilustra o painel e está visível somente por se tratar de uma proposta. No produto final, a gestão terá acesso restrito. Os exemplos são temporários e desaparecem ao atualizar.</p></section><section class="section"><h2>Antes da sua visita.</h2><details><summary>O horário já fica confirmado?</summary><p>Esta prévia apenas simula a solicitação. Na operação real, a equipe confirma disponibilidade e condições antes de concluir o agendamento.</p></details><details><summary>Receberei aviso no WhatsApp?</summary><p>A proposta pode incluir avisos e confirmações por WhatsApp, mediante configuração da integração oficial e autorização do cliente. Esta demonstração não envia mensagens.</p></details><details><summary>Posso escolher a profissional?</summary><p>Sim. Clientes cadastrados poderão consultar a equipe disponível no dia, escolher a profissional e solicitar um horário. Nesta prévia, o botão de acesso apenas demonstra esse caminho com perfis fictícios.</p></details></section></main><footer><span class="brand">YANKIN</span><p><a href="gestao.html">Conhecer a gestão · demonstração ↗</a> · <a href="integracao.html">Como a operação se conecta ↗</a></p><p>Proposta visual desenvolvida pela Relax Studios. Marca, imagens, serviços, valores e conteúdo serão ajustados com o estabelecimento. Não é o site oficial nem realiza reservas.</p><a href="https://relaxstudios.com.br/">Relax Studios ↗</a></footer><script>
-let demoAccess=false;
-const dailyTeam=document.querySelector('#daily-team'),access=document.querySelector('#access');
-function availableTimes(){const selected=document.querySelector('#person').value;const options=selected.startsWith('Profissional A')?['10:00','11:30','14:00']:selected.startsWith('Profissional B')?['14:00','15:30','17:00']:['10:00','11:30','14:00','15:30','17:00'];document.querySelector('#time').replaceChildren(...options.map(t=>new Option(t,t)));}
-document.querySelector('#demo-access').onclick=()=>{demoAccess=true;dailyTeam.hidden=false;access.hidden=true;document.querySelector('#person').add(new Option('Profissional A · exemplo'));document.querySelector('#person').add(new Option('Profissional B · exemplo'));document.querySelector('#team-access-note').textContent='Acesso demonstrativo ativo. Escolha uma profissional do dia ou mantenha sem preferência.';};
-document.querySelectorAll('[data-person]').forEach(b=>b.onclick=()=>{document.querySelector('#person').value=b.dataset.person;availableTimes();document.querySelector('#agendar').scrollIntoView({behavior:'smooth'});});
-document.querySelector('#person').onchange=availableTimes;
-document.querySelector('#demo-exit').onclick=()=>{demoAccess=false;dailyTeam.hidden=true;access.hidden=false;document.querySelector('#person').replaceChildren(new Option('Sem preferência'));availableTimes();document.querySelector('#team-access-note').textContent='Acesse a área do cliente abaixo para escolher uma profissional do dia.';};
+      <!-- Main Mode Tabs -->
+      <nav class="hidden md:flex items-center gap-1 bg-[#5A0B16]/70 p-1 rounded-full border border-white/15" aria-label="Navegação Principal">
+        <button type="button" data-view="vitrine" class="nav-tab-btn px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition bg-white text-[#841222] shadow">
+          1. Vitrine &amp; Casa
+        </button>
+        <button type="button" data-view="clube" class="nav-tab-btn px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition text-white/90 hover:text-white">
+          2. Clube Privê (Dia)
+        </button>
+        <button type="button" data-view="barqr" class="nav-tab-btn px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition text-white/90 hover:text-white">
+          3. Cardápio QR Suíte
+        </button>
+        <button type="button" data-view="recepcao" class="nav-tab-btn px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition text-white/90 hover:text-white">
+          4. Recepção &amp; Salas
+        </button>
+        <button type="button" data-view="caixa" class="nav-tab-btn px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition text-white/90 hover:text-white">
+          5. Caixa, Comissões &amp; ADM
+        </button>
+      </nav>
 
-const service=document.querySelector('#service'),person=document.querySelector('#person'),date=document.querySelector('#date'),time=document.querySelector('#time');const duration=()=>service.value==='Massagem personalizada'?90:60;const today=new Date();date.min=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');date.value=date.min;service.onchange=()=>document.querySelector('#end').textContent='Duração: '+duration()+' minutos. Valores a definir com a Yankin.';document.querySelectorAll('[data-service]').forEach(b=>b.onclick=()=>{service.value=b.dataset.service;service.onchange();document.querySelector('#agendar').scrollIntoView({behavior:'smooth'});});let rows=[];document.querySelector('#booking').onsubmit=e=>{e.preventDefault();if(date.value<date.min){date.setCustomValidity('Escolha uma data atual ou futura.');date.reportValidity();return;}date.setCustomValidity('');const start=Number(time.value.slice(0,2))*60+Number(time.value.slice(3)),end=start+duration();const finish=String(Math.floor(end/60)).padStart(2,'0')+':'+String(end%60).padStart(2,'0');if(rows.some(r=>r.date===date.value&&r.person===person.value&&start<r.end&&end>r.start)){document.querySelector('#result').textContent='Este horário se sobrepõe a uma solicitação de exemplo. Experimente outro horário ou profissional.';return;}rows.push({date:date.value,person:person.value,start,end});document.querySelector('#result').textContent='Solicitação simulada preparada.\n'+service.value+' · '+date.value.split('-').reverse().join('/')+' · '+time.value+' até '+finish+'\nNenhuma reserva ou mensagem foi enviada.';const body=document.querySelector('#queue');if(rows.length===1)body.textContent='';const tr=document.createElement('tr');[service.value,person.value,date.value.split('-').reverse().join('/')+' · '+time.value+' / '+finish,'Aguardando confirmação · exemplo'].forEach(t=>{const td=document.createElement('td');td.textContent=t;tr.append(td);});body.append(tr);};date.oninput=()=>date.setCustomValidity('');
-</script></html>
+      <!-- Role / Action Switcher -->
+      <div class="flex items-center gap-2">
+        <button id="btn-open-vip-modal" type="button" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#C5A06E] text-[#1A0D10] hover:bg-[#d4b282] transition shadow-sm">
+          Área do Cliente
+        </button>
+        <button id="btn-mobile-menu" type="button" class="md:hidden p-2 rounded-lg bg-white/10 text-white hover:bg-white/20" aria-label="Abrir Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="hidden md:hidden bg-[#5A0B16] px-4 pt-2 pb-4 border-t border-white/10 space-y-1">
+      <button type="button" data-view="vitrine" class="nav-tab-btn block w-full text-left px-3 py-2 rounded-lg text-xs font-semibold uppercase bg-white text-[#841222]">1. Vitrine &amp; Casa</button>
+      <button type="button" data-view="clube" class="nav-tab-btn block w-full text-left px-3 py-2 rounded-lg text-xs font-semibold uppercase text-white">2. Clube Privê (Equipe do Dia)</button>
+      <button type="button" data-view="barqr" class="nav-tab-btn block w-full text-left px-3 py-2 rounded-lg text-xs font-semibold uppercase text-white">3. Cardápio QR da Suíte</button>
+      <button type="button" data-view="recepcao" class="nav-tab-btn block w-full text-left px-3 py-2 rounded-lg text-xs font-semibold uppercase text-white">4. Recepção, Salas &amp; Fotos</button>
+      <button type="button" data-view="caixa" class="nav-tab-btn block w-full text-left px-3 py-2 rounded-lg text-xs font-semibold uppercase text-white">5. Caixa, Comissões &amp; Impressora</button>
+    </div>
+  </header>
+
+  <!-- Toast Notification Banner -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 max-w-sm space-y-2 pointer-events-none"></div>
+
+  <!-- ===================================================================== -->
+  <!-- VIEW 1: VITRINE PÚBLICA EDITORIAL (APPLE + MAISON LUXURY + RESERVA)   -->
+  <!-- ===================================================================== -->
+  <main class="flex-1">
+    <div id="view-vitrine" class="app-view">
+
+      <!-- Editorial Hero Carousel -->
+      <section class="relative yk-dark-surface text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left Editorial Copy -->
+          <div class="lg:col-span-5 space-y-5 z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#841222]/50 border border-[#C5A06E]/40 text-[#F3D299] text-[11px] uppercase tracking-[0.2em]">
+              <span>✿ Maison YK • Experiência Sensorial</span>
+            </div>
+            <h1 id="hero-slide-title" class="font-serif-editorial text-4xl sm:text-5xl lg:text-[52px] font-semibold leading-[1.08] tracking-tight text-white">
+              O refúgio onde o tempo desacelera e os sentidos despertam.
+            </h1>
+            <p id="hero-slide-subtitle" class="text-sm sm:text-base text-[#E2CFD2] leading-relaxed font-light">
+              Suítes privativas climatizadas, iluminação intimista à meia-luz, rituais de relaxamento sob medida e atendimento reservado do agendamento ao encerramento.
+            </p>
+
+            <div class="pt-2 flex flex-wrap items-center gap-3">
+              <button id="btn-hero-go-clube" type="button" class="px-6 py-3 rounded-full bg-[#841222] hover:bg-[#a1162a] text-white text-xs font-semibold uppercase tracking-[0.18em] border border-[#C5A06E]/50 shadow-lg transition">
+                Consultar Escala do Dia &amp; Agendar
+              </button>
+              <button id="btn-hero-go-suites" type="button" class="px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold uppercase tracking-[0.15em] transition">
+                Conhecer Suítes &amp; Valores
+              </button>
+            </div>
+
+            <!-- Carousel Controls (with Pause for Accessibility) -->
+            <div class="pt-4 flex items-center gap-4 text-xs text-[#C9B2B6]">
+              <div class="flex items-center gap-1.5">
+                <button id="btn-carousel-prev" type="button" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white" aria-label="Slide anterior">‹</button>
+                <button id="btn-carousel-pause" type="button" class="px-3 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center gap-1.5 text-white text-[11px] font-medium">
+                  <span id="carousel-pause-icon">⏸</span> <span id="carousel-pause-label">Pausar transição</span>
+                </button>
+                <button id="btn-carousel-next" type="button" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white" aria-label="Próximo slide">›</button>
+              </div>
+              <span id="carousel-counter" class="font-mono text-[11px] text-[#C5A06E]">01 / 04</span>
+            </div>
+          </div>
+
+          <!-- Right Editorial Visual Frame -->
+          <div class="lg:col-span-7 relative">
+            <div class="relative rounded-2xl overflow-hidden border border-[#C5A06E]/40 shadow-2xl bg-black aspect-[16/10]">
+              <img id="hero-slide-img" src="gemini-assets/0c1ebca551800569.jpg" alt="Ambiente ilustrativo Yankin" class="w-full h-full object-cover slide-fade max-w-full">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 flex flex-wrap items-end justify-between gap-2">
+                <div>
+                  <span id="hero-slide-tag" class="inline-block px-2.5 py-0.5 rounded bg-[#841222] text-[10px] uppercase tracking-widest text-white font-semibold">Suíte Master &amp; Hidro</span>
+                  <p id="hero-slide-caption" class="text-xs text-white/90 mt-1">Ambiência em mármore, velas e pétalas naturais preparadas antes de cada sessão.</p>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-black/70 border border-white/15 text-[10px] text-[#F3D299]">
+                  Fotografia Ilustrativa • Acervo final autoral Yankin
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Editorial Architecture & Suites Gallery -->
+      <section id="sec-suites" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#841222]">Arquitetura Sensorial</span>
+            <h2 class="font-serif-editorial text-3xl sm:text-4xl font-bold text-[#1E1618] mt-1">
+              O Espaço, as Suítes e o Lounge Bar
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm text-[#5E4A4E] max-w-md">
+            Inspiração editorial de alto padrão com acabamento minimalista: cada suíte passa por protocolo de higienização e preparação aromática entre atendimentos.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <article class="bg-white rounded-2xl overflow-hidden border border-[#841222]/15 shadow-sm hover:shadow-md transition flex flex-col">
+            <div class="relative aspect-[4/3] overflow-hidden bg-[#1A0E10]">
+              <img src="gemini-assets/55a6133c6d55a5d0.jpg" alt="Suíte Privê Climatizada" class="w-full h-full object-cover hover:scale-105 transition duration-500 max-w-full">
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/70 text-white text-[10px] uppercase tracking-wider">Ilustrativo • Suítes</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-serif-editorial text-2xl font-bold text-[#841222]">Suítes Privativas Climatizadas</h3>
+                <p class="text-xs text-[#4A3B3E] mt-2 leading-relaxed">
+                  Isolamento acústico, ducha privativa aquecida, enxoval em algodão acetinado branco com detalhes em carmesim e controle de iluminação indireta.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-[#6E585C]">
+                <span>Preparação obrigatória pós-sessão</span>
+                <span class="font-semibold text-[#841222]">4 Suítes Ativas</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="bg-white rounded-2xl overflow-hidden border border-[#841222]/15 shadow-sm hover:shadow-md transition flex flex-col">
+            <div class="relative aspect-[4/3] overflow-hidden bg-[#1A0E10]">
+              <img src="gemini-assets/640e9e86d2d3b471.jpg" alt="Lounge Bar Integrado" class="w-full h-full object-cover hover:scale-105 transition duration-500 max-w-full">
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/70 text-white text-[10px] uppercase tracking-wider">Ilustrativo • Bar QR</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-serif-editorial text-2xl font-bold text-[#841222]">Bar Integrado via QR Code na Suíte</h3>
+                <p class="text-xs text-[#4A3B3E] mt-2 leading-relaxed">
+                  Carta selecionada de espumantes, drinks autorais, cafés e conveniências. Solicite pelo QR Code exclusivo da sessão com entrega discreta e lançamento automático na comanda.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px]">
+                <span class="text-[#6E585C]">Comanda unificada no caixa</span>
+                <button type="button" data-goto-view="barqr" class="quick-view-link font-semibold text-[#841222] underline">Testar Cardápio QR →</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="bg-white rounded-2xl overflow-hidden border border-[#841222]/15 shadow-sm hover:shadow-md transition flex flex-col">
+            <div class="relative aspect-[4/3] overflow-hidden bg-[#1A0E10]">
+              <img src="gemini-assets/13a6fb96e447abc3.jpg" alt="Rituais Sensoriais e Óleos" class="w-full h-full object-cover hover:scale-105 transition duration-500 max-w-full">
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/70 text-white text-[10px] uppercase tracking-wider">Ilustrativo • Rituais</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-serif-editorial text-2xl font-bold text-[#841222]">Rituais de Relaxamento &amp; Toque</h3>
+                <p class="text-xs text-[#4A3B3E] mt-2 leading-relaxed">
+                  Óleos vegetais aquecidos, pedras vulcânicas e técnicas sensoriais conduzidas por profissionais selecionadas, em sessões de 30 ou 60 minutos.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px]">
+                <span class="text-[#6E585C]">Escolha no Clube Privê</span>
+                <button type="button" data-goto-view="clube" class="quick-view-link font-semibold text-[#841222] underline">Ver Escala do Dia →</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Confirmed Services & Transparent Pricing Section -->
+      <section class="bg-white border-y border-[#841222]/15 py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#841222]">Experiências &amp; Valores Confirmados</span>
+            <h2 class="font-serif-editorial text-3xl sm:text-4xl font-bold text-[#1E1618] mt-1">
+              Modalidades de Atendimento Yankin
+            </h2>
+            <p class="text-xs sm:text-sm text-[#5E4A4E] mt-2">
+              Valores transparentes para sessões presenciais. O pagamento é realizado exclusivamente no local (Pix QR Code da casa, cartão de débito, crédito ou espécie).
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <!-- 30 Min Card -->
+            <div class="rounded-2xl p-6 border-2 border-[#841222]/20 bg-[#FAF7F5] flex flex-col justify-between relative overflow-hidden">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 rounded-full bg-[#841222]/10 text-[#841222] text-xs font-bold uppercase tracking-wider">Sessão Expressa • 30 Minutos</span>
+                  <span class="font-serif-editorial text-3xl font-bold text-[#841222]">R$ 200</span>
+                </div>
+                <h3 class="font-serif-editorial text-2xl font-bold text-[#1E1618] mt-4">Ritual Sensorial 30 Minutos</h3>
+                <p class="text-xs text-[#4A3B3E] mt-2 leading-relaxed">
+                  Ideal para uma pausa revigorante ao longo do dia. Inclui suíte privativa climatizada, ducha, enxoval completo e atendimento personalizado com a profissional escolhida.
+                </p>
+                <ul class="mt-4 space-y-1.5 text-xs text-[#3C2E31]">
+                  <li>✓ Duração cronometrada de 30 minutos em suíte privativa</li>
+                  <li>✓ Acesso ao cardápio do bar via QR Code durante a sessão</li>
+                  <li>✓ Repasse integral garantido à profissional (R$ 100,00)</li>
+                </ul>
+              </div>
+              <div class="mt-6 pt-4 border-t border-[#841222]/10 flex items-center justify-between">
+                <span class="text-[11px] text-[#6E585C]">Confirmação sujeita a sala + profissional</span>
+                <button type="button" data-select-service="30" class="btn-pick-service px-4 py-2 rounded-full bg-[#841222] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#660d19] transition">
+                  Solicitar 30 min →
+                </button>
+              </div>
+            </div>
+
+            <!-- 60 Min Card -->
+            <div class="rounded-2xl p-6 border-2 border-[#841222] yk-gradient text-white flex flex-col justify-between relative overflow-hidden shadow-xl">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="px-3 py-1 rounded-full bg-[#C5A06E] text-[#1A0D10] text-xs font-bold uppercase tracking-wider">Mais Solicitado • 60 Minutos</span>
+                  <span class="font-serif-editorial text-3xl font-bold text-[#F3D299]">R$ 260</span>
+                </div>
+                <h3 class="font-serif-editorial text-2xl font-bold text-white mt-4">Experiência Completa Yankin 60 Minutos</h3>
+                <p class="text-xs text-white/85 mt-2 leading-relaxed">
+                  Imersão sensorial completa sem pressa. Tempo ideal para desconexão profunda, massagem relaxante e aproveitamento pleno da suíte e do serviço de bar.
+                </p>
+                <ul class="mt-4 space-y-1.5 text-xs text-white/90">
+                  <li>✓ Duração cronometrada de 60 minutos em suíte privativa</li>
+                  <li>✓ Cardápio QR Code de drinks e espumantes integrado à comanda</li>
+                  <li>✓ Repasse integral garantido à profissional (R$ 140,00)</li>
+                </ul>
+              </div>
+              <div class="mt-6 pt-4 border-t border-white/20 flex items-center justify-between">
+                <span class="text-[11px] text-[#F2D7D9]">Melhor relação tempo / experiência</span>
+                <button type="button" data-select-service="60" class="btn-pick-service px-4 py-2 rounded-full bg-white text-[#841222] text-xs font-bold uppercase tracking-wider hover:bg-[#F3D299] hover:text-[#1A0D10] transition">
+                  Solicitar 60 min →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Location & Discretion Banner -->
+          <div class="mt-10 max-w-4xl mx-auto rounded-2xl bg-[#180D10] text-white p-6 border border-[#C5A06E]/30 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+            <div class="md:col-span-2 space-y-1.5">
+              <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C5A06E]">Localização, Horários &amp; Atendimento Avulso</span>
+              <h3 class="font-serif-editorial text-2xl font-semibold">Região Ana Rosa / Vila Mariana — São Paulo, SP</h3>
+              <p class="text-xs text-white/80 leading-relaxed">
+                <strong>Nota de Transição:</strong> O endereço definitivo atualizado será confirmado pela direção da Yankin antes da publicação oficial (referência histórica: <em>massagemanarosa.com.br</em>). A casa atende tanto <strong>clientes cadastrados com reserva prévia</strong> quanto <strong>clientes avulsos presencialmente na recepção</strong> (sem obrigatoriedade de cadastro online).
+              </p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 border border-white/10 text-xs space-y-1.5">
+              <div class="flex justify-between"><span>Seg a Sex:</span> <strong class="text-[#F3D299]">10h00 às 22h00</strong></div>
+              <div class="flex justify-between"><span>Sábados:</span> <strong class="text-[#F3D299]">11h00 às 20h00</strong></div>
+              <div class="flex justify-between"><span>Pagamento:</span> <strong>Pix, Cartão, Espécie</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 2: CLUBE PRIVÊ (ÁREA CADASTRADA - ESCALA DO DIA & RESERVA)       -->
+    <!-- ===================================================================== -->
+    <div id="view-clube" class="app-view hidden">
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#841222]/20">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#841222]">Área Restrita • Clube Privê Yankin</span>
+            <h2 class="font-serif-editorial text-3xl sm:text-4xl font-bold text-[#1E1618] mt-1">
+              Profissionais Escaladas Hoje &amp; Solicitação de Horário
+            </h2>
+            <p class="text-xs text-[#5E4A4E] mt-1">
+              Conforme diretriz da casa, somente clientes cadastrados consultam a equipe do dia e solicitam agendamento online. Todos os perfis abaixo são <strong>fictícios/ilustrativos</strong> para validação do sistema.
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="btn-clube-toggle-auth" type="button" class="px-4 py-2 rounded-full bg-[#841222] text-white text-xs font-semibold hover:bg-[#660d19] transition">
+              Alternar Login Cliente VIP
+            </button>
+          </div>
+        </div>
+
+        <!-- Gate Lock when NOT authenticated as VIP Client -->
+        <div id="vip-locked-gate" class="my-10 rounded-2xl yk-dark-surface text-white p-8 sm:p-12 border border-[#C5A06E]/40 text-center max-w-3xl mx-auto shadow-2xl">
+          <div class="w-14 h-14 rounded-full bg-[#841222] border border-[#C5A06E] mx-auto flex items-center justify-center font-serif-editorial text-2xl font-bold text-[#F3D299]">
+            🔒
+          </div>
+          <h3 class="font-serif-editorial text-3xl font-bold mt-4">Conteúdo Restrito a Clientes Cadastrados</h3>
+          <p class="text-xs sm:text-sm text-[#E2CFD2] max-w-xl mx-auto mt-2 leading-relaxed">
+            Para preservar a discrição das profissionais e dos frequentadores da Yankin, a visualização da escala ativa do turno, fotografias restritas e reserva de horários exige autenticação no Clube Privê.
+          </p>
+          <div class="mt-6 flex flex-wrap justify-center gap-3">
+            <button id="btn-gate-unlock" type="button" class="px-6 py-3 rounded-full bg-[#C5A06E] text-[#1A0D10] text-xs font-bold uppercase tracking-wider hover:bg-[#d8b686] transition shadow-lg">
+              Simular Login de Cliente Cadastrado (1 Clique)
+            </button>
+            <button type="button" data-goto-view="recepcao" class="quick-view-link px-5 py-3 rounded-full bg-white/10 text-white text-xs font-semibold hover:bg-white/20 transition">
+              Sou da Equipe / Recepção →
+            </button>
+          </div>
+        </div>
+
+        <!-- Unlocked VIP Content: Daily Roster + Live Booking Form -->
+        <div id="vip-unlocked-content" class="hidden mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Left 7 Cols: Active Professionals Roster Today -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-serif-editorial text-2xl font-bold text-[#841222]">Escala Confirmada do Dia (Perfis Ilustrativos)</h3>
+              <span id="roster-count-badge" class="text-xs font-semibold px-3 py-1 rounded-full bg-[#841222]/10 text-[#841222]">4 profissionais ativas</span>
+            </div>
+            <div id="vip-roster-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Populated dynamically by JS -->
+            </div>
+          </div>
+
+          <!-- Right 5 Cols: Booking Request Form Connected to Central Schedule -->
+          <div class="lg:col-span-5">
+            <div class="bg-white rounded-2xl p-6 border-2 border-[#841222]/25 shadow-lg sticky top-24">
+              <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-widest text-[#841222]">Agendamento Integrado</span>
+                  <h3 class="font-serif-editorial text-2xl font-bold text-[#1E1618]">Solicitar Horário Hoje</h3>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-[#FAF0F2] text-[#841222] text-[11px] font-semibold">Cliente VIP Logado</span>
+              </div>
+
+              <form id="vip-booking-form" class="mt-4 space-y-4">
+                <div>
+                  <label for="vip-client-alias" class="block text-xs font-semibold text-[#3C2E31] mb-1">Pseudônimo / Identificação Discreta do Cliente</label>
+                  <input id="vip-client-alias" type="text" value="Cliente VIP #402 (Alexandre)" required class="w-full px-3 py-2 rounded-lg border border-gray-300 text-xs focus:border-[#841222] focus:outline-none">
+                </div>
+
+                <div>
+                  <label for="vip-select-prof" class="block text-xs font-semibold text-[#3C2E31] mb-1">Profissional Escalada</label>
+                  <select id="vip-select-prof" required class="w-full px-3 py-2 rounded-lg border border-gray-300 text-xs focus:border-[#841222] focus:outline-none"></select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label for="vip-select-service" class="block text-xs font-semibold text-[#3C2E31] mb-1">Duração / Serviço</label>
+                    <select id="vip-select-service" required class="w-full px-3 py-2 rounded-lg border border-gray-300 text-xs focus:border-[#841222] focus:outline-none">
+                      <option value="60">60 minutos — R$ 260,00</option>
+                      <option value="30">30 minutos — R$ 200,00</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="vip-select-time" class="block text-xs font-semibold text-[#3C2E31] mb-1">Horário Disponível</label>
+                    <select id="vip-select-time" required class="w-full px-3 py-2 rounded-lg border border-gray-300 text-xs focus:border-[#841222] focus:outline-none">
+                      <option value="14:00">14:00</option>
+                      <option value="15:30">15:30</option>
+                      <option value="17:00">17:00</option>
+                      <option value="18:30">18:30</option>
+                      <option value="20:00">20:00</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="vip-select-suite" class="block text-xs font-semibold text-[#3C2E31] mb-1">Preferência de Suíte (Validação Automática)</label>
+                  <select id="vip-select-suite" required class="w-full px-3 py-2 rounded-lg border border-gray-300 text-xs focus:border-[#841222] focus:outline-none"></select>
+                </div>
+
+                <!-- Summary Box -->
+                <div class="rounded-xl bg-[#FAF5F6] p-3.5 border border-[#841222]/20 text-xs space-y-1">
+                  <div class="flex justify-between"><span>Valor Presencial Previsto:</span> <strong id="vip-summary-price" class="text-[#841222]">R$ 260,00</strong></div>
+                  <div class="flex justify-between"><span>Comissão Integral da Profissional:</span> <strong id="vip-summary-comm">R$ 140,00</strong></div>
+                  <p class="text-[11px] text-[#6E585C] pt-1">
+                    A reserva bloqueia conflitos na agenda central da recepção. O pagamento ocorre somente no fechamento presencial.
+                  </p>
+                </div>
+
+                <button type="submit" class="w-full py-3 rounded-full bg-[#841222] hover:bg-[#660d19] text-white text-xs font-bold uppercase tracking-widest transition shadow-md">
+                  Confirmar Solicitação na Agenda Central
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 3: CARDÁPIO DIGITAL DO BAR VIA QR CODE DA SUÍTE                  -->
+    <!-- ===================================================================== -->
+    <div id="view-barqr" class="app-view hidden">
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#841222]/20">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#841222]">Experiência na Suíte • QR Code Temporário</span>
+            <h2 class="font-serif-editorial text-3xl sm:text-4xl font-bold text-[#1E1618] mt-1">
+              Cardápio Digital do Bar Integrado à Comanda
+            </h2>
+            <p class="text-xs text-[#5E4A4E] mt-1">
+              Cada atendimento ativo gera um QR Code exclusivo na suíte. Os pedidos entram na fila do bar, têm o preparo acompanhado e são somados automaticamente à comanda da sessão (bloqueando duplicidades ou sessões encerradas).
+            </p>
+          </div>
+          <div class="w-full md:w-80">
+            <label for="bar-active-session-select" class="block text-[11px] font-bold uppercase tracking-wider text-[#841222] mb-1">Sessão / QR Code Ativo Simulado:</label>
+            <select id="bar-active-session-select" class="w-full px-3 py-2 rounded-lg border-2 border-[#841222] bg-white text-xs font-semibold"></select>
+          </div>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Menu Items (7 cols) -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-serif-editorial text-2xl font-bold text-[#1E1618]">Carta do Lounge Bar Yankin</h3>
+              <span class="text-xs text-[#6E585C]">Responsável pode suspender itens sem estoque</span>
+            </div>
+            <div id="bar-menu-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Active Session Tab & Bar Queue (5 cols) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-[#841222]/25 shadow-sm">
+              <h3 class="font-serif-editorial text-2xl font-bold text-[#841222]">Comanda Atual da Suíte Selecionada</h3>
+              <div id="bar-current-tab-summary" class="mt-3 text-xs space-y-2">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+            <div class="bg-[#180D10] text-white rounded-2xl p-6 border border-[#C5A06E]/30">
+              <h3 class="font-serif-editorial text-2xl font-bold text-[#F3D299]">Monitor de Pedidos da Copa / Bar</h3>
+              <p class="text-[11px] text-white/70 mt-0.5">Atualize o status de preparo e entrega ou cancele itens antes do fechamento.</p>
+              <div id="bar-orders-queue" class="mt-4 space-y-3">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 4: RECEPÇÃO, CONTROLE DE SUÍTES, LIMPEZA & ESTÚDIO DE FOTOS      -->
+    <!-- ===================================================================== -->
+    <div id="view-recepcao" class="app-view hidden">
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+
+        <!-- Top Header -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-[#841222]/20">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#841222]">Operação Interna • Recepção &amp; Camararia</span>
+            <h2 class="font-serif-editorial text-3xl sm:text-4xl font-bold text-[#1E1618] mt-1">
+              Controle de Suítes, Giro de Limpeza &amp; Escala de Fotos
+            </h2>
+            <p class="text-xs text-[#5E4A4E] mt-1">
+              <strong>Regra Operacional Crítica:</strong> O fim do tempo mostra aviso de cobrança e envia a comanda ao caixa, mas <strong>a suíte só é liberada fisicamente após a saída do cliente e conclusão da limpeza</strong> (independentemente de a conta já ter sido paga).
+            </p>
+          </div>
+        </div>
+
+        <!-- Suites Live Status Grid -->
+        <div>
+          <h3 class="font-serif-editorial text-2xl font-bold text-[#1E1618] mb-3">1. Mapa de Suítes em Tempo Real (Físico vs. Financeiro)</h3>
+          <div id="suites-status-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Walk-in / Start Session & Active Sessions Table -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Walk-in / Presencial Check-in Form (4 cols) -->
+          <div class="lg:col-span-4 bg-white rounded-2xl p-6 border border-[#841222]/25 shadow-sm">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-[#841222]">Check-in Presencial / Avulso</span>
+            <h3 class="font-serif-editorial text-2xl font-bold text-[#1E1618] mt-0.5">Iniciar Atendimento na Recepção</h3>
+            <p class="text-[11px] text-[#6E585C] mt-1">
+              Atende tanto reservas vindas do site quanto <strong>clientes avulsos no balcão</strong> (sem exigir cadastro do consumidor).
+            </p>
+
+            <form id="recepcao-checkin-form" class="mt-4 space-y-3.5 text-xs">
+              <div>
+                <label for="rec-client-name" class="block font-semibold mb-1">Identificação Operacional (Cadastrado ou Avulso)</label>
+                <input id="rec-client-name" type="text" value="Cliente Avulso #19" required class="w-full px-3 py-2 rounded-lg border border-gray-300">
+              </div>
+              <div>
+                <label for="rec-select-prof" class="block font-semibold mb-1">Profissional Disponível</label>
+                <select id="rec-select-prof" required class="w-full px-3 py-2 rounded-lg border border-gray-300"></select>
+              </div>
+              <div class="grid grid-cols-2 gap-2.5">
+                <div>
+                  <label for="rec-select-service" class="block font-semibold mb-1">Duração</label>
+                  <select id="rec-select-service" required class="w-full px-3 py-2 rounded-lg border border-gray-300">
+                    <option value="60">60 min (R$ 260)</option>
+                    <option value="30">30 min (R$ 200)</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="rec-select-suite" class="block font-semibold mb-1">Suíte Livre</label>
+                  <select id="rec-select-suite" required class="w-full px-3 py-2 rounded-lg border border-gray-300"></select>
+                </div>
+              </div>
+              <div>
+                <label for="rec-start-time" class="block font-semibold mb-1">Horário de Início</label>
+                <input id="rec-start-time" type="time" value="16:00" required class="w-full px-3 py-2 rounded-lg border border-gray-300">
+              </div>
+              <button type="submit" class="w-full py-2.5 rounded-full bg-[#841222] hover:bg-[#660d19] text-white font-bold uppercase tracking-wider transition">
+                Ocupar Suíte &amp; Iniciar Sessão
+              </button>
+            </form>
+          </div>
+
+          <!-- Active & Scheduled Sessions List (8 cols) -->
+          <div class="lg:col-span-8 bg-white rounded-2xl p-6 border border-[#841222]/25 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="font-serif-editorial text-2xl font-bold text-[#1E1618]">2. Sessões em Andamento &amp; Reservas do Dia</h3>
+                <p class="text-xs text-[#6E585C]">Simule o fim do tempo (alerta discreto) ou encerre o atendimento para enviar a comanda à fila do caixa.</p>
+              </div>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b-2 border-[#841222] text-[#841222]">
+                    <th class="py-2 px-2">Sessão / Cliente</th>
+                    <th class="py-2 px-2">Profissional &amp; Suíte</th>
+                    <th class="py-2 px-2">Serviço &amp; Bar</th>
+                    <th class="py-2 px-2">Status da Sessão</th>
+                    <th class="py-2 px-2 text-right">Ações da Recepção</th>
+                  </tr>
+                </thead>
+                <tbody id="recepcao-sessions-tbody" class="divide-y divide-gray-100">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Photo Upload, Framing & Roster Autonomy Studio -->
+        <div class="bg-white rounded-2xl p-6 border border-[#841222]/25 shadow-sm">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 pb-4 border-b border-gray-100">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-widest text-[#841222]">Autonomia de Conteúdo • Sem Depender de Terceiros</span>
+              <h3 class="font-serif-editorial text-2xl font-bold text-[#1E1618]">3. Estúdio Mobile de Fotos, Enquadramento &amp; Escala do Dia</h3>
+              <p class="text-xs text-[#6E585C]">
+                Envie fotos pelo celular, ajuste o enquadramento, classifique entre <strong>Vitrine Pública</strong> ou <strong>Galeria Restrita (VIP)</strong> e publique/despublique perfis na escala do dia.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-5 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <!-- Add / Frame Profile Form (5 cols) -->
+            <form id="photo-studio-form" class="lg:col-span-5 space-y-3 text-xs bg-[#FAF6F7] p-4 rounded-xl border border-[#841222]/15">
+              <div class="font-bold text-[#841222] uppercase tracking-wider text-[11px]">Cadastrar / Atualizar Foto e Perfil no Turno</div>
+              <div class="grid grid-cols-2 gap-2.5">
+                <div>
+                  <label for="studio-prof-name" class="block font-semibold mb-1">Nome Artístico (Ilustrativo)</label>
+                  <input id="studio-prof-name" type="text" placeholder="Ex.: Maya (Ilustrativa)" required class="w-full px-3 py-1.5 rounded border border-gray-300 bg-white">
+                </div>
+                <div>
+                  <label for="studio-prof-shift" class="block font-semibold mb-1">Turno / Escala (Horas)</label>
+                  <select id="studio-prof-shift" class="w-full px-3 py-1.5 rounded border border-gray-300 bg-white">
+                    <option value="6">14h às 20h (6h disponíveis)</option>
+                    <option value="8">12h às 20h (8h disponíveis)</option>
+                    <option value="4">16h às 20h (4h disponíveis)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2.5">
+                <div>
+                  <label for="studio-visibility" class="block font-semibold mb-1">Visibilidade da Foto</label>
+                  <select id="studio-visibility" class="w-full px-3 py-1.5 rounded border border-gray-300 bg-white">
+                    <option value="Restrita VIP">Exclusiva Clientes Cadastrados (VIP)</option>
+                    <option value="Pública">Pública na Vitrine + VIP</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="studio-crop-focus" class="block font-semibold mb-1">Ajuste de Enquadramento</label>
+                  <select id="studio-crop-focus" class="w-full px-3 py-1.5 rounded border border-gray-300 bg-white">
+                    <option value="center">Enquadramento Central Editorial</option>
+                    <option value="top">Foco Superior / Retrato</option>
+                    <option value="Close">Zoom Suave Sensual (110%)</option>
+                  </select>
+                </div>
+              </div>
+
+              <label class="flex items-start gap-2 pt-1 cursor-pointer">
+                <input id="studio-image-consent" type="checkbox" checked required class="mt-0.5 accent-[#841222]">
+                <span class="text-[11px] text-[#4A3B3E]">Confirmo termo de <strong>autorização de uso de imagem</strong> assinado e política de retenção/proteção de acesso restrito.</span>
+              </label>
+
+              <button type="submit" class="w-full py-2 rounded-full bg-[#841222] text-white font-bold uppercase tracking-wider hover:bg-[#660d19] transition">
+                Aprovar &amp; Publicar na Escala do Dia
+              </button>
+            </form>
+
+            <!-- Manage Active Profiles List (7 cols) -->
+            <div class="lg:col-span-7 overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b-2 border-[#841222] text-[#841222]">
+                    <th class="py-2 px-2">Profissional (Ilustrativa)</th>
+                    <th class="py-2 px-2">Turno / Escala</th>
+                    <th class="py-2 px-2">Enquadramento &amp; Acesso</th>
+                    <th class="py-2 px-2">Status na Vitrine</th>
+                    <th class="py-2 px-2 text-right">Controle</th>
+                  </tr>
+                </thead>
+                <tbody id="studio-roster-tbody" class="divide-y divide-gray-100">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 5: CAIXA PRESENCIAL, COMISSÕES INTEGRAIS, REPASSES & ADM         -->
+    <!-- ===================================================================== -->
+    <div id="view-caixa" class="app-view hidden">
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+
+        <!-- Header & KPI Cards -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-[#841222]/20">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#841222]">Controladoria, Caixa &amp; Repasses</span>
+            <h2 class="font-serif-editorial text-3xl sm:text-4xl font-bold text-[#1E1618] mt-1">
+              Fila de Pagamento Presencial, Comissões Integrais &amp; Fechamento
+            </h2>
+            <p class="text-xs text-[#5E4A4E] mt-1">
+              Comissão 100% blindada (<strong>R$ 100 em 30 min</strong> | <strong>R$ 140 em 60 min</strong>), sem descontar taxas de cartão ou descontos da casa. Separação rigorosa entre data do atendimento, data do recebimento e data do repasse.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <button id="btn-simular-regra-1240" type="button" class="px-3.5 py-2 rounded-full bg-[#FAF0F2] border border-[#841222]/40 text-[#841222] text-xs font-bold hover:bg-[#841222] hover:text-white transition">
+              ⚡ Validar Exemplo Proposta (4×30m + 6×60m = R$ 1.240)
+            </button>
+            <button id="btn-open-print-modal" type="button" class="px-4 py-2 rounded-full bg-[#180D10] text-[#F3D299] text-xs font-bold hover:bg-black transition shadow">
+              🖨️ Imprimir Comanda / Fechamento (80mm)
+            </button>
+          </div>
+        </div>
+
+        <!-- Financial KPI Strip -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div class="bg-white p-4 rounded-xl border border-[#841222]/20">
+            <span class="text-[10px] uppercase tracking-wider text-[#6E585C] block">Receita Serviços (Quitada)</span>
+            <strong id="kpi-rev-services" class="font-serif-editorial text-2xl font-bold text-[#1E1618]">R$ 0,00</strong>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-[#841222]/20">
+            <span class="text-[10px] uppercase tracking-wider text-[#6E585C] block">Receita Bar (Quitada)</span>
+            <strong id="kpi-rev-bar" class="font-serif-editorial text-2xl font-bold text-[#1E1618]">R$ 0,00</strong>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-amber-500/40">
+            <span class="text-[10px] uppercase tracking-wider text-amber-800 block">Saldo na Fila de Caixa</span>
+            <strong id="kpi-pending-tabs" class="font-serif-editorial text-2xl font-bold text-amber-700">R$ 0,00</strong>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-[#841222]/20">
+            <span class="text-[10px] uppercase tracking-wider text-[#6E585C] block">Comissões Apuradas</span>
+            <strong id="kpi-comm-apurada" class="font-serif-editorial text-2xl font-bold text-[#841222]">R$ 0,00</strong>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-emerald-600/30">
+            <span class="text-[10px] uppercase tracking-wider text-emerald-800 block">Comissões Liberadas</span>
+            <strong id="kpi-comm-liberada" class="font-serif-editorial text-2xl font-bold text-emerald-700">R$ 0,00</strong>
+          </div>
+          <div class="bg-[#841222] text-white p-4 rounded-xl shadow">
+            <span class="text-[10px] uppercase tracking-wider text-[#F2D7D9] block">Saldo Líquido a Repassar</span>
+            <strong id="kpi-comm-saldo" class="font-serif-editorial text-2xl font-bold text-[#F3D299]">R$ 0,00</strong>
+          </div>
+        </div>
+
+        <!-- Row 1: Payment Queue (Left 7) + Register Mixed Payment Form (Right 5) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-[#841222]/25 shadow-sm">
+            <h3 class="font-serif-editorial text-2xl font-bold text-[#1E1618]">1. Fila de Pagamento &amp; Comandas Presenciais</h3>
+            <p class="text-xs text-[#6E585C] mb-4">
+              Uma parcela parcial não quita a conta: o saldo permanece na fila até 100% ser recebido. Na quitação total, a comissão integral entra como <strong>Liberada</strong> para a profissional.
+            </p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b-2 border-[#841222] text-[#841222]">
+                    <th class="py-2 px-2">Comanda / Cliente</th>
+                    <th class="py-2 px-2">Profissional (Comissão)</th>
+                    <th class="py-2 px-2 text-right">Serviço + Bar − Desc.</th>
+                    <th class="py-2 px-2 text-right">Pago / Saldo</th>
+                    <th class="py-2 px-2 text-right">Status Financeiro</th>
+                  </tr>
+                </thead>
+                <tbody id="caixa-tabs-tbody" class="divide-y divide-gray-100">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-white rounded-2xl p-6 border-2 border-[#841222]/30 shadow-md">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-[#841222]">Terminal de Caixa Presencial</span>
+            <h3 class="font-serif-editorial text-2xl font-bold text-[#1E1618]">Registrar Recebimento (Pix, Cartão, Espécie)</h3>
+            <p class="text-[11px] text-[#6E585C] mt-0.5">
+              Permite pagamento misto (múltiplas parcelas). Descontos concedidos pela casa <strong>nunca reduzem a comissão</strong> da profissional.
+            </p>
+
+            <form id="caixa-payment-form" class="mt-4 space-y-3 text-xs">
+              <div>
+                <label for="pay-select-tab" class="block font-semibold mb-1">Selecionar Comanda na Fila</label>
+                <select id="pay-select-tab" required class="w-full px-3 py-2 rounded-lg border border-gray-300 font-semibold"></select>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2.5">
+                <div>
+                  <label for="pay-method" class="block font-semibold mb-1">Meio de Pagamento</label>
+                  <select id="pay-method" required class="w-full px-3 py-2 rounded-lg border border-gray-300">
+                    <option value="Pix QR Local (Conferido no Banco)">Pix QR Local (Conferido no Banco)</option>
+                    <option value="Cartão de Crédito (Maquininha)">Cartão de Crédito (Maquininha)</option>
+                    <option value="Cartão de Débito (Maquininha)">Cartão de Débito (Maquininha)</option>
+                    <option value="Dinheiro em Espécie">Dinheiro em Espécie</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="pay-amount" class="block font-semibold mb-1">Valor da Parcela (R$)</label>
+                  <input id="pay-amount" type="number" step="1" min="1" value="260" required class="w-full px-3 py-2 rounded-lg border border-gray-300 font-bold text-[#841222]">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2.5">
+                <div>
+                  <label for="pay-discount" class="block font-semibold mb-1">Desconto da Casa (R$)</label>
+                  <input id="pay-discount" type="number" step="1" min="0" value="0" class="w-full px-3 py-2 rounded-lg border border-gray-300">
+                </div>
+                <div>
+                  <label for="pay-operator" class="block font-semibold mb-1">Operador &amp; Ref. Maquininha/Pix</label>
+                  <input id="pay-operator" type="text" value="Caixa Turno A • NSU/Pix #884" required class="w-full px-3 py-2 rounded-lg border border-gray-300">
+                </div>
+              </div>
+
+              <button type="submit" class="w-full py-2.5 rounded-full bg-[#841222] hover:bg-[#660d19] text-white font-bold uppercase tracking-wider transition shadow">
+                Registrar Recebimento na Comanda
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Row 2: Professional Commissions, Payouts & Occupancy (Left 8) + Payout Form & Cash Drawer Count (Right 4) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-8 bg-white rounded-2xl p-6 border border-[#841222]/25 shadow-sm">
+            <h3 class="font-serif-editorial text-2xl font-bold text-[#1E1618]">2. Apuração de Comissões, Repasses &amp; Indicadores de Escala</h3>
+            <p class="text-xs text-[#6E585C] mb-4">
+              Fórmula auditável: <strong>Saldo Inicial + Comissões Liberadas − Repasses Pagos = Saldo Final</strong>. A ocupação considera apenas as horas disponíveis na escala de cada profissional (sem ranking automático pessoal).
+            </p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b-2 border-[#841222] text-[#841222]">
+                    <th class="py-2 px-2">Profissional</th>
+                    <th class="py-2 px-2">Atend. / Ocupação Escala</th>
+                    <th class="py-2 px-2 text-right">Saldo Inicial</th>
+                    <th class="py-2 px-2 text-right">Apurada (Pend.)</th>
+                    <th class="py-2 px-2 text-right">Liberada (Quit.)</th>
+                    <th class="py-2 px-2 text-right">Repasses Pagos</th>
+                    <th class="py-2 px-2 text-right">Saldo Final a Pagar</th>
+                  </tr>
+                </thead>
+                <tbody id="caixa-commissions-tbody" class="divide-y divide-gray-100">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Payout Form + Physical Cash Comparison (4 cols) -->
+          <div class="lg:col-span-4 space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-[#841222]/25 shadow-sm">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-[#841222]">Baixa de Repasse ao Fim do Dia</span>
+              <h3 class="font-serif-editorial text-xl font-bold text-[#1E1618]">Registrar Pagamento à Profissional</h3>
+              <form id="caixa-payout-form" class="mt-3 space-y-3 text-xs">
+                <div>
+                  <label for="payout-prof" class="block font-semibold mb-1">Profissional</label>
+                  <select id="payout-prof" required class="w-full px-3 py-2 rounded-lg border border-gray-300"></select>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                  <div>
+                    <label for="payout-method" class="block font-semibold mb-1">Forma de Repasse</label>
+                    <select id="payout-method" class="w-full px-3 py-2 rounded-lg border border-gray-300">
+                      <option value="Dinheiro + Pix Combinado">Dinheiro + Pix Combinado</option>
+                      <option value="Pix Externo">Pix Externo</option>
+                      <option value="Dinheiro em Espécie">Dinheiro em Espécie</option>
+                      <option value="Acumular p/ Data Combinada">Acumular p/ Data Combinada</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="payout-amount" class="block font-semibold mb-1">Valor Pago (R$)</label>
+                    <input id="payout-amount" type="number" step="1" min="0" value="140" required class="w-full px-3 py-2 rounded-lg border border-gray-300 font-bold">
+                  </div>
+                </div>
+                <div>
+                  <label for="payout-note" class="block font-semibold mb-1">Responsável / Data Combinada / Ref.</label>
+                  <input id="payout-note" type="text" value="Gestor Turno • Quitação Diária" required class="w-full px-3 py-2 rounded-lg border border-gray-300">
+                </div>
+                <button type="submit" class="w-full py-2 rounded-full bg-emerald-800 hover:bg-emerald-900 text-white font-bold uppercase tracking-wider transition">
+                  Efetuar Baixa de Repasse
+                </button>
+              </form>
+            </div>
+
+            <!-- Physical Cash Count & Protected Daily Email Preview -->
+            <div class="bg-[#180D10] text-white rounded-2xl p-5 border border-[#C5A06E]/30 text-xs space-y-3">
+              <div class="font-bold text-[#F3D299] uppercase tracking-wider text-[11px]">Conferência Física de Gaveta &amp; Envio Diário</div>
+              <div class="flex items-center justify-between">
+                <span>Dinheiro Esperado no Caixa:</span>
+                <strong id="cash-expected-val" class="text-[#F3D299]">R$ 0,00</strong>
+              </div>
+              <div class="flex items-center gap-2">
+                <label for="cash-physical-input" class="whitespace-nowrap">Contagem Física (R$):</label>
+                <input id="cash-physical-input" type="number" step="1" value="200" class="w-full px-2.5 py-1 rounded bg-white/10 border border-white/20 text-white font-bold text-right">
+              </div>
+              <div class="flex items-center justify-between pt-1 border-t border-white/10">
+                <span>Diferença de Caixa:</span>
+                <strong id="cash-diff-val" class="text-emerald-400">R$ 0,00 (Conferido)</strong>
+              </div>
+              <p class="text-[11px] text-white/70 pt-1">
+                📧 <strong>Envio Diário Protegido:</strong> No sistema em produção, o resumo fechado (sem nomes de clientes no corpo do e-mail e com link protegido) é disparado a até 3 e-mails autorizados pelo administrador.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL: IMPRESSORA SERIAL / CUPOM TÉRMICO 80MM & FECHAMENTO PDF        -->
+  <!-- ===================================================================== -->
+  <div id="print-modal" class="fixed inset-0 z-50 hidden bg-black/75 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-[#841222]/30">
+      <div class="flex items-center justify-between pb-3 border-b border-gray-200">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-[#841222]">Homologação de Impressora Serial / Navegador</span>
+          <h3 class="font-serif-editorial text-2xl font-bold text-[#1E1618]">Layout de Cupom Térmico 80mm</h3>
+        </div>
+        <button id="btn-close-print-modal" type="button" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-gray-700">✕</button>
+      </div>
+
+      <div id="thermal-receipt-preview" class="my-4 p-4 bg-[#FFFDF9] border border-dashed border-gray-400 font-mono text-[11px] leading-relaxed text-black max-h-96 overflow-y-auto">
+        <!-- Populated by JS -->
+      </div>
+
+      <p class="text-[11px] text-[#6E585C] mb-4">
+        * Relatórios gerenciais e comandas são controles operacionais internos e não substituem documento fiscal. A compatibilidade direta via porta serial RS-232/COM será homologada presencialmente na Etapa 1.
+      </p>
+
+      <div class="flex items-center justify-end gap-2">
+        <button id="btn-trigger-browser-print" type="button" class="px-4 py-2 rounded-full bg-[#841222] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#660d19] transition">
+          Imprimir pelo Navegador / Salvar PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#120A0C] text-[#B89FA3] text-xs py-8 border-t border-[#841222]/30 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 bg-[#841222] text-white flex items-center justify-center font-serif-editorial font-bold text-sm">YK</div>
+        <span><strong>YK / YANKIN</strong> — Sample Independente de Vitrine &amp; Gestão Operacional (Dados fictícios em memória).</span>
+      </div>
+      <div class="text-right">
+        <span>Arquitetura &amp; Desenvolvimento sob medida por <strong>Relax Studios</strong> (relaxstudios.com.br)</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- APPLICATION LOGIC (SHARED IN-MEMORY STATE FOR VITRINE + GESTÃO)       -->
+  <!-- ===================================================================== -->
+<script src="gemini-app.js" defer></script>
+</body>
+</html>
