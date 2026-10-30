@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: yankin-sample-relax
+    runtime: static
+    branch: yankin-sample
+    buildCommand: echo Static
+    staticPublishPath: ./samples/yankin/dist
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex, nofollow
